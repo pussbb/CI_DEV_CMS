@@ -13,7 +13,7 @@ class Welcome extends Controller
     { $this->load->model('news_syndication','ns');
        //
        $this->template->write_view('usermenu', 'loginbox');
-       $this->template->write_view('futures', 'news');
+     //  $this->template->write_view('futures', 'news');
        $this->template->render();
     }
 
