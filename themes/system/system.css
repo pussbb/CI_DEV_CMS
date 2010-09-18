@@ -1,0 +1,53 @@
+/* 
+    Document   : system
+    Created on : 09.09.2010, 23:18:51
+    Author     : pussbb
+    Description:
+        Purpose of the stylesheet follows.
+*/
+ 
+/* background: #333;
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+.over {
+    display: inline-table;
+    width:400px;
+   height: 60px;
+position: absolute;
+    margin: 60px 0px 0px -90px;
+    padding:15px;
+    float:left;
+ 
+}
+.over_msg{
+    position:absolute;
+    font-size:16px;
+    color:#fff;
+    
+}
+.over_msg p{
+    margin:10px;
+}
+
+
+/* error message */
+.error {
+    height:15px;
+    background-color:#FFFE36;
+    font-size:11px;
+    border:1px solid #E1E16D;
+    padding:4px 10px;
+    color:#000;
+
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    -moz-border-radius-bottomleft:0;
+    -moz-border-radius-topleft:0;
+    -webkit-border-bottom-left-radius:0;
+    -webkit-border-top-left-radius:0;
+
+    -moz-box-shadow:0 0 6px #ddd;
+    -webkit-box-shadow:0 0 6px #ddd;
+}

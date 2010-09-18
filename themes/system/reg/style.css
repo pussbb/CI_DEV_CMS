@@ -1,0 +1,59 @@
+/*
+=============================================================
+© 2008 - 2009 Российская школа CSS (Russian CSS School)
+http://www.css-school.ru
+Урок CSS вёрстки №5. Градиентный фон
+style.css - Набор стилей для урока
+=============================================================
+*/
+
+/* Задание стилей страницы */
+html, body {
+   color:#fff; background:#195d83;
+     font:11px Verdana;
+   /* background:red;*/
+}
+
+/* Задание стилей заголовка блока */
+.mtop2 {
+   width:562px;
+   padding:10px 20px 11px 30px;
+   font-weight:bold;
+   font-size:14px;
+   text-align:  center;
+   background: url(1.png) no-repeat;
+}
+.logou{
+width: 128px;
+height: 128px;
+margin-top: -108px;
+margin-left: -50px;
+ background: url(user.png) no-repeat ;
+
+}
+.m{
+	background-position:center;
+	position:absolute;left:25%;
+top:20%; 
+ 
+}
+/* Задание стилей подложки */
+.mfor {
+ background: url(2.png) repeat-y;
+width:592px;
+}
+
+/* Задание стилей верхнего градиента */
+.menum3 {
+   background:url(3.png) no-repeat;
+   padding:10px;
+   width:572px;
+}
+
+
+/* Задание стилей окончания блока */
+.mbot3 {
+   width:592px;
+   height:18px;
+   background:url(4.png) no-repeat;
+}
