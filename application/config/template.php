@@ -59,7 +59,7 @@ $template['active_template'] = 'default';
 
 $template['default']['template'] = 'template';
 $template['default']['regions'] = array('title', 'sidemenu', 'usermenu',
-    'content', 'footer', );
+    'content', 'footer','futures');
 $template['default']['parser'] = 'parser';
 $template['default']['parser_method'] = 'parse';
 $template['default']['parse_template'] = false;
