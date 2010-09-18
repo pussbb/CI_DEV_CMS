@@ -1,5 +1,5 @@
 AddDefaultCharset UTF-8
-#Options -Indexes
+Options -Indexes
 Options +FollowSymLinks
 php_value post_max_size "100M"
 php_value upload_max_filesize "100M"
@@ -28,5 +28,5 @@ RewriteRule ^(.*)$ index.php [F,L]
 RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond $1 !^(index\.php|images|robots|js\.txt)
+RewriteCond $1 !^(index\.php|images|robots\.txt)
 RewriteRule ^(.*)$ /index.php?/$1 [L]
