@@ -8,7 +8,7 @@ class News_syndication extends CI_Model {
     function  welcome_page() {
         $this->load->library('simplepie');
         $feeds = array(
-            'https://www.googleapis.com/buzz/v1/activities/pussbb/@public',
+           'https://www.googleapis.com/buzz/v1/activities/pussbb/@public',
            'http://krabik/welcome/rss'
         );// 
   

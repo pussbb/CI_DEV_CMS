@@ -23,19 +23,23 @@ if (!function_exists('lang_url')) {
 
         $CI = &get_instance();
         $lang = $CI->config->item("language");
-        if ($base != '') {
+        if ($base == '') {
             $a = explode('/', $_SERVER["REQUEST_URI"]);
-            if (sizeof($a) > 0) {
-            $lang = lang_id;
-            unset($a[$lang]);
+            if (count($a) > 0) {
+            $lang = lang_id();
+            if($a[1]==$lang)
+            {
+             unset($a[1]);
+            }
+            
             }
         } else {
-            $a =array($base,'') ;
+            $a =array($base) ;
         }
         if ($str != '') {
             $lang = $str;
         }
-        return base_url() . $lang . implode('/', $a);
+        return base_url() . $lang .'/'. implode('/', $a);
     }
 
 }
