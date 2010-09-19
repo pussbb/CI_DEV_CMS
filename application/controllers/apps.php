@@ -11,8 +11,5 @@ class Apps extends Controller
     {
         echo 'gdfgdfgdfgdf';
     }
-function download(){
-///
-}
-    
+
 }

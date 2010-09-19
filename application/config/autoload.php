@@ -53,7 +53,6 @@ $autoload['libraries'] = array('database','template');
 $autoload['helper'] =array('url','translate','language');
 
 
-
 /*
 | -------------------------------------------------------------------
 |  Auto-load Config files
@@ -68,6 +67,7 @@ $autoload['helper'] =array('url','translate','language');
 */
 
 $autoload['config'] = array('site');
+
 
 
 /*

@@ -32,6 +32,7 @@
 | would be loaded.
 */
 
+
 $route['default_controller'] = "welcome";
 $route['(.*/)?login'] = "user/login";
 $route['(.*/)?(register).*'] = "user/register";
@@ -39,9 +40,7 @@ $route['^en/(.+)$'] = "$1";
 $route['^ru/(.+)$'] = "$1";
 $route['^en$'] = $route['default_controller'];
 $route['^ru$'] = $route['default_controller'];
-$route['scaffolding_trigger'] = "";
-
-
+$route['scaffolding_trigger'] = $route['default_controller'] = "welcome";
 
 
 /* End of file routes.php */

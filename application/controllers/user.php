@@ -16,9 +16,6 @@ class User extends Controller
     }
 function register()
 {
-         
-//$this->load->view('reg/error_register',array('heading'=>$this->lang->line('regerror'),'message'=>'hjhgj'));
- 
-    $this->load->view('reg/register');
+   $this->load->view('reg/register');
 }
 }

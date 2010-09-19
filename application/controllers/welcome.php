@@ -10,7 +10,7 @@ class Welcome extends Controller
     }
 
     function index()
-    {   $this->load->model('news_syndication','ns');
+    {  $this->load->model('news_syndication','ns');
        //
        $this->template->write_view('usermenu', 'loginbox');
        $this->template->write_view('futures', 'news');
@@ -20,7 +20,7 @@ class Welcome extends Controller
     function rss()
     {
         $this->load->library('wxml');
-        echo 'Initiate class';
+        //echo 'Initiate class';
         $xml = new WXml();
         $xml->setRootName('rss');
         $xml->initiate();

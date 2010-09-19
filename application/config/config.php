@@ -41,7 +41,7 @@ $config['index_page'] = "";
 | 'ORIG_PATH_INFO'	Uses the ORIG_PATH_INFO
 |
 */
-$config['uri_protocol']	= "URI";
+$config['uri_protocol']	= "AUTO";
 
 /*
 |--------------------------------------------------------------------------
@@ -66,7 +66,7 @@ $config['url_suffix'] = "";
 | than english.
 |
 */
-$config['language'] = "ru";
+$config['language']	= "ru";
 $config['lang'] = "ru";
 
 /*
@@ -174,7 +174,7 @@ $config['directory_trigger'] 	= 'd'; // experimental not currently in use
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 1;
+$config['log_threshold'] = 0;
 
 /*
 |--------------------------------------------------------------------------
@@ -214,8 +214,8 @@ $config['cache_path'] = '';
 | Encryption Key
 |--------------------------------------------------------------------------
 |
-| If you use the Encryption class or the Sessions class with encryption
-| enabled you MUST set an encryption key.  See the user guide for info.
+| If you use the Encryption class or the Session class you
+| MUST set an encryption key.  See the user guide for info.
 |
 */
 $config['encryption_key'] = "";
@@ -235,7 +235,7 @@ $config['encryption_key'] = "";
 $config['sess_cookie_name']		= 'ci_session';
 $config['sess_expiration']		= 7200;
 $config['sess_encrypt_cookie']	= TRUE;
-$config['sess_use_database']	= FALSE;
+$config['sess_use_database']	= TRUE;
 $config['sess_table_name']		= 'ci_sessions';
 $config['sess_match_ip']		= TRUE;
 $config['sess_match_useragent']	= TRUE;

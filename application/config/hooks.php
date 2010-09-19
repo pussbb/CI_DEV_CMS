@@ -10,10 +10,10 @@
 |
 */
 $hook['post_controller_constructor'][] = array(
-                        'class' => 'System', 
+                        'class' => 'System',
                         'function' => 'debug',
                         'filename' => 'system.php',
-                         'filepath' => 'hooks', 
+                         'filepath' => 'hooks',
                          );
 $hook['post_controller_constructor'][] = array(
                         'class' => 'System',
@@ -23,12 +23,11 @@ $hook['post_controller_constructor'][] = array(
                          );
 
 $hook['pre_system'][] = array(
-                        'class' => 'System', 
+                        'class' => 'System',
                         'function' => 'setlang',
                         'filename' => 'system.php',
-                         'filepath' => 'hooks', 
+                         'filepath' => 'hooks',
                          );
-
 
 
 /* End of file hooks.php */
