@@ -14,8 +14,8 @@
 
 <div id="main_container">
 <a href="<?php echo "base_url().'ru'.uri_string()";?>"><img alt="rss news feed" src="<?php echo base_url()?>images/rss/Inside-rss-48.png" style="float: right; border:none; " /></a>
-<a href="<?php echo lang_url('ru');?>"><img alt="russian lang" src="<?php echo base_url()?>images/flags/Rossiya-Russia-48.png" style="float: right; border:none; "/></a> 
-<a href="<?php echo lang_url('en');?>"><img alt="english lang" src="<?php echo base_url()?>images/flags/UK-48.png" style="float: right; border:none; " /></a> 
+<a href="<?php echo lang_url('ru');?>"><img alt="russian lang" src="<?php echo base_url()?>images/flags/Rossiya-Russia-48.png" style="float: right; border:none; "/></a>
+<a href="<?php echo lang_url('en');?>"><img alt="english lang" src="<?php echo base_url()?>images/flags/UK-48.png" style="float: right; border:none; " /></a>
 <div id="header">
     	<div class="logo">
             <img alt="logo" src="<?= base_url() . $this->config->item('pathtemplate'); ?>images/logo.png" />
@@ -24,15 +24,15 @@
     </div>
         <div class="menu">
         	<ul>                                                                         
-        		<li class="selected"><a href="<?php echo base_url(true); ?>"><?php echo $this->lang->line('home'); ?></a></li>
-                <li><a href="<?php echo base_url(true).'apps'; ?>"><?= $this->lang->line('apps'); ?></a></li>
-                <li><a href="<?php echo base_url(true).'blog'; ?>"><?= $this->lang->line('blog'); ?></a></li>
-                <li><a href="<?php echo base_url(true).'forum'; ?>"><?= $this->lang->line('forum'); ?></a></li>
-                <li><a href="<?php echo base_url(true).'sitemap'; ?>"><?= $this->lang->line('sitemap'); ?></a></li>
+        		<li class="selected"><a href="<?php echo lang_url(); ?>"><?php echo $this->lang->line('home'); ?></a></li>
+                <li><a href="<?php echo lang_url().'apps'; ?>"><?= $this->lang->line('apps'); ?></a></li>
+                <li><a href="<?php echo lang_url().'blog'; ?>"><?= $this->lang->line('blog'); ?></a></li>
+                <li><a href="<?php echo lang_url().'forum'; ?>"><?= $this->lang->line('forum'); ?></a></li>
+                <li><a href="<?php echo lang_url().'sitemap'; ?>"><?= $this->lang->line('sitemap'); ?></a></li>
                 <!--
-<li><a href="<?php echo base_url(true); ?>">themes</a></li>
+<li><a href="<?php echo lang_url(); ?>">themes</a></li>
 -->
-                <li><a href="<?php echo base_url(true).'about'; ?>"><?= $this->lang->line('contact'); ?></a></li>
+                <li><a href="<?php echo lang_url().'about'; ?>"><?= $this->lang->line('contact'); ?></a></li>
         	</ul>
         </div>
         
@@ -94,9 +94,9 @@
 
     
     <div id="footer">                                              
-        <div class="left_footer"><a href="<?php echo base_url(true); ?>"><?php echo $this->lang->line('home'); ?></a> <a href="<?php echo base_url(true).'apps'; ?>"><?= $this->lang->line('apps'); ?></a>
-        <a href="<?php echo base_url(true).'forum'; ?>"><?= $this->lang->line('forum'); ?></a>
-        <a href="<?php echo base_url(true).'about'; ?>"><?= $this->lang->line('contact'); ?></a></div>
+        <div class="left_footer"><a href="<?php echo lang_url(); ?>"><?php echo $this->lang->line('home'); ?></a> <a href="<?php echo lang_url().'apps'; ?>"><?= $this->lang->line('apps'); ?></a>
+        <a href="<?php echo lang_url().'forum'; ?>"><?= $this->lang->line('forum'); ?></a>
+        <a href="<?php echo lang_url().'about'; ?>"><?= $this->lang->line('contact'); ?></a></div>
         <div class="right_footer">#
         </div>   
     

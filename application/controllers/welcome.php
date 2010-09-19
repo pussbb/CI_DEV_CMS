@@ -3,7 +3,7 @@
 class Welcome extends Controller
 {
 
-    function Welcome()
+    function __construct()
     {
         parent::Controller();
 

@@ -15,7 +15,7 @@
  
 </form>
 <div style="width: 60%;float:left;display: table;padding: 3px;">
-<a class="buttons" style="float:left;margin-right: 4px;" href="<?php echo base_url(true) . 'register'; ?>">
+    <a class="buttons" style="float:left;margin-right: 4px;" href="<?php echo lang_url() . 'register'; ?>">
     <?= $this->lang->line('reg');?>
 </a>
 
