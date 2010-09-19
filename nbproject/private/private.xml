@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
+        <file>file:/opt/lampp/htdocs/krabik/htdocs/CI_DEV_CMS/application/views/news.php</file>
+        <file>file:/opt/lampp/htdocs/krabik/htdocs/CI_DEV_CMS/application/controllers/welcome.php</file>
+        <file>file:/opt/lampp/htdocs/krabik/htdocs/CI_DEV_CMS/application/controllers/apps.php</file>
+        <file>file:/opt/lampp/htdocs/krabik/htdocs/CI_DEV_CMS/application/models/news_syndication.php</file>
+        <file>file:/opt/lampp/htdocs/krabik/htdocs/CI_DEV_CMS/application/hooks/system.php</file>
+        <file>file:/opt/lampp/htdocs/krabik/htdocs/CI_DEV_CMS/application/config/hooks.php</file>
+    </open-files>
 </project-private>
