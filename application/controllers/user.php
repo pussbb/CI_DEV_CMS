@@ -16,6 +16,7 @@ class User extends Controller
     }
 function register()
 {
-   $this->load->view('reg/register');
+   //$this->load->view('reg/register');
+    $this->userauth->register();
 }
 }

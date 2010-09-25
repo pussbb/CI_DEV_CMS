@@ -7,33 +7,11 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(). 'themes/system/reg/style.css';?>" />
-<?php
-	$a = explode('/', $_SERVER["REQUEST_URI"]);
-        if (sizeof($a) > 0) {
-            switch ($a[1]) {
-                case 'ru':
-                    {
-                        $lang= "ru";
-                        break;
-                    }
-                case 'en':
-                    {
-                        $lang="en";
-                        break;
-                    }
-                default:$lang= "ru";
-                    break;
-
-            }
-            }
-?>
-
-
 <title><?php echo $this->lang->line('reg').' '.$this->config->item('site_name');?></title>
 
 <script src="<?php echo base_url()?>system/js/jquery-1.4.2.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url()?>system/js/jquery-validate/jquery.validate.pack.js" type="text/javascript"></script>
-<script src="<?php echo base_url()?>system/js/jquery-validate/localization/messages_<?php echo $lang; ?>.js" type="text/javascript"></script>
+<script src="<?php echo base_url()?>system/js/jquery-validate/localization/messages_<?php echo lang_id(); ?>.js" type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" media="screen"  href="<?php echo base_url();?>system/js/jquery-validate/css/screen.css" />
 <style type="text/css">
 
@@ -141,13 +119,7 @@ $(function(){
 
 			captcha: "<?php echo $this->lang->line('captchaerror')?>"	
 
-		},
-
-		
-
-		
-
-	
+		}
 
 	});
 
@@ -200,12 +172,8 @@ $(function(){
 ?>
 
 <div id="main">
-
-<form class="cmxform" id="signapForm" method="post" action="<?php
-
-
-	 echo lang_url()."/".time();
-?>">
+<?php print_r($_SERVER)?>
+<form class="cmxform" id="signapForm" method="post" action="<?php echo lang_url().'/'.time();?>">
 
 <fieldset><legend></legend>
 

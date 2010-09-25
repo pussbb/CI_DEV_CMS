@@ -20,26 +20,33 @@ if (!defined('BASEPATH'))
 if (!function_exists('lang_url')) {
 
     function lang_url($str = '', $base = '') {
-
-        $CI = &get_instance();
-        $lang = $CI->config->item("language");
+        $lang='';
+        $uri='';
+        $lang = lang_id();
         if ($base == '') {
+            
             $a = explode('/', $_SERVER["REQUEST_URI"]);
-            if (count($a) > 0) {
-            $lang = lang_id();
+            //print_r($a);
+            if (count($a) > 0 && !empty($a[1])) {
+           
             if($a[1]==$lang)
             {
              unset($a[1]);
             }
-            
+            $uri=implode('/', $a);
             }
+            
         } else {
-            $a =array($base) ;
+
+            $uri =$base.'/' ;
         }
-        if ($str != '') {
+        if (!empty($str)) {
             $lang = $str;
         }
-        return base_url() . $lang .'/'. implode('/', $a);
+        //print_r($_SERVER);
+        if($_SERVER["REQUEST_URI"]=='/')
+        {$lang .= '/';}
+        return base_url() . $lang .$uri ;// implode('/', $a);
     }
 
 }
