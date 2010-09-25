@@ -25,14 +25,14 @@
         <div class="menu">
         	<ul>                                                                         
         		<li class="selected"><a href="<?php echo lang_url(); ?>"><?php echo $this->lang->line('home'); ?></a></li>
-                <li><a href="<?php echo lang_url().'apps'; ?>"><?= $this->lang->line('apps'); ?></a></li>
-                <li><a href="<?php echo lang_url().'blog'; ?>"><?= $this->lang->line('blog'); ?></a></li>
-                <li><a href="<?php echo lang_url().'forum'; ?>"><?= $this->lang->line('forum'); ?></a></li>
-                <li><a href="<?php echo lang_url().'sitemap'; ?>"><?= $this->lang->line('sitemap'); ?></a></li>
+                <li><a href="<?php echo lang_url(null,'apps'); ?>"><?= $this->lang->line('apps'); ?></a></li>
+                <li><a href="<?php echo lang_url(null,'blog'); ?>"><?= $this->lang->line('blog'); ?></a></li>
+                <li><a href="<?php echo lang_url(null,'forum'); ?>"><?= $this->lang->line('forum'); ?></a></li>
+                <li><a href="<?php echo lang_url(null,'sitemap'); ?>"><?= $this->lang->line('sitemap'); ?></a></li>
                 <!--
 <li><a href="<?php echo lang_url(); ?>">themes</a></li>
 -->
-                <li><a href="<?php echo lang_url().'about'; ?>"><?= $this->lang->line('contact'); ?></a></li>
+                <li><a href="<?php echo lang_url(null,'about'); ?>"><?= $this->lang->line('contact'); ?></a></li>
         	</ul>
         </div>
         
@@ -50,20 +50,6 @@
 <a href="#" class="read_more"><?= $this->lang->line('readmore'); ?></a>			 
 </div>
          </div>
-         <div class="features">   
-          <!--
-  <div class="title">Main features</div>
-            
-                    <ul class="list">
-                    <li><span>1</span><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</a></li>
-                    <li><span>2</span><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</a></li>
-                    <li><span>3</span><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</a></li>
-                    <li><span>4</span><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</a></li>
-                    </ul> 
--->
-         </div> 
-         
-         
          <div class="features">   
            <?=$futures?>
 
