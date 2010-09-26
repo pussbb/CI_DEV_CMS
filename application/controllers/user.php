@@ -1,22 +1,18 @@
 <?php
 
-class User extends Controller
-{
+class User extends Controller {
 
-    function User()
-    {
+    function User() {
         parent::Controller();
-
     }
 
-    function login()
-    { 
-       // print_r($_POST);
-        
+    function login() {
+        $this->userauth->login();
     }
-function register()
-{
-   //$this->load->view('reg/register');
-    $this->userauth->register();
-}
+
+    function register() {
+        //$this->load->view('reg/register');
+        $this->userauth->register();
+    }
+
 }

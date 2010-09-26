@@ -7,33 +7,11 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(). 'themes/system/reg/style.css';?>" />
-<?php
-	$a = explode('/', $_SERVER["REQUEST_URI"]);
-        if (sizeof($a) > 0) {
-            switch ($a[1]) {
-                case 'ru':
-                    {
-                        $lang= "ru";
-                        break;
-                    }
-                case 'en':
-                    {
-                        $lang="en";
-                        break;
-                    }
-                default:$lang= "ru";
-                    break;
-
-            }
-            }
-?>
-
-
 <title><?php echo $this->lang->line('reg').' '.$this->config->item('site_name');?></title>
 
 <script src="<?php echo base_url()?>system/js/jquery-1.4.2.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url()?>system/js/jquery-validate/jquery.validate.pack.js" type="text/javascript"></script>
-<script src="<?php echo base_url()?>system/js/jquery-validate/localization/messages_<?php echo $lang; ?>.js" type="text/javascript"></script>
+<script src="<?php echo base_url()?>system/js/jquery-validate/localization/messages_<?php echo lang_id(); ?>.js" type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" media="screen"  href="<?php echo base_url();?>system/js/jquery-validate/css/screen.css" />
 <style type="text/css">
 html, body {
@@ -149,7 +127,7 @@ $(function(){
 
 			captcha: "<?php echo $this->lang->line('captchaerror')?>"	
 
-		},
+		}
 
 		
 
@@ -173,7 +151,7 @@ $(function(){
 
 <div class="m"> 
 
-<div class="mtop2"><?php echo $heading;?></div>
+<div class="mtop2"><?php echo $this->lang->line('reg_error');?></div>
 
 <div class="mfor"><div class="menum3"><div class="logou"></div>
 
@@ -216,7 +194,7 @@ $(function(){
 
 ?>">
 
-<fieldset><legend><?php echo $message;?></legend>
+<fieldset><legend><?php echo $msg;?></legend>
 
 
 <legend>&nbsp;&nbsp;</legend>

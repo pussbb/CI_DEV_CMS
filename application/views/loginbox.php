@@ -1,6 +1,6 @@
 <div class="title">
     <?php echo $this->lang->line('logintitle'); ?></div>
-<form action="<?php echo base_url(true) . 'login'; ?>" id="login_box" method="post" >
+<form action="<?php echo  lang_url(null,'login'); ?>" id="login_box" method="post" >
     <div class="login_form_row">
         <label class="login_label"><?php echo $this->lang->line('username'); ?>:</label>
         <input type="text" name="name" class="login_input " required="required" />

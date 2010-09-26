@@ -172,8 +172,8 @@ $(function(){
 ?>
 
 <div id="main">
-<?php print_r($_SERVER)?>
-<form class="cmxform" id="signapForm" method="post" action="<?php echo lang_url().'/'.time();?>">
+
+<form class="cmxform" id="signapForm" method="post" action="<?php echo lang_url().time();?>">
 
 <fieldset><legend></legend>
 
