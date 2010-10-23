@@ -10,6 +10,8 @@
 <script src="<?php echo base_url()?>system/js/jquery-validate/jquery.validate.pack.js" type="text/javascript"></script>
 <script src="<?php echo base_url()?>system/js/jquery-validate/localization/messages_<?php echo lang_id(); ?>.js" type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" media="screen"  href="<?php echo base_url();?>system/js/jquery-validate/css/screen.css" />
+<link rel="stylesheet" type="text/css" media="screen"  href="<?php echo base_url();?>system/js/colorbox/colorbox.css" />
+<script src="<?php echo base_url()?>system/js/colorbox/jquery.colorbox-min.js" type="text/javascript"></script>
 <style type="text/css">
   html, body {
    color:#fff;
@@ -44,7 +46,7 @@ $(function(){
 
 	});
 
-	
+	$(".fancybox").colorbox({width:"80%", height:"80%", iframe:true});
 	$("#loginForm").validate({
 		rules: {
 			captcha: {
