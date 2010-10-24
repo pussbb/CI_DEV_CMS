@@ -36,6 +36,7 @@
 $route['default_controller'] = "welcome";
 $route['(.*/)?login'] = "user/login";
 $route['(.*/)?(register).*'] = "user/register";
+$route['(.*/)?(lostpass)'] = "user/lostpass";
 $route['^en/(.+)$'] = "$1";
 $route['^ru/(.+)$'] = "$1";
 $route['^en$'] = $route['default_controller'];

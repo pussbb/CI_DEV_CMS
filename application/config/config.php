@@ -218,7 +218,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = "";
+$config['encryption_key'] = "pussb_encryption_key_1234567890";
 
 /*
 |--------------------------------------------------------------------------

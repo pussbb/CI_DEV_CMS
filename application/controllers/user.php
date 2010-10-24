@@ -14,5 +14,10 @@ class User extends Controller {
         //$this->load->view('reg/register');
         $this->userauth->register();
     }
+    function lostpass()
+    {
+	//$this->userauth->_lostpass();
+	echo "jhgfhf";
+    }
 
 }
