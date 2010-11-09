@@ -12,6 +12,7 @@ class Welcome extends Controller
     function index()
     {  $this->load->model('news_syndication','ns');
        //
+       //$this->template->write('title',"Hello",false);
        $this->template->write_view('usermenu', 'loginbox');
        $this->template->write_view('futures', 'news');
        $this->template->render();
@@ -26,8 +27,8 @@ class Welcome extends Controller
         $xml->initiate();
         $xml->writeAttribute('version',"2.0");
         $xml->startBranch('channel');
-        $xml->addNode('title',"Help Doc Assistent Articles");
-        $xml->addNode('description',"HDA articles rss system notify");
+        $xml->addNode('title',"Krabik Rss ");
+        $xml->addNode('description',"News rss system notify");
         $xml->addNode('language',"ru-ru");
         $xml->addNode('pubDate',date(DATE_RSS));
         $xml->addNode('lastBuildDate',date(DATE_RSS));

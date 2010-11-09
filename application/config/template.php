@@ -58,8 +58,18 @@ $template['active_template'] = 'default';
 */
 
 $template['default']['template'] = 'template';
-$template['default']['regions'] = array('title', 'sidemenu', 'usermenu',
-    'content', 'footer','futures');
+$template['default']['regions'] = array(
+    'sidemenu',
+    'usermenu',
+    'content',
+    'footer',
+    'futures');
+$template['default']['regions']['title'] =  array('content' => array('_pussbb Website'));
+$template['default']['regions']['meta'] =array('content' => array('search, keyword,_pussbb,mvl,qt,qlinksaver,
+    php,c++,qlinksaver2'));
+$template['default']['regions']['metadescr'] = array('content' => array('personal site of _pussbb(pussbb)'));
+$template['default']['regions']['title2'] =array('content' => array('Main Section'));
+
 $template['default']['parser'] = 'parser';
 $template['default']['parser_method'] = 'parse';
 $template['default']['parse_template'] = false;

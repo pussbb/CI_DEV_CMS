@@ -3,7 +3,11 @@
 <head>
     <base href="<?= base_url();?>"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>H Free Software Template</title>
+<title><?= $title ?></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="<?= $meta ?>"/>
+<meta name="description" content="<?= $metadescr ?>"/>
+
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() . $this->config->item('pathtemplate'); ?>style.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(). 'themes/system/system.css';?>"/>
 <?= $_scripts ?>

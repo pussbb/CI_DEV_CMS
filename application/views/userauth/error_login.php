@@ -46,7 +46,7 @@ $(function(){
 
 	});
 
-	$(".fancybox").colorbox({width:"80%", height:"80%", iframe:true});
+	$(".fancybox").colorbox({width:"50%", height:"60%", iframe:true});
 	$("#loginForm").validate({
 		rules: {
 			captcha: {

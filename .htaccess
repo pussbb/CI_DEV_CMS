@@ -4,7 +4,7 @@ Options +FollowSymLinks
 php_value post_max_size "100M"
 php_value upload_max_filesize "100M"
 php_value display_errors on
-ErrorDocument 404 /system/application/errors/error_404.php
+ErrorDocument 404 /application/errors/error_404.php
 RewriteEngine On
 
 ########## Begin - Rewrite rules to block out some common exploits

@@ -30,6 +30,11 @@ class Userauth {
 	$this->ci->load->helper('security');
     }
 
+    function get_permissions($mvc = "")
+    {
+	
+    }
+
     function check_post($name) {
 	foreach ($name as $item) {
 	    if (!isset($_POST[$item]) && empty($_POST[$item])) {
@@ -51,7 +56,34 @@ class Userauth {
 	    }
 	}
     }
+    function lostpass()
+    {
+        if (isset($_POST['email']) && empty($_POST['email']) !== true) {
+            $query = $this->ci->db->get_where($this->ci->db->dbprefix('users'), array('email' =>
+                $this->ci->input->post($_POST['email'])), 1);
+            if ($query->num_rows() > 0) {
+                $row = $query->row();
+                $strpass = dohash($row->pass);
+                return $this->_send_mail('Your password :' . $strpass, 'Password recovery',$row->email);
+            } else {
+                return $this->ci->lang->line('email_notexist');
+            }
+        } 
+    }
+    function _send_mail($text, $subject, $list)
+    {
+        $this->ci->load->library('email');
+        $this->ci->email->from($this->ci->config->item('e-mail'));
+        $this->ci->email->to($list);
+        $this->ci->email->subject($subject);
+        $this->ci->email->message($text);
+        if (!$this->ci->email->send()) {
+            return '<h2>'.$this->ci->lang->line('email_error_send').' <br /><br /></h2>'; // Генерация ошибки
+        } else {
 
+            return '<h2>'.$this->ci->lang->line('email_error_send') . $list .'<h2><br /><br />';
+        }
+    }
     function login() {
 	if (!empty($_POST) && $this->check_post($this->login_var)) {
 	    $tmp = $this->_clean_data();
@@ -59,9 +91,6 @@ class Userauth {
 	    if ($query->num_rows() > 0) {
 		$row = $query->row();
 		if ($row->banned == 1) {
-		    $cerror = &load_class('Exceptions');
-		    $message = $row->banedreason;
-		    //echo $cerror->show_error($heading, $message, 'error_ubaned');
 		    $this->ci->load->view('userauth/user_banned', array('msg' => $row->banedreason));
 		} 
 		else
