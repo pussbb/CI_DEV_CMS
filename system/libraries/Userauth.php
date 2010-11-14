@@ -16,7 +16,7 @@ class Userauth {
     var $login_var = array('name', 'pass');
     //
     var $default_permision = array(
-	'group' => "",
+	'grid' => "",
 	// edit , add, read
 	'admin' => array(0, 0, 0),
 	'user' => array(0, 1, 1),
@@ -97,6 +97,7 @@ class Userauth {
 		{
 		   if ($row->pass == dohash($this->ci->input->post('pass')))
 		   {
+		    
 		    $newdata = array('username' => $row->name, 'permission' => $row->permission,
                         'userid' => $row->id, 'gid' => $row->groupid);
                     $this->ci->session->set_userdata($newdata);

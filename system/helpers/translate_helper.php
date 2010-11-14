@@ -20,7 +20,7 @@ if (!defined('BASEPATH'))
 if (!function_exists('lang_url')) {
 
     function lang_url($str = '', $base = '') {
-        $lang='';
+       // $lang='';
         $uri='';
         $lang = lang_id();
         if ($base == '') {
@@ -33,19 +33,19 @@ if (!function_exists('lang_url')) {
             {
              unset($a[1]);
             }
-            $uri=implode('/', $a);
+            $uri=implode('/', $a).'/';
             }
             
         } else {
 
-            $uri =$base.'/' ;
+            $uri ='/'.$base.'/' ;
         }
         if (!empty($str)) {
             $lang = $str;
         }
-        //print_r($_SERVER);
-        if($_SERVER["REQUEST_URI"]=='/')
-        {$lang .= '/';}
+        //echo $_SERVER["REQUEST_URI"];
+        //if($_SERVER["REQUEST_URI"]=='/')
+        //{$lang .= '/';}
         return base_url() . $lang .$uri ;// implode('/', $a);
     }
 

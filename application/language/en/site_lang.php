@@ -41,3 +41,5 @@ $lang['pass_recovery']='Password recovery';
 $lang['user_banned']='The user name is blocked';
 $lang['banned_reason_title']='Reason :';
 $lang['banned_reason_info']='If you don\'t agrea please write to us.Maybe it\'s a mistake.';
+//stuff
+$lang['download']='Download';

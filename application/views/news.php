@@ -1,5 +1,16 @@
 <div class="title"><?= $this->lang->line('news'); ?></div>
+
 <?php
+$default_permision = array(
+	'gid' => "",
+	// edit , add, read
+	'permissions'=> array('admin' => array(0, 0, 0),
+	'user' => array(0, 1, 1),
+	'guest' => array(0, 0, 1))
+    );
+$func = array('edit','add','read');
+//$this->permissions->proceed($default_permision,$func);
+//print_r($this->permissions->user_role);
 $rss_items=$this->ns->welcome_page();
 
    foreach($rss_items as $item) {

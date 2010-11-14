@@ -164,7 +164,9 @@ box-shadow:0 0 10px 0 #555555;
 .welcome p{
   padding: 10px 15px 10px 15px;
 }
-
+.welcome p img{
+    float:left;
+}
 a:hover.read_more{
 text-decoration:underline;
 }

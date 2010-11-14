@@ -17,7 +17,7 @@
 <body>
 
 <div id="main_container">
-<a href="<?php echo "base_url().'ru'.uri_string()";?>"><img alt="rss news feed" src="<?php echo base_url()?>images/rss/Inside-rss-48.png" style="float: right; border:none; " /></a>
+<a href="<?php echo base_url().'welcome/rss';?>"><img alt="rss news feed" src="<?php echo base_url()?>images/rss/Inside-rss-48.png" style="float: right; border:none; " /></a>
 <a href="<?php echo lang_url('ru');?>"><img alt="russian lang" src="<?php echo base_url()?>images/flags/Rossiya-Russia-48.png" style="float: right; border:none; "/></a>
 <a href="<?php echo lang_url('en');?>"><img alt="english lang" src="<?php echo base_url()?>images/flags/UK-48.png" style="float: right; border:none; " /></a>
 <div id="header">
@@ -29,10 +29,10 @@
         <div class="menu">
         	<ul>                                                                         
         		<li class="selected"><a href="<?php echo lang_url(); ?>"><?php echo $this->lang->line('home'); ?></a></li>
-                <li><a href="<?php echo lang_url(null,'apps'); ?>"><?= $this->lang->line('apps'); ?></a></li>
-                <li><a href="<?php echo lang_url(null,'blog'); ?>"><?= $this->lang->line('blog'); ?></a></li>
-                <li><a href="<?php echo lang_url(null,'forum'); ?>"><?= $this->lang->line('forum'); ?></a></li>
-                <li><a href="<?php echo lang_url(null,'sitemap'); ?>"><?= $this->lang->line('sitemap'); ?></a></li>
+                <li><a href="<?php echo lang_url('','apps'); ?>"><?= $this->lang->line('apps'); ?></a></li>
+                <li><a href="<?php echo lang_url('','blog'); ?>"><?= $this->lang->line('blog'); ?></a></li>
+                <li><a href="<?php echo lang_url('','forum'); ?>"><?= $this->lang->line('forum'); ?></a></li>
+                <li><a href="<?php echo lang_url('','sitemap'); ?>"><?= $this->lang->line('sitemap'); ?></a></li>
                 <!--
 <li><a href="<?php echo lang_url(); ?>">themes</a></li>
 -->
@@ -43,17 +43,7 @@
     <div class="center_content">
   
      	<div class="center_left">
-        	<div class="title_welcome"><span class="red">Get</span>Random app name</div>
-        <div class="welcome_box">
-<div class="welcome">
-<p>
-
-  <?php echo autogtrans('Привет  я переведен  с помощью гугла','ru'); ?>
-   
-  </p>
-<a href="#" class="read_more"><?= $this->lang->line('readmore'); ?></a>			 
-</div>
-         </div>
+	<?=$content?>
          <div class="features">   
            <?=$futures?>
 
