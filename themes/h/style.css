@@ -166,6 +166,8 @@ box-shadow:0 0 10px 0 #555555;
 }
 .welcome p img{
     float:left;
+    width:90px;
+    height: 73px;
 }
 a:hover.read_more{
 text-decoration:underline;

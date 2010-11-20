@@ -77,9 +77,10 @@ class Permissions {
 	}
     }
     //$role variable as int for array index for user
-    function simple($role)
+    function simple($role,$permission)
     {
-	if($this->user_role[$this->user_type][$role]==1)
+	//set if group !=0
+	if($permission[$this->user_type][$role]==1)
 	{
 	    return true;
 	}

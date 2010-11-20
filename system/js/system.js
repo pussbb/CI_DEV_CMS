@@ -6,6 +6,7 @@ $(function() {
   if (!$.browser.webkit && !$.browser.mozilla) {
     browser_error(); 
  }
+ $(".downloadbox").colorbox({width:"50%", height:"60%", iframe:true});
 });
 var url=window.location.protocol+"//"+window.location.hostname+"/";
 function browser_error()

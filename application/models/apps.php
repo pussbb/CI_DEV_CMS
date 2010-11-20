@@ -47,6 +47,7 @@ class Apps extends CI_Model {
 $func = array('edit','add','read');
 $this->permissions->proceed($module='apps',$default_permision,$func);
     }
+    //a:4:{s:5:"group";s:1:"0";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:0;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:0;i:1;i:0;i:2;i:1;}}
     function random()
     {
 	$query=$this->db->get($this->db->dbprefix('downfiles'));
@@ -54,7 +55,7 @@ $this->permissions->proceed($module='apps',$default_permision,$func);
 	{
 	    $this->load->helper('array');
 	    $row=random_element($query->result());
-	    if($this->permissions->simple(self::READ))
+	    if($this->permissions->simple(self::READ,unserialize($row->permission)))
 	    {
 		return	$this->load->view('single_app',$row,true);
 	    }
