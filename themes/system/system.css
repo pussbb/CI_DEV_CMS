@@ -21,6 +21,51 @@ position: absolute;
     float:left;
  
 }
+.scrollable {
+
+	/* required settings */
+	position:relative;
+	overflow:hidden;
+	width: 99%;
+	height:auto;
+	min-height: 380px;
+}
+
+/*
+	root element for scrollable items. Must be absolutely positioned
+	and it should have a extremely large width to accommodate scrollable items.
+	it's enough that you set width and height for the root element and
+	not for this element.
+*/
+.scrollable .items {
+	/* this cannot be too large */
+	width:20000em;
+	position:absolute;
+}
+
+/*
+	a single item. must be floated in horizontal scrolling.
+	typically, this element is the one that *you* will style
+	the most.
+*/
+.items div {
+	float:left;
+}
+.items .welcome div{
+    float: none;
+}
+.items .welcome #rating_box div,.items .welcome div.app_side {
+float:left;
+}
+.tooltip {
+	display:none;
+		background-color:#ffa;
+		border:1px solid #cc9;
+		padding:3px;
+		font-size:13px;
+		-moz-box-shadow: 2px 2px 11px #666;
+		-webkit-box-shadow: 2px 2px 11px #666;
+}
 .over_msg{
     position:absolute;
     font-size:16px;

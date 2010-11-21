@@ -6,7 +6,16 @@ $(function() {
   if (!$.browser.webkit && !$.browser.mozilla) {
     browser_error(); 
  }
+ $("a[title]").tooltip({
+		tip: '.tooltipview',
+		effect: 'fade',
+		fadeOutSpeed: 100,
+		predelay: 400,
+		position: "bottom right",
+		offset: [-60, -80]
+	});
  $(".downloadbox").colorbox({width:"50%", height:"60%", iframe:true});
+ $(".scrollable").scrollable({});
 });
 var url=window.location.protocol+"//"+window.location.hostname+"/";
 function browser_error()

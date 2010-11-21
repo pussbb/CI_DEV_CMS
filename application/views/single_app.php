@@ -8,11 +8,22 @@
 [image] =>
 [details] => Size: 881.9 KB
 Date :23.03.10 [downed] => 26 )-->
-<div class="title_welcome"><span class="red"><?=$name?></span> </div>
-        <div class="welcome_box">
-<div class="welcome">
-<p>
+<script type="text/javascript">
+$(function(){ 
 
+$('.rating<?=$id?> .starrate').rating({split:2});
+$('.rating<?=$id?> .starrate').rating('select','<?=$rate?>')
+$('.rating<?=$id?> .starrate').click(function(){
+    //alert($('.rating .starrate:radio:checked').val());
+});
+});
+</script>
+<p class="title_welcome"><span class="red"><?=$name?></span>
+<br /></p>
+     <div class="welcome_box">
+<div class="welcome">
+
+<div class="app_side">
   <?php
   if(empty($image))
   {
@@ -22,9 +33,22 @@ Date :23.03.10 [downed] => 26 )-->
   {
       echo '<img src="'.base_url().$image.'" title="application icon">';
   }
-  echo autogtrans($descr,'ru'); ?>
+ ?><br />
+<span id="rating_box" class="rating<?=$id?>">
+<input class="starrate " type="radio" name="star" value="0.50"/>
+<input class="starrate" type="radio" name="star" value="1.00"/>
+<input class="starrate" type="radio" name="star" value="1.50"/>
+<input class="starrate" type="radio" name="star" value="2.00"/>
+<input class="starrate" type="radio" name="star"value="2.50"/>
+<input class="starrate" type="radio" name="star" value="3.00"/>
+<input class="starrate" type="radio" name="star" value="3.50" />
+<input class="starrate" type="radio" name="star" value="4.00"/>
+<input class="starrate" type="radio" name="star" value="4.50"/>
+<input class="starrate" type="radio" name="star" value="5.00"/>
+</span></div>
+ <p> <?=autogtrans($descr,'ru'); ?>
 
   </p>
-  <a class="downloadbox read_more" href="<?php echo base_url().'apps/'?>" title="<?= $this->lang->line('download').'-'.$name; ?>"><?= $this->lang->line('download'); ?></a>
+  <a class="downloadbox read_more tool_tip" title="<?=$details?>" href="<?php echo lang_url(null, 'apps/predownload/'.$id);?>" ><?= $this->lang->line('download'); ?></a>
 </div>
          </div>

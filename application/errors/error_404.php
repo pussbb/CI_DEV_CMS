@@ -75,7 +75,7 @@ margin: 			0 0 4px 0;
 
     --></style>
 </head>
-<body>
+<body style="background-color:white;">
     <div class="logo">
       
     </div>

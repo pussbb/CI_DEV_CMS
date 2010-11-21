@@ -84,11 +84,12 @@ font-weight:bold;
 }
 .title_welcome{
 width: auto;
-padding:0 0 0 35px;
+padding:0 0 0px 35px;
 font-size:22px;
 color:#24a4b3;
 background:url(images/checked.gif) no-repeat left top;
-margin:0 0 10px 25px;
+margin:0 0 0px 25px;
+height: 30px;
 }
 span.red{
 font-weight:bold;
@@ -138,7 +139,21 @@ background:url(images/menu_bullet.gif) no-repeat bottom center;
 .menu ul li a:hover{
 background:url(images/menu_bullet.gif) no-repeat bottom center;
 }
+.app_side
+{
+    float: left;
+    padding-bottom: 5px;
+}
+.welcome .app_side img{
+    float:left;
+    width:90px;
+    height: 73px;
+}
+.app_side span{
+    float:left;
+    margin-left: -7px;
 
+}
 /*-------------welcome_box------------*/
 .welcome_box #branding
 {
@@ -150,6 +165,7 @@ width:100%;
   display: inline-table;
   padding: 10px;
 }
+
 .welcome{
 display: inline-table;
 width:460px;
@@ -164,11 +180,7 @@ box-shadow:0 0 10px 0 #555555;
 .welcome p{
   padding: 10px 15px 10px 15px;
 }
-.welcome p img{
-    float:left;
-    width:90px;
-    height: 73px;
-}
+
 a:hover.read_more{
 text-decoration:underline;
 }

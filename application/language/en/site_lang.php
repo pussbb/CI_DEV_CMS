@@ -6,6 +6,10 @@ $lang['forum']='Forum';
 $lang['contact']='About';
 $lang['sitemap']='Site Map';
 $lang['portfolio']='Portfolio';
+$lang['cat']='Categories';
+$lang['accesdenie']='access denied';
+$lang['next']='Next';
+$lang['prev']='Previous';
 //end menu itemes
 $lang['reg']='Registration';
 $lang['login_button']='Login';
@@ -43,3 +47,8 @@ $lang['banned_reason_title']='Reason :';
 $lang['banned_reason_info']='If you don\'t agrea please write to us.Maybe it\'s a mistake.';
 //stuff
 $lang['download']='Download';
+$lang['predownload']='Download will be start at 3 seconds';
+$lang['predownload2']='Sorry but when downloading file in
+    Извините но при скачивании файлов возможно надо будет использовать менеджер закачек.
+Потому что при скачивании где-то больше 1 мб сервер посылает HTTP status code 206(часть закачана).
+для этого воспользуйтесь прямой ссылкой.';

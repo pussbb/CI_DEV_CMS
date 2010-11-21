@@ -11,11 +11,11 @@ class Welcome extends Controller
 
     function index()
     {  $this->load->model('news_syndication','ns');
-       $this->load->model('apps','apps');
-       $this->apps->get_one();
+       $this->load->model('app','app');
+       $this->app->get_one();
        //$this->template->write('title',"Hello",false);
        $this->template->write_view('usermenu', 'loginbox');
-       $this->template->write('content', $this->apps->random());
+       $this->template->write('content', $this->app->random());
        $this->template->write_view('futures', 'news');
        $this->template->render();
     }

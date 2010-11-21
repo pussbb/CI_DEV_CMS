@@ -12,6 +12,7 @@ $mimes = array(	'hqx'	=>	'application/mac-binhex40',
 				'cpt'	=>	'application/mac-compactpro',
 				'csv'	=>	array('text/x-comma-separated-values', 'text/comma-separated-values', 'application/octet-stream', 'application/vnd.ms-excel', 'text/csv', 'application/csv', 'application/excel', 'application/vnd.msexcel'),
 				'bin'	=>	'application/macbinary',
+				'rar'	=>  array('application/x-rar-compressed','application/octet-stream'),
 				'dms'	=>	'application/octet-stream',
 				'lha'	=>	'application/octet-stream',
 				'lzh'	=>	'application/octet-stream',
@@ -72,6 +73,7 @@ $mimes = array(	'hqx'	=>	'application/mac-binhex40',
 				'jpg'	=>	array('image/jpeg', 'image/pjpeg'),
 				'jpe'	=>	array('image/jpeg', 'image/pjpeg'),
 				'png'	=>	array('image/png',  'image/x-png'),
+				'deb'	=>	'application/x-deb',
 				'tiff'	=>	'image/tiff',
 				'tif'	=>	'image/tiff',
 				'css'	=>	'text/css',
@@ -97,7 +99,8 @@ $mimes = array(	'hqx'	=>	'application/mac-binhex40',
 				'xlsx'	=>	'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
 				'word'	=>	array('application/msword', 'application/octet-stream'),
 				'xl'	=>	'application/excel',
-				'eml'	=>	'message/rfc822'
+				'eml'	=>	'message/rfc822',
+				'7z'	=>	'application/x-7z-compressed'
 			);
 
 
