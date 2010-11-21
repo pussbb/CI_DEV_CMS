@@ -106,6 +106,12 @@ class Userauth {
                         " SET `last_login` = CURRENT_DATE, `lastip` = '" . $this->ci->input->ip_address() .
                         "' WHERE id =" . $row->id . " ";
                     $query = $this->ci->db->query($sql);
+		     if($this->ci->config->item('smf')==TRUE)
+			{
+			    include_once($this->ci->config->item('smfpath'));
+			    smf_setLoginCookie(720000, addslashes($row->name), addslashes($this->ci->input->post('pass')), false);
+                            smf_authenticateUser();
+			}
 		    redirect(base_url());
 		   }
 		}
@@ -136,6 +142,12 @@ class Userauth {
 
 	if (!$this->if_exist(self::EMAIL, $data['email']) && !$this->if_exist(self::USER, $data['name'])) {
 	    $this->ci->db->query($sql, $data);
+	    if($this->ci->config->item('smf')==TRUE)
+	    {
+		include_once($this->ci->config->item('smfpath'));
+                smf_registerMember($data['name'],$data['email'],$tmp[$this->register_var[2]],$extra_fields = array(), $theme_options = array());
+               // redirect("?c=welcome&m=regdone");
+	    }
 	    redirect(base_url() . lang_id() . '/');
 	}
 	unset($tmp);

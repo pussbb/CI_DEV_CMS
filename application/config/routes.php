@@ -39,6 +39,7 @@ $route['(.*/)?(register).*'] = "user/register";
 $route['(.*/)?(lostpass)'] = "user/lostpass";
 $route['^en/(.+)$'] = "$1";
 $route['^ru/(.+)$'] = "$1";
+$route['(.*)?.html']='blog/view';
 $route['^en$'] = $route['default_controller'];
 $route['^ru$'] = $route['default_controller'];
 $route['scaffolding_trigger'] = $route['default_controller'] = "welcome";

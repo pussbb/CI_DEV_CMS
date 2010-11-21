@@ -10,7 +10,8 @@ class Welcome extends Controller
     }
 
     function index()
-    {  $this->load->model('news_syndication','ns');
+    {
+	$this->load->model('news_syndication','ns');
        $this->load->model('app','app');
        $this->app->get_one();
        //$this->template->write('title',"Hello",false);

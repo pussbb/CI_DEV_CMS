@@ -258,7 +258,8 @@ padding:0 0 0 10px;
 .text_box{
 display: inline-block;
 padding:15px 0 15px 10px;
-
+margin-bottom: 15px;
+width:97%;
 box-shadow:0 0 10px 0 #555555;
 -webkit-box-shadow:0 0 10px 0 #555555;
 -moz-box-shadow:0 0 10px 0 #555555;

@@ -27,16 +27,16 @@
              
     </div>
         <div class="menu">
-        	<ul>                                                                         
-        		<li class="selected"><a href="<?php echo lang_url(); ?>"><?php echo $this->lang->line('home'); ?></a></li>
-                <li><a href="<?php echo lang_url('','apps'); ?>"><?= $this->lang->line('apps'); ?></a></li>
-                <li><a href="<?php echo lang_url('','blog'); ?>"><?= $this->lang->line('blog'); ?></a></li>
-                <li><a href="<?php echo lang_url('','forum'); ?>"><?= $this->lang->line('forum'); ?></a></li>
-                <li><a href="<?php echo lang_url('','sitemap'); ?>"><?= $this->lang->line('sitemap'); ?></a></li>
+        	<ul>  <?php $selected=$this->uri->segment(2, 0);?>
+        	<li <?=($selected===0)?"class=\"selected\"":""?>><a href="<?php echo lang_url(); ?>"><?php echo $this->lang->line('home'); ?></a></li>
+                <li <?=($selected==="apps")?"class=\"selected\"":""?>><a href="<?php echo lang_url('','apps'); ?>"><?= $this->lang->line('apps'); ?></a></li>
+                <li <?=($selected==="blog")?"class=\"selected\"":""?>><a href="<?php echo lang_url('','blog'); ?>"><?= $this->lang->line('blog'); ?></a></li>
+                <li <?=($selected==="forum")?"class=\"selected\"":""?>><a href="<?php echo base_url().'forum/'; ?>"><?= $this->lang->line('forum'); ?></a></li>
+                <li <?=($selected==="sitemap")?"class=\"selected\"":""?>><a href="<?php echo lang_url('','sitemap'); ?>"><?= $this->lang->line('sitemap'); ?></a></li>
                 <!--
 <li><a href="<?php echo lang_url(); ?>">themes</a></li>
 -->
-                <li><a href="<?php echo lang_url(null,'about'); ?>"><?= $this->lang->line('contact'); ?></a></li>
+                <li <?=($selected==="about")?"class=\"selected\"":""?>><a href="<?php echo lang_url(null,'about'); ?>"><?= $this->lang->line('contact'); ?></a></li>
         	</ul>
         </div>
         
@@ -52,12 +52,14 @@
         
         
         <div class="center_right">
-        
-       <!--- <div class="software_box"></div>-->
-        
                         <div class="text_box">
-                      <?php print $usermenu; ?>
+			<?php print $usermenu; ?>
                         </div>
+			
+			<?=$sidemenu;?>
+                        
+			
+                        
                         <div class="testimonials">
                             <div class="text_box">
                              <p class="testimonial"><div class="title"><?= $this->lang->line('benchmark'); ?></div>

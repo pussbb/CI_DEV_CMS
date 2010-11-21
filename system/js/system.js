@@ -11,13 +11,38 @@ $(function() {
 		effect: 'fade',
 		fadeOutSpeed: 100,
 		predelay: 400,
+		position: "bottom right"
+		
+	});
+$(".downloadbox[title]").tooltip({
+		tip: '.tooltipview',
+		effect: 'fade',
+		fadeOutSpeed: 100,
+		predelay: 400,
 		position: "bottom right",
 		offset: [-60, -80]
 	});
+
+pagination();
  $(".downloadbox").colorbox({width:"50%", height:"60%", iframe:true});
  $(".scrollable").scrollable({});
 });
 var url=window.location.protocol+"//"+window.location.hostname+"/";
+function pagination()
+{
+    $('.ajax_pag a').click(function(event){
+   // получаем содержимое ссылки
+   var link = $(this).attr('href');
+   // отменяем действие по умолчанию
+   event.preventDefault();
+   // посылаем ajax-запрос по полученной ссылке
+   $('#ajax_content').load(link,function(){
+       pagination();
+   });
+   });
+}
+
+
 function browser_error()
 {
     $('body').append('<div class="over"><div class="over_msg">'+

@@ -23,7 +23,7 @@ if (!function_exists('lang_url')) {
        // $lang='';
         $uri='';
         $lang = lang_id();
-        if ($base == '') {
+        if ($base == '' && $str!='') {
             
             $a = explode('/', $_SERVER["REQUEST_URI"]);
             //print_r($a);
@@ -33,12 +33,12 @@ if (!function_exists('lang_url')) {
             {
              unset($a[1]);
             }
-            $uri=implode('/', $a).'/';
+            $uri=implode('/', $a);
             }
             
         } else {
 
-            $uri ='/'.$base.'/' ;
+            $uri ='/'.$base ;
         }
         if (!empty($str)) {
             $lang = $str;

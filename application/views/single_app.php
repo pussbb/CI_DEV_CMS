@@ -15,6 +15,12 @@ $('.rating<?=$id?> .starrate').rating({split:2});
 $('.rating<?=$id?> .starrate').rating('select','<?=$rate?>')
 $('.rating<?=$id?> .starrate').click(function(){
     //alert($('.rating .starrate:radio:checked').val());
+	    $.post('<?=base_url()."apps/ratethis"?>',{ id:<?=$id?>, rate:$('.rating<?=$id?> .starrate:radio:checked').val() } ,
+	function(data){
+
+	    //$('.rating<?=$id?> .starrate').rating('select',data);
+	});
+	
 });
 });
 </script>
@@ -35,16 +41,16 @@ $('.rating<?=$id?> .starrate').click(function(){
   }
  ?><br />
 <span id="rating_box" class="rating<?=$id?>">
-<input class="starrate " type="radio" name="star" value="0.50"/>
-<input class="starrate" type="radio" name="star" value="1.00"/>
-<input class="starrate" type="radio" name="star" value="1.50"/>
-<input class="starrate" type="radio" name="star" value="2.00"/>
-<input class="starrate" type="radio" name="star"value="2.50"/>
-<input class="starrate" type="radio" name="star" value="3.00"/>
-<input class="starrate" type="radio" name="star" value="3.50" />
-<input class="starrate" type="radio" name="star" value="4.00"/>
-<input class="starrate" type="radio" name="star" value="4.50"/>
-<input class="starrate" type="radio" name="star" value="5.00"/>
+<input style="display: none;" class="starrate " type="radio" name="star" value="0.50"/>
+<input style="display: none;"  class="starrate" type="radio" name="star" value="1.00"/>
+<input style="display: none;"  class="starrate" type="radio" name="star" value="1.50"/>
+<input style="display: none;"  class="starrate" type="radio" name="star" value="2.00"/>
+<input style="display: none;"  class="starrate" type="radio" name="star"value="2.50"/>
+<input style="display: none;"  class="starrate" type="radio" name="star" value="3.00"/>
+<input style="display: none;"  class="starrate" type="radio" name="star" value="3.50" />
+<input style="display: none;"  class="starrate" type="radio" name="star" value="4.00"/>
+<input style="display: none;"  class="starrate" type="radio" name="star" value="4.50"/>
+<input style="display: none;"  class="starrate" type="radio" name="star" value="5.00"/>
 </span></div>
  <p> <?=autogtrans($descr,'ru'); ?>
 

@@ -16,6 +16,36 @@ class Apps extends Controller
  
        $this->template->render();
     }
+
+    function ratethis()
+    {
+	$query=$this->db->get_where($this->db->dbprefix('downfiles'),array('id'=>$this->input->post('id')),1);
+	if($query->num_rows()>0)
+	{
+		 $row=$query->result();
+		 $i = $row[0]->rate;
+		// $i =(float) ($i + $this->input->post('rate')) ;
+		  $i = explode(".",(float)($i + $this->input->post('rate'))/2);;// explode(".",($i + $this->input->post('rate'))/4);\
+		if(isset($i[1]))
+		{
+		    if(strlen($i[1])==1){$i[1].='0';}
+		    if((int)$i[1]<=50){$i[1]=50;}
+		    if((int)$i[1]>50){$i[0]=(int)$i[0]+1;$i[1]="00";}
+		   
+		}
+		else{$i[1]="00";}
+		$i=  implode(".",$i);
+		 /// print_r($i);
+		$this->db->where('id', $row[0]->id);
+		$this->db->update('downfiles',array('rate'=>$i));
+		 echo $i;
+	}
+	else
+	{
+	    show_404();
+	}
+    }
+
     function viewcat()
     {
 	$query=$this->db->get_where($this->db->dbprefix('downcat'),array('id'=>$this->uri->segment(4, 0)),1);

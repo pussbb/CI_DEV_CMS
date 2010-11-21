@@ -3,3 +3,5 @@
 $config['pathtemplate'] = "themes/h/";
 $config['debug'] = FALSE;
 $config['site_name']='Krabik.co.ua';
+$config['smf']=FALSE;
+$config['smfpath']='./forum/smfapi.php';
