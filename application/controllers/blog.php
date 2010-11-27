@@ -48,11 +48,17 @@ class Blog extends Controller
     if($this->uri->segment(4)!=NULL)
             { 
                 $s=str_replace("_html","", $this->uri->segment(4));
-                //print_r($s);
-                $query=$this->db->get_where($this->db->dbprefix('blog'),array('url'=>$s));
+                $prefix= $this->config->item('dbprefix');
+                $this->db->select("users.name,catblog.*,blog.*");
+                $this->db->from('blog');
+                $this->db->where('url',$s);
+                $this->db->join('catblog', 'catblog.id = blog.catid');
+                $this->db->join('users', 'users.id = blog.author');
+                $query = $this->db->get();
                 if($query->num_rows()>0)
-                { $row=$query->row();
-                $this->blogs->article($row);
+                {
+                      $row=$query->row();
+                      $this->blogs->article($row);
                 }
                 else
                 {
