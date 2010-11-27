@@ -66,8 +66,12 @@ if (!function_exists('lang_id')) {
                         break;
                     }
                 case 'en':
-                default:  {
+                  {
                         $lang = "en";
+                        break;
+                    }
+		default:  {
+                        $lang = $CI->config->item("language");;
                         break;
                     }
             }

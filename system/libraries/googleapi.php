@@ -25,18 +25,48 @@
   }    
   class CI_GoogleApi {
       //constructer
-    function CI_GoogleApi()
+  function CI_GoogleApi()
 	  {
 		  $this->ci =& get_instance();
 		  log_message('debug', "GoogleApi Class Initialized");
 	  }
-  function translate($text, $from = '', $to = 'en') {
-	$url = 'http://ajax.googleapis.com/ajax/services/language/translate?v=1.0&q='.rawurlencode($text).'&langpair='.rawurlencode($from.'|'.$to); 
+  function translate($text, $from = '', $to = 'en')
+  {
+    $url = 'http://ajax.googleapis.com/ajax/services/language/translate?v=1.0&q='.rawurlencode($text).'&langpair='.rawurlencode($from.'|'.$to);
     $response = file_get_contents1($url,null,"http://".$_SERVER['HTTP_HOST']."/\r\n");
     $obj=json_decode($response);
-    return self::_unescapeUTF8EscapeSeq($obj->{'responseData'}->{'translatedText'});
-      }
-
+    if(is_object($obj))
+    {
+      return self::_unescapeUTF8EscapeSeq($obj->{'responseData'}->{'translatedText'});
+    }
+    else
+    {
+        return self::translate_api($text, $from, $to = 'en');
+    }
+   }
+   function translate_api($text, $from = '', $to = 'en')
+   {
+       $id=time();
+      
+     $result="<div  id=\"text$id\">$text</div><div id=\"translation$id\"/></div>
+       <script type=\"text/javascript\">
+google.load(\"language\", \"1\");
+function initialize() {
+  var content = document.getElementById('content$id');
+  //content.innerHTML = '<div  id=\"text$id\">$text.<\/div><div id=\"translation$id\"/>';
+  var text = document.getElementById(\"text$id\").innerHTML;
+  google.language.translate(text, '$from', '$to', function(result) {
+    var translated = document.getElementById(\"translation$id\");
+    if (result.translation) {
+       document.getElementById(\"text$id\").style.display = 'none';
+      translated.innerHTML = result.translation;
+    }
+  });
+}
+google.setOnLoadCallback(initialize);
+                </script><span id=\"content$id\"></span>";
+     return $result;
+   }
       // For full version see at http://code.google.com/p/php-language-api/ 
 	
 	  

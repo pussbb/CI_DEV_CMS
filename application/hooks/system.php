@@ -9,6 +9,7 @@ class System
         $CI->template->add_js("system/js/system.js", 'import');
 	$CI->template->add_js("system/js/colorbox/jquery.colorbox-min.js", 'import');
 	$CI->template->add_css("system/js/colorbox/style2/colorbox.css", 'link','screen');
+
     }
 
 

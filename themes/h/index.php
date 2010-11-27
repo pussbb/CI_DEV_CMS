@@ -7,12 +7,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="<?= $meta ?>"/>
 <meta name="description" content="<?= $metadescr ?>"/>
-
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() . $this->config->item('pathtemplate'); ?>style.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(). 'themes/system/system.css';?>"/>
-<?= $_scripts ?>
 <?= $_styles ?>
+<?= $_scripts ?>
+<script type="text/javascript">
 
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-9529419-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
 </head>
 <body>
 
@@ -41,8 +52,10 @@
         </div>
         
     <div class="center_content">
-  
+   <!-- <iframe frameborder=0 marginwidth=0 marginheight=0 border=0 style="border:0;margin-left: 20px;width:728px;height:90px;" src="http://www.google.com/uds/modules/elements/newsshow/iframe.html?rsz=large&format=728x90&q=linux%2Cqt%2Cubuntu%2Ckubuntu%2Ckde&element=true" scrolling="no" allowtransparency="true"></iframe>
+ -->
      	<div class="center_left">
+            <!-- Google News Element Code -->
 	<?=$content?>
          <div class="features">   
            <?=$futures?>

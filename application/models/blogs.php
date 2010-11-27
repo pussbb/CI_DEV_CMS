@@ -88,4 +88,20 @@ class Blogs extends CI_Model {
       return $this->load->view('articles_in_cat', $this->data,true);
 
    }
+   function random()
+   {	
+       $result='';
+       $this->db->order_by("datepost", "desc");
+	$query=$this->db->get_where($this->db->dbprefix('blog'),array('mainpage'=>1),5);
+	if($query->num_rows()>0)
+	{
+	    foreach($query->result() as $row)
+	    if($this->permissions->simple(self::READ,unserialize($row->permissions)))
+	    {
+		$result.=$this->load->view('single_article',$row,true);
+
+	    }
+	}
+	return $result;
+   }
 }

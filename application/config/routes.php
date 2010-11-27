@@ -37,12 +37,13 @@ $route['default_controller'] = "welcome";
 $route['(.*/)?login'] = "user/login";
 $route['(.*/)?(register).*'] = "user/register";
 $route['(.*/)?(lostpass)'] = "user/lostpass";
-$route['^en/(.+)$'] = "$1";
-$route['^ru/(.+)$'] = "$1";
-$route['(.*)?.html']='blog/view';
-$route['^en$'] = $route['default_controller'];
-$route['^ru$'] = $route['default_controller'];
-$route['scaffolding_trigger'] = $route['default_controller'] = "welcome";
+//$route['^en/(.+)$'] = "$1";
+//$route['^ru/(.+)$'] = "$1";
+$route['(\w{2})/(.*)'] = "$2";
+
+//$route['^en$'] = $route['default_controller'];
+$route['(\w{2})'] = $route['default_controller'];
+//$route['scaffolding_trigger'] = $route['default_controller'] = "welcome";
 
 
 /* End of file routes.php */

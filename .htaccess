@@ -7,6 +7,10 @@ php_value display_errors on
 ErrorDocument 404 /application/errors/error_404.php
 RewriteEngine On
 
+<FilesMatch "\.(flv|gif|jpg|jpeg|png|ico|swf|js|css)$">
+Header set Cache-Control "max-age=2592000, must-revalidate"
+</FilesMatch>
+
 ########## Begin - Rewrite rules to block out some common exploits
 ## If you experience problems on your site block out the operations listed below
 ## This attempts to block the most common type of exploit `attempts` to Joomla!

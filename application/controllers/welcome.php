@@ -17,7 +17,7 @@ class Welcome extends Controller
        //$this->template->write('title',"Hello",false);
        $this->template->write_view('usermenu', 'loginbox');
        $this->template->write('content', $this->app->random());
-       $this->template->write_view('futures', 'news');
+       $this->template->write('futures', $this->ns->welcome_page());
        $this->template->render();
     }
 
