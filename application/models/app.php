@@ -113,7 +113,7 @@ class App extends CI_Model {
 		     $title='title=""';
 		}
 		else{
-		    $href="#";
+		    $href=current_url()."#";
 		    $title='title="'.$this->lang->line('accesdenie').'"';
 		    }
 		$result.="<p style=\"margin:10px;\"><div class=\"title\"><a $title href=\"$href\" class=\"tool_tip\">$row->catname</a></div>$row->catdescr</p>";

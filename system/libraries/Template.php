@@ -550,11 +550,12 @@ class CI_Template {
 	 */
    
    function render($region = NULL, $buffer = FALSE, $parse = FALSE)
-   {
+   { 
   /// _pussbb modification
+  $this->add_js("http://www.google.com/jsapi", 'import',false,true);
       if (lang_id()!=$this->CI->config->item('lang'))
       { 
-        $this->add_js("http://www.google.com/jsapi", 'import',false,true);
+       
   $this->add_js("  google.load('language', \"1\"); 
        google.setOnLoadCallback(initialize); 
           function initialize() { 

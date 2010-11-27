@@ -13,7 +13,7 @@ class Welcome extends Controller
     {
 	$this->load->model('news_syndication','ns');
        $this->load->model('app','app');
-       $this->app->get_one();
+       //$this->app->get_one();
        //$this->template->write('title',"Hello",false);
        $this->template->write_view('usermenu', 'loginbox');
        $this->template->write('content', $this->app->random());

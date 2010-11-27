@@ -9,7 +9,7 @@ class News_syndication extends CI_Model {
     function welcome_page() {
         $feeds = array(
             'My Google Buzz' => 'https://www.googleapis.com/buzz/v1/activities/pussbb/@public',
-            'My site' => 'http://' . base_url() . '/welcome/rss'
+            'My site' => base_url() . '/welcome/rss'
         );
         $feed = '';
         foreach ($feeds as $key => $value) {

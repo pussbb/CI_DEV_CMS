@@ -6,7 +6,7 @@
 	<script type="text/javascript" >
 
 	    function move() {
-	    window.location = 'http://krabik/apps/download/<?=$id;?>';
+	    window.location = 'http://<?=base_url()?>/apps/download/<?=$id;?>';
 	    }
 	    setTimeout('move()',3000);
 	</script>

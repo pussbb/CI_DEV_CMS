@@ -61,16 +61,16 @@ class Permissions {
 
     function proceed($module,$mvl_perm,$mvl_funct)
     {
-	if($mvl_perm['gid']!=0)
+	if($mvl_perm['group']!=0)
 	{
 	    //get in db table permission for a group
 	}
 	else
 	{
 	    $status=false;
-	   for($i=0;$i<count($mvl_perm['permissions'][$this->user_type]);$i++)
+	   for($i=0;$i<count($mvl_perm[$this->user_type]);$i++)
 	   {
-		if($this->user_type=='admin' || $mvl_perm['permissions'][$this->user_type][$i]==$this->user_role[$this->user_type][$i])  {$status=true;}
+		if($this->user_type=='admin' || $mvl_perm[$this->user_type][$i]==$this->user_role[$this->user_type][$i])  {$status=true;}
 		else {$status=false;}
 		$this->ci->{$module}->{$mvl_funct[$i]}($status);
 	   }

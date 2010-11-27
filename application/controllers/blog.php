@@ -45,19 +45,18 @@ class Blog extends Controller
    }
    function article()
    {
-    if($this->uri->segment(1)!=NULL)
-            { $s=current(explode(".", $this->uri->segment(1)));
+    if($this->uri->segment(4)!=NULL)
+            { 
+                $s=str_replace("_html","", $this->uri->segment(4));
+                //print_r($s);
                 $query=$this->db->get_where($this->db->dbprefix('blog'),array('url'=>$s));
                 if($query->num_rows()>0)
                 { $row=$query->row();
-                    $this->template->write_view('usermenu', 'loginbox');
-
-                    $this->template->write('title', $row->name, TRUE);
-                    $this->template->write('meta', $row->keywords, TRUE);
-                    $this->template->write('metadescr', $row->description, TRUE);
-                    $this->template->write('title2', $row->name, TRUE);
-                    $this->template->write('text', $row->content, TRUE);
-                    $this->template->render();
+                $this->blogs->article($row);
+                }
+                else
+                {
+                    show_404();
                 }
 
 	    }

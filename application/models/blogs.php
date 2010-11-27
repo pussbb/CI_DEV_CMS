@@ -35,7 +35,7 @@ class Blogs extends CI_Model {
 		}
 		else
 		{
-		    //echo 'add<br />';
+		    $this->template->write('futures','you dont have fdshnfjdsh', TRUE);
 		}
     }
     function cat_menu()
@@ -103,5 +103,17 @@ class Blogs extends CI_Model {
 	    }
 	}
 	return $result;
+   }
+   function article($data)
+   {
+                    $this->template->write_view('usermenu', 'loginbox');
+                    $this->template->write('title', $data->title, TRUE);
+                    $this->template->write('meta', $data->keywords, TRUE);
+                    $this->template->write('metadescr',$data->keywords, TRUE);
+                    //$this->template->write('title2', $row->name, TRUE);
+                    $func = array('edit','add','read');
+                    $this->permissions->proceed($module='blogs',  unserialize( $data->permissions),$func);
+                    $this->template->write_view('content','article',$data);
+                    $this->template->render();
    }
 }
