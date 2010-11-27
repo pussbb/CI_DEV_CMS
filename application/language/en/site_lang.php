@@ -6,10 +6,12 @@ $lang['forum']='Forum';
 $lang['contact']='About';
 $lang['sitemap']='Site Map';
 $lang['portfolio']='Portfolio';
-$lang['cat']='Categories';
+$lang['cats']='Categories';
+$lang['cat']='Category';
 $lang['accesdenie']='access denied';
 $lang['next']='Next';
 $lang['prev']='Previous';
+$lang['author']='Author';
 //end menu itemes
 $lang['reg']='Registration';
 $lang['login_button']='Login';

@@ -40,7 +40,7 @@ class Blogs extends CI_Model {
     }
     function cat_menu()
     {
-	$text='<div class="title">'.$this->lang->line('cat').'</div><ul>';
+	$text='<div class="title">'.$this->lang->line('cats').'</div><ul>';
 	$query=$this->db->get($this->db->dbprefix('catblog'));
 	if($query->num_rows>0)
 	{
@@ -106,10 +106,11 @@ class Blogs extends CI_Model {
    }
    function article($data)
    {
+
                     $this->template->write_view('usermenu', 'loginbox');
-                    $this->template->write('title', $data->title, TRUE);
-                    $this->template->write('meta', $data->keywords, TRUE);
-                    $this->template->write('metadescr',$data->keywords, TRUE);
+                    $this->template->write('title',$data->blogcat_name.' - '.$data->title, TRUE);
+                    $this->template->write('meta', $data->blogcat_name.' ,'.$data->keywords, TRUE);
+                    $this->template->write('metadescr',$data->keywords.' ,'.$data->blogcat_desr, TRUE);
                     //$this->template->write('title2', $row->name, TRUE);
                     $func = array('edit','add','read');
                     $this->permissions->proceed($module='blogs',  unserialize( $data->permissions),$func);

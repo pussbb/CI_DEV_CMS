@@ -1,8 +1,7 @@
-
 <div id="ajax_content">
 <span class="ajax_pag"><?=$pag_links;?> </span>
 <?foreach($articles as $item):?>
-<h3><?=$item->title?></h3><br />
+<div align="center"><h3><a  href="<?=  lang_url('','blog/article/'.$item->url.'.html');?>"><?=$item->title?></a></h3></div><br />
   <p> <?=$item->shorttext?></p>
 
 <?endforeach;?>

@@ -7,10 +7,12 @@ $lang['forum']='Форум';
 $lang['contact']='О ...';
 $lang['sitemap']='Карта сайта';
 $lang['portfolio']='Портфолио';
-$lang['cat']='Категории';
+$lang['cats']='Категории';
+$lang['cat']='Категория';
 $lang['accesdenie']='Доступ закрыт';
 $lang['next']='Следущая';
 $lang['prev']='Предыдущая';
+$lang['author']='Автор';
 // конец
 $lang['reg']='Регистрация';
 $lang['login_button']='Войти';
