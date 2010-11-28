@@ -117,4 +117,43 @@ class Blogs extends CI_Model {
                     $this->template->write_view('content','article',$data);
                     $this->template->render();
    }
+   function article_data($url)
+   {
+                $prefix= $this->config->item('dbprefix');
+                $this->db->select("users.name,catblog.*,blog.*");
+                $this->db->from('blog');
+                $this->db->where('url',$url);
+                $this->db->join('catblog', 'catblog.id = blog.catid');
+                $this->db->join('users', 'users.id = blog.author');
+                $query = $this->db->get();
+                if($query->num_rows()>0)
+                {
+                      return $query->row();
+                }
+                else
+                {
+                    show_404();
+                }
+   }
+   function pdf($data)
+   {
+        $this->load->library("pdf");
+        $this->pdf->link=lang_url(null,'blog/article/'.$data->url.'.html');
+        $this->pdf->AddPage();
+        $this->pdf->SetY(15);
+        $html =$this->load->view('article',$data,true);//html_entity_decode(htmlentities($html))
+        $html = mb_convert_encoding($html, 'HTML-ENTITIES', "UTF-8");
+        $this->pdf->writeHTML($this->xmlEntities($html), true, false, true, false, '');
+        $this->pdf->Output($data->url.'.pdf', 'D');
+
+   }
+   function xmlEntities($string) {
+    $translationTable = get_html_translation_table(HTML_ENTITIES, ENT_QUOTES);
+
+    foreach ($translationTable as $char => $entity) {
+        $from[] = $entity;
+        $to[] = '&#'.ord($char).';';
+    }
+    return str_replace($from, $to, $string);
+    }
 }

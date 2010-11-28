@@ -13,7 +13,10 @@ text-align:justify;
 margin:0px;
 line-height:20px;
 }
-
+img
+{
+    border: none;
+}
 p.testimonial{
 font-style:italic;
 padding:5px 15px 0 5px;
