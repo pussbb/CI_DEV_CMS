@@ -59,7 +59,7 @@ class Permissions {
 
     } 
 
-    function proceed($module,$mvl_perm,$mvl_funct)
+    function proceed($module,$mvl_perm,$mvl_funct,$param ='')
     {
 	if($mvl_perm['group']!=0)
 	{
@@ -72,7 +72,7 @@ class Permissions {
 	   {
 		if($this->user_type=='admin' || $mvl_perm[$this->user_type][$i]==$this->user_role[$this->user_type][$i])  {$status=true;}
 		else {$status=false;}
-		$this->ci->{$module}->{$mvl_funct[$i]}($status);
+		$this->ci->{$module}->{$mvl_funct[$i]}($status,$param);
 	   }
 	}
     }

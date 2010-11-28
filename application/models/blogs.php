@@ -10,11 +10,18 @@ class Blogs extends CI_Model {
         $this->load->library('pagination');
     }
 
-    function read($role) {
-        //echo 'read';
+    function read($role,$param) {
+        if ($role == false) {
+            //echo 'You don\'t have permission to acces edit<br />';
+        } else {
+            $this->template->write('futures', '<script type="text/javascript">
+                $(document).ready(function(){
+                blog_comments('.$param.');
+                });</script><p class="blog_comments"></p>');
+        }
     }
 
-    function edit($role) {
+    function edit($role,$param) {
         if ($role == false) {
             //echo 'You don\'t have permission to acces edit<br />';
         } else {
@@ -22,11 +29,18 @@ class Blogs extends CI_Model {
         }
     }
 
-    function add($role) {
-        if ($role == false) {
-            //echo 'You don\'t have permission to acces add<br />';
+    function add($role,$param) {
+        if ($role == true) {
+            $this->template->add_js("system/js/ckeditor/ckeditor.js", 'import');
+            $this->template->add_js("system/js/ckeditor/adapters/jquery.js", 'import');
+            $html="
+                <input onclick=\"blog_add_editor();\" type=\"button\" value=\"Add comment\" />
+                <input onclick=\"blog_get_text_editor();\" type=\"button\" value=\"Add comment\" />
+<div class=\"blog_comments_editor\">
+	</div>";
+            $this->template->write('futures',$html);
         } else {
-            $this->template->write('futures', 'you dont have fdshnfjdsh', TRUE);
+            $this->template->write('futures', 'you dont have permission');
         }
     }
 
@@ -92,11 +106,11 @@ class Blogs extends CI_Model {
 
     function article($data) {
         $this->template->write('title', $data->blogcat_name . ' - ' . $data->title, TRUE);
-        $this->template->write('meta', $data->blogcat_name . ' ,' . $data->keywords, TRUE);
-        $this->template->write('metadescr', $data->keywords . ' ,' . $data->blogcat_desr, TRUE);
+        $this->template->write('meta', $data->blogcat_name . ' ,' . $data->keywords);
+        $this->template->write('metadescr', $data->keywords . ' ,' . $data->blogcat_desr);
         //$this->template->write('title2', $row->name, TRUE);
         $func = array('edit', 'add', 'read');
-        $this->permissions->proceed($module = 'blogs', unserialize($data->permissions), $func);
+        $this->permissions->proceed($module = 'blogs', unserialize($data->permissions), $func,$data->id);
         $this->template->write_view('content', 'article', $data);
         $this->template->render();
     }

@@ -34,6 +34,20 @@ class Blog extends Controller {
             show_404();
         }
     }
+    function comments()
+    {
+       $query = $this->db->get_where($this->db->dbprefix('blog_comments'), array('artid' => $this->input->post('id',true)), 1);
+        if ($query->num_rows() > 0) {
+            foreach($query->result() as $row)
+            {
+                
+            }
+                echo 'found';
+        } else {
+            echo 'not found';
+        }
+
+    }
 
     function paginate() {
         echo $this->blogs->pagination($this->uri->segment(5, 0), $this->uri->segment(4, 0));

@@ -28,6 +28,37 @@ pagination();
  $(".scrollable").scrollable({});
 });
 var url=window.location.protocol+"//"+window.location.hostname+"/";
+function blog_comments(id)
+{
+    $(".blog_comments").load(url+"blog/comments",{'id': id});
+}
+function blog_get_text_editor()
+{
+    var oEditor = CKEDITOR.instances.editor1;
+        alert( oEditor.getData() );
+    //alert($('.blog_comments_editor').ckeditor(function(){$(this).getData();}));
+}
+function blog_add_editor()
+{
+	$('.blog_comments_editor').ckeditor(
+    {
+        toolbar:
+        [
+            ['Source','-','Save','NewPage','Preview','-','Templates'],
+            ['Cut','Copy','Paste','PasteText','PasteFromWord','-','Print', 'SpellChecker', 'Scayt'],
+            ['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
+            ['BidiLtr', 'BidiRtl'],
+            ['Bold','Italic','Underline','Strike','-','Subscript','Superscript'],'/',
+            ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote','CreateDiv'],
+            ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
+            ['Link','Unlink','Anchor'],
+            ['Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'],
+            ['TextColor','BGColor'],'/',
+            ['Styles','Format','Font','FontSize'],
+        ]
+    });
+    
+}
 function pagination()
 {
     $('.ajax_pag a').click(function(event){
