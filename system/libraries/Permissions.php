@@ -70,7 +70,8 @@ class Permissions {
 	    $status=false;
 	   for($i=0;$i<count($mvl_perm[$this->user_type]);$i++)
 	   {
-		if($this->user_type=='admin' || $mvl_perm[$this->user_type][$i]==$this->user_role[$this->user_type][$i])  {$status=true;}
+		if($this->user_type=='admin' || $mvl_perm[$this->user_type][$i]==$this->user_role[$this->user_type][$i]
+                        && $mvl_perm[$this->user_type][$i]==1)  {$status=true;}
 		else {$status=false;}
 		$this->ci->{$module}->{$mvl_funct[$i]}($status,$param);
 	   }
