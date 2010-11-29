@@ -4,7 +4,7 @@ if ($this->uri->segment(3) != 'pdf') {
       <!--  <a href="<?=  base_url().'blog/print/'.$url?>" title="printable version">
             <img width="22" src="<?=base_url()?>images/print.png">
         </a>-->
-        <a href="<?=  base_url().'blog/pdf/'.$url?>.pdf" title="pdf export">
+        <a href="<?=  lang_url(null,'blog/pdf/'.$url)?>.pdf" title="pdf export">
             <img width="22" src="<?=base_url()?>images/pdf.png" >
         </a>
     </span>
