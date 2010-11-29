@@ -36,19 +36,28 @@ class Blog extends Controller {
     }
     function comments()
     {
-       $query = $this->db->get_where($this->db->dbprefix('blog_comments'), array('artid' => $this->input->post('id',true)), 1);
-        if ($query->num_rows() > 0) {
-            foreach($query->result() as $row)
-            {
-                
-            }
-                echo 'found';
-        } else {
-            echo 'not found';
-        }
+       $this->blogs->comments($this->input->post('id',true));
 
     }
 
+    function addcomment()
+    {
+        if(isset($_POST['add']))
+        {
+            $data = array(
+               'title' => 'My title' ,
+               'author' => $this->session->userdata('userid'),
+               'author_name' => $this->session->userdata('username'),
+               'date' => date("Y-m-d H:i:s"),
+               'artid' => $this->uri->segment(4, 0),
+                'text' => $this->input->post('add',true)
+            );
+
+            $this->db->insert('blog_comments', $data);
+            $this->blogs->comments($this->uri->segment(4, 0));
+        }
+
+    }
     function paginate() {
         echo $this->blogs->pagination($this->uri->segment(5, 0), $this->uri->segment(4, 0));
     }

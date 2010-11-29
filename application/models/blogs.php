@@ -10,18 +10,18 @@ class Blogs extends CI_Model {
         $this->load->library('pagination');
     }
 
-    function read($role,$param) {
+    function read($role, $param) {
         if ($role == false) {
             //echo 'You don\'t have permission to acces edit<br />';
         } else {
             $this->template->write('futures', '<script type="text/javascript">
                 $(document).ready(function(){
-                blog_comments('.$param.');
+                blog_comments(' . $param . ');
                 });</script><p class="blog_comments"></p>');
         }
     }
 
-    function edit($role,$param) {
+    function edit($role, $param) {
         if ($role == false) {
             //echo 'You don\'t have permission to acces edit<br />';
         } else {
@@ -29,18 +29,33 @@ class Blogs extends CI_Model {
         }
     }
 
-    function add($role,$param) {
-        if ($role == true) {
+    function add($role, $param) {
+        if ($role === true) {
             $this->template->add_js("system/js/ckeditor/ckeditor.js", 'import');
             $this->template->add_js("system/js/ckeditor/adapters/jquery.js", 'import');
-            $html="
-                <input onclick=\"blog_add_editor();\" type=\"button\" value=\"Add comment\" />
-                <input onclick=\"blog_get_text_editor();\" type=\"button\" value=\"Add comment\" />
+            $html = "
+                <input id=\"blog_add_editor\" id onclick=\"blog_add_editor();\" type=\"button\" value=\"" . $this->lang->line('addcomment') . "\" />
 <div class=\"blog_comments_editor\">
-	</div>";
-            $this->template->write('futures',$html);
+
+	</div><div style=\"display:none;\" id=\"comments_buttons\">
+        <input onclick=\"blog_get_text_editor('" . lang_url(null, "blog/addcomment/" . $param) . "');\" type=\"button\" value=\"" . $this->lang->line('submitcomment') . "\" />
+<input onclick=\" remove_edit_blog();\" type=\"button\" value=\"" . $this->lang->line('cancel') . "\" /></div>";
+            $this->template->write('futures', $html);
         } else {
             $this->template->write('futures', 'you dont have permission');
+        }
+    }
+
+    function comments($id) {
+        $query = $this->db->get_where($this->db->dbprefix('blog_comments'), array('artid' => $id));
+        if ($query->num_rows() > 0) {
+            $result = '';
+            foreach ($query->result() as $row) {
+                $result.="<span>" . $this->lang->line('author') . " : " . $row->author_name . "</span><p>" . $row->text . "</p><hr>";
+            }
+            echo '<span class="red">'.$this->lang->line('comments').' : </span><br />'.$result;
+        } else {
+            echo '';
         }
     }
 
@@ -110,7 +125,7 @@ class Blogs extends CI_Model {
         $this->template->write('metadescr', $data->keywords . ' ,' . $data->blogcat_desr);
         //$this->template->write('title2', $row->name, TRUE);
         $func = array('edit', 'add', 'read');
-        $this->permissions->proceed($module = 'blogs', unserialize($data->permissions), $func,$data->id);
+        $this->permissions->proceed($module = 'blogs', unserialize($data->permissions), $func, $data->id);
         $this->template->write_view('content', 'article', $data);
         $this->template->render();
     }

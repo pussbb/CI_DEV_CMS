@@ -13,6 +13,10 @@ $lang['accesdenie']='Доступ закрыт';
 $lang['next']='Следущая';
 $lang['prev']='Предыдущая';
 $lang['author']='Автор';
+$lang['comments']='Коментарии';
+$lang['cancel']='Отмена';
+$lang['addcomment']='Добавить коментарий';
+$lang['submitcomment']='Отправить коментрий';
 // конец
 $lang['reg']='Регистрация';
 $lang['login_button']='Войти';

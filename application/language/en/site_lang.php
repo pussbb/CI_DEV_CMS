@@ -12,6 +12,10 @@ $lang['accesdenie']='access denied';
 $lang['next']='Next';
 $lang['prev']='Previous';
 $lang['author']='Author';
+$lang['comments']='Comments';
+$lang['cancel']='Cancel';
+$lang['addcomment']='Add comment';
+$lang['submitcomment']='Send comment';
 //end menu itemes
 $lang['reg']='Registration';
 $lang['login_button']='Login';

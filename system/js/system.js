@@ -14,6 +14,7 @@ $(function() {
 		position: "bottom right"
 		
 	});
+ $('.center_left img').click(function(){$.colorbox({maxWidth:'90%',maxHeight:'90%',photo:true,html:'<img src="'+$(this).attr('src')+'" >'})});
 $(".downloadbox[title]").tooltip({
 		tip: '.tooltipview',
 		effect: 'fade',
@@ -32,14 +33,21 @@ function blog_comments(id)
 {
     $(".blog_comments").load(url+"blog/comments",{'id': id});
 }
-function blog_get_text_editor()
+function blog_get_text_editor(url)
 {
-    var oEditor = CKEDITOR.instances.editor1;
-        alert( oEditor.getData() );
-    //alert($('.blog_comments_editor').ckeditor(function(){$(this).getData();}));
+        var oEditor = CKEDITOR.instances.editor1;
+        $(".blog_comments").load(url,{'add':oEditor.getData()});
+        $('.blog_comments_editor').ckeditor(function(){this.destroy();}).text('');
+        $('#comments_buttons').hide(); 
 }
+ function  remove_edit_blog(){
+        $('#blog_add_editor').css('display','');
+        $('#comments_buttons').hide();
+ }
 function blog_add_editor()
 {
+    $('#blog_add_editor').css('display','none');
+    $('#comments_buttons').show();
 	$('.blog_comments_editor').ckeditor(
     {
         toolbar:
@@ -61,15 +69,12 @@ function blog_add_editor()
 }
 function pagination()
 {
-    $('.ajax_pag a').click(function(event){
-   // получаем содержимое ссылки
-   var link = $(this).attr('href');
-   // отменяем действие по умолчанию
-   event.preventDefault();
-   // посылаем ajax-запрос по полученной ссылке
+   $('.ajax_pag a').click(function(event){
+       var link = $(this).attr('href');
+       event.preventDefault();
    $('#ajax_content').load(link,function(){
-       pagination();
-   });
+           pagination();
+       });
    });
 }
 
