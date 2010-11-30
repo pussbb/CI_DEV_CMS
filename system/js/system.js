@@ -26,6 +26,7 @@ $(".downloadbox[title]").tooltip({
 
 pagination();
  $(".downloadbox").colorbox({width:"50%", height:"60%", iframe:true});
+ $(".box").colorbox({width:"70%", height:"80%", iframe:true});
  $(".scrollable").scrollable({});
 });
 var url=window.location.protocol+"//"+window.location.hostname+"/";

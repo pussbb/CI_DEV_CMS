@@ -11,7 +11,7 @@ class Apps extends Controller
     function index()
     {
        $this->template->write('title',$this->lang->line('apps').'  '.$this->lang->line('cat'),true);
-       $this->template->write_view('usermenu', 'loginbox');
+  
        $this->template->write('content', $this->app->view_allcat());
  
        $this->template->render();
@@ -53,7 +53,7 @@ class Apps extends Controller
 	{
 	    $row=$query->result();
 	    $this->template->write('title',$row[0]->catname,true);
-	$this->template->write_view('usermenu', 'loginbox');
+	
 	$this->template->write('content', $this->app->view_cat($row[0]));
 
 	$this->template->render();
@@ -95,6 +95,11 @@ class Apps extends Controller
 	    show_404();
 	}
 	
+    }
+
+    function filemanager()
+    {
+        $this->load->view("filemanager");
     }
 
 }

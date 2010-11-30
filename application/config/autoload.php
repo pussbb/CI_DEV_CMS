@@ -96,7 +96,7 @@ $autoload['language'] = array('site');
 |
 */
 
-$autoload['model'] = array();
+$autoload['model'] = array('user_mod');
 
 
 

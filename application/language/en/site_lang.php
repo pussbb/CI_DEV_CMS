@@ -54,7 +54,6 @@ $lang['banned_reason_info']='If you don\'t agrea please write to us.Maybe it\'s 
 //stuff
 $lang['download']='Download';
 $lang['predownload']='Download will be start at 3 seconds';
-$lang['predownload2']='Sorry but when downloading file in
-    Извините но при скачивании файлов возможно надо будет использовать менеджер закачек.
-Потому что при скачивании где-то больше 1 мб сервер посылает HTTP status code 206(часть закачана).
-для этого воспользуйтесь прямой ссылкой.';
+$lang['predownload2']='Sorry but when downloading files may need to use a download manager.
+Because when downloading somewhere above 1 mb server sends the HTTP status code 206 (part downloaded).
+To do this, use the direct link';

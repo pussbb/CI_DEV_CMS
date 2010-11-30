@@ -17,6 +17,7 @@ $lang['comments']='Коментарии';
 $lang['cancel']='Отмена';
 $lang['addcomment']='Добавить коментарий';
 $lang['submitcomment']='Отправить коментрий';
+
 // конец
 $lang['reg']='Регистрация';
 $lang['login_button']='Войти';

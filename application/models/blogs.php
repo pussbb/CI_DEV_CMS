@@ -42,7 +42,7 @@ class Blogs extends CI_Model {
 <input onclick=\" remove_edit_blog();\" type=\"button\" value=\"" . $this->lang->line('cancel') . "\" /></div>";
             $this->template->write('futures', $html);
         } else {
-            $this->template->write('futures', 'you dont have permission');
+            //$this->template->write('futures', 'you dont have permission');
         }
     }
 

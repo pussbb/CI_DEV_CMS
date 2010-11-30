@@ -6,7 +6,7 @@ class Blog extends Controller {
         parent::Controller();
         $this->load->model('blogs', 'blogs');
         $this->template->write('sidemenu', $this->blogs->cat_menu());
-        $this->template->write_view('usermenu', 'loginbox');
+        
     }
 
     function index() {

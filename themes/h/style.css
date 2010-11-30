@@ -94,6 +94,14 @@ background:url(images/checked.gif) no-repeat left top;
 margin:0 0 0px 25px;
 height: 30px;
 }
+.title_{
+width: auto;
+padding:0 0 0px 35px;
+font-size:22px;
+color:#24a4b3;
+margin:0 0 0px 25px;
+height: 30px;
+}
 span.red{
 font-weight:bold;
 color:#da5b23;
