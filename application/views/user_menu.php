@@ -8,5 +8,5 @@
 <script type="text/javascript">
 
 </script>
-<a title="filemaneger" href="<?=lang_url(null,"apps/filemanager")?>" class="box">File manager</a>
+<a title="filemaneger" href="<?=site_url("system/js/kcfinder/browse.php?type=images&lang=bg&dir=public")?>" class="box">File manager</a>
 </p>
