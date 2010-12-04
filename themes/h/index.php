@@ -12,7 +12,7 @@
 <?= $_styles ?>
 <?= $_scripts ?>
 <script type="text/javascript">
-
+    lang_url='<?=  lang_id()?>';
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-9529419-1']);
   _gaq.push(['_trackPageview']);
@@ -55,13 +55,16 @@
    <!-- <iframe frameborder=0 marginwidth=0 marginheight=0 border=0 style="border:0;margin-left: 20px;width:728px;height:90px;" src="http://www.google.com/uds/modules/elements/newsshow/iframe.html?rsz=large&format=728x90&q=linux%2Cqt%2Cubuntu%2Ckubuntu%2Ckde&element=true" scrolling="no" allowtransparency="true"></iframe>
  -->
      	<div class="center_left">
-            <!-- Google News Element Code -->
-	<?=$content?>
-         <div class="features">   
-           <?=$futures?>
+            <div class="tmp_container" style="display:none;"></div>
+           <div class="content">     <!-- Google News Element Code -->
+                <?=$content?>
+                 <div class="features">
+                   <?=$futures?>
 
-         </div> 
-        </div> 
+                 </div>
+           </div>
+        </div>
+ 
         
         
         <div class="center_right">

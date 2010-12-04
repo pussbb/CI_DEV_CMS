@@ -16,6 +16,7 @@ $lang['comments']='Comments';
 $lang['cancel']='Cancel';
 $lang['addcomment']='Add comment';
 $lang['submitcomment']='Send comment';
+
 //end menu itemes
 $lang['reg']='Registration';
 $lang['login_button']='Login';
@@ -57,3 +58,11 @@ $lang['predownload']='Download will be start at 3 seconds';
 $lang['predownload2']='Sorry but when downloading files may need to use a download manager.
 Because when downloading somewhere above 1 mb server sends the HTTP status code 206 (part downloaded).
 To do this, use the direct link';
+$lang['pms']='Messages';
+$lang['inbox']='Inbox';
+$lang['outbox']='Outbox';
+$lang['newpms']='New';
+$lang['send']='Send';
+$lang['title']='Title';
+$lang['text']='Text';
+$lang['users']='Users';

@@ -35,7 +35,7 @@ class Apps extends Controller
 		}
 		else{$i[1]="00";}
 		$i=  implode(".",$i);
-		 /// print_r($i);
+		 /// print_r($i);""
 		$this->db->where('id', $row[0]->id);
 		$this->db->update('downfiles',array('rate'=>$i));
 		 echo $i;

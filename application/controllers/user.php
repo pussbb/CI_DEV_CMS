@@ -31,5 +31,9 @@ class User extends Controller {
 	   $this->load->view("userauth/user_lostpass",array("showform"=>true));
 	}
     }
+    function pms()
+    {
+        $this->user_mod->pms($this->uri->segment(4, 0));
+    }
 
 }

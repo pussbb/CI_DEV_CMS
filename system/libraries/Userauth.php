@@ -112,7 +112,11 @@ class Userauth {
 			    smf_setLoginCookie(720000, addslashes($row->name), addslashes($this->ci->input->post('pass')), false);
                             smf_authenticateUser();
 			}
-		    redirect(base_url());
+		    
+                        if(isset($_SERVER['HTTP_REFERER'])) {
+                             redirect( $_SERVER['HTTP_REFERER']);
+                        }
+                        else{redirect(base_url());}
 		   }
 		}
 	    } 

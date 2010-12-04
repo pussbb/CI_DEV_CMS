@@ -2,6 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
 $(function() {
   if (!$.browser.webkit && !$.browser.mozilla) {
     browser_error(); 
@@ -28,6 +29,18 @@ pagination();
  $(".downloadbox").colorbox({width:"50%", height:"60%", iframe:true});
  $(".box").colorbox({width:"70%", height:"80%", iframe:true});
  $(".scrollable").scrollable({});
+ 
+ $(".pms_list .pms_new").click(function(){
+     //alert('jghkjhkj');
+     $(".content").hide();
+     $(".tmp_container").show().load(url+lang_url+"/user/pms/new",function(){
+             
+               $(".send_new_pms").click(function(){alert('ew cvbsdh');
+                // alert($.post(url+lang_url+"/user/pms/new",$("form[name=new_pms]").serialize()));
+             });
+     });
+     
+ });
 });
 var url=window.location.protocol+"//"+window.location.hostname+"/";
 function blog_comments(id)
