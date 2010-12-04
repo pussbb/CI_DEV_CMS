@@ -66,3 +66,4 @@ $lang['send']='Send';
 $lang['title']='Title';
 $lang['text']='Text';
 $lang['users']='Users';
+$lang['to']=' To:';
