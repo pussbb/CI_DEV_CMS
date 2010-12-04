@@ -35,8 +35,9 @@ pagination();
      $(".content").hide();
      $(".tmp_container").show().load(url+lang_url+"/user/pms/new",function(){
              
-               $(".send_new_pms").click(function(){alert('ew cvbsdh');
-                // alert($.post(url+lang_url+"/user/pms/new",$("form[name=new_pms]").serialize()));
+               $(".send_new_pms").click(function(){
+                  // $.post(url+lang_url+"/user/pms/new",$("form[name=new_pms]").serialize())
+                 alert($("form[name=new_pms]").serialize());
              });
      });
      
@@ -57,6 +58,11 @@ function blog_get_text_editor(url)
  function  remove_edit_blog(){
         $('#blog_add_editor').css('display','');
         $('#comments_buttons').hide();
+ }
+ function pms_close()
+ {
+     $(".content").show();
+     $(".tmp_container").hide().html('');
  }
 function blog_add_editor()
 {

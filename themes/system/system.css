@@ -10,7 +10,9 @@
    TODO customize this sample style
    Syntax recommendation http://www.w3.org/TR/REC-CSS2/
 */
-
+ul.pms_list li{
+    cursor: pointer;
+}
 .over {
     display: inline-table;
     width:400px;
