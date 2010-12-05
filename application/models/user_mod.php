@@ -17,7 +17,7 @@ class User_mod extends CI_Model {
 
     function menu($userid) {
         $this->template->add_js("system/js/ckeditor/ckeditor.js", 'import');
-        $this->template->add_js("system/js/ckeditor/adapters/jquery.js", 'import');
+        //$this->template->add_js("system/js/ckeditor/adapters/jquery.js", 'import');
         $query = $this->db->get_where($this->db->dbprefix('messages'), array('userid' => $userid, 'inbox' => 1));
         $data['inbox'] = $query->num_rows();
         $this->template->write_view('usermenu', 'user_menu', $data);

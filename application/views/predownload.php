@@ -6,12 +6,12 @@
 	<script type="text/javascript" >
 
 	    function move() {
-	    window.location = 'http://<?=base_url()?>/apps/download/<?=$id;?>';
+	    window.location = '<?=base_url()?>/apps/download/<?=$id;?>';
 	    }
 	    setTimeout('move()',3000);
 	</script>
     </head>
-    <body>
+    <body style="background-color: #E9E5E2;height: 90%;padding: 15px;">
 	<div style="background-color: #E9E5E2;height: 90%;padding: 15px;">
 	    <p><h3><?=$this->lang->line('predownload')?></h3>
 	    </p>

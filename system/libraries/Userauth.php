@@ -80,8 +80,7 @@ class Userauth {
         if (!$this->ci->email->send()) {
             return '<h2>'.$this->ci->lang->line('email_error_send').' <br /><br /></h2>'; // Генерация ошибки
         } else {
-
-            return '<h2>'.$this->ci->lang->line('email_error_send') . $list .'<h2><br /><br />';
+           return '<h2>'.$this->ci->lang->line('email_error_send') . $list .'<h2><br /><br />';
         }
     }
     function login() {

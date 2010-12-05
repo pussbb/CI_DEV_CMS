@@ -15,7 +15,7 @@ $(function() {
 		position: "bottom right"
 		
 	});
- $('.center_left img').click(function(){$.colorbox({maxWidth:'90%',maxHeight:'90%',photo:true,html:'<img src="'+$(this).attr('src')+'" >'})});
+//$('.center_left img').click(function(){$.colorbox({maxWidth:'90%',maxHeight:'90%',photo:true,html:'<img src="'+$(this).attr('src')+'" >'})});
 $(".downloadbox[title]").tooltip({
 		tip: '.tooltipview',
 		effect: 'fade',
@@ -27,7 +27,7 @@ $(".downloadbox[title]").tooltip({
 
 pagination();
  $(".downloadbox").colorbox({width:"50%", height:"60%", iframe:true});
- $(".box").colorbox({width:"70%", height:"80%", iframe:true});
+// $(".box").colorbox({width:"70%", height:"80%", iframe:true});
  $(".scrollable").scrollable({});
  $(".pms_list .pms_new").click(function(){
      $(".content").hide();
@@ -77,7 +77,7 @@ function blog_add_editor()
 {
     $('#blog_add_editor').css('display','none');
     $('#comments_buttons').show();
-	$('.blog_comments_editor').ckeditor(
+    $('.blog_comments_editor').ckeditor(
     {
         toolbar:
         [

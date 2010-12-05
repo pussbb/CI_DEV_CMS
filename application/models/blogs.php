@@ -31,7 +31,7 @@ class Blogs extends CI_Model {
 
     function add($role, $param) {
         if ($role === true) {
-            $this->template->add_js("system/js/ckeditor/ckeditor.js", 'import');
+           // $this->template->add_js("system/js/ckeditor/ckeditor.js", 'import');
             $this->template->add_js("system/js/ckeditor/adapters/jquery.js", 'import');
             $html = "
                 <input id=\"blog_add_editor\" id onclick=\"blog_add_editor();\" type=\"button\" value=\"" . $this->lang->line('addcomment') . "\" />
