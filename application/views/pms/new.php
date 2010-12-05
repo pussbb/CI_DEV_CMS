@@ -1,18 +1,27 @@
-
+<span class="status_new_pms red">
+    
+</span>
 <form name="new_pms" style="width:500px">
     <fieldset style="width:450px;border: none;">
         <legend><?= lang('title')?></legend>
         <input type="text" name="title" value="" />
       <?=lang('to')?>  <select name="user">
-            <?foreach($users as $user){?>
+            <?foreach($users as $user){
+               if($user->id!=$this->session->userdata('userid')){
+                ?>
+
             <option value="<?=$user->id?>"><?=$user->name?></option>
-            <?php }?>
+            <?php }
+            }?>
         </select>
    <legend><?= lang('text')?></legend>
     <textarea style="width:450px" class="ckeditor" id="editor1" name="text" rows="10" >
     </textarea>
    <br/><script type="text/javascript">
        var text_new;
+       if ( text_new )
+		text_new.destroy();
+           
 			text_new=CKEDITOR.replace( 'text' ,{
                                     toolbar:
         [

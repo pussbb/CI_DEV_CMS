@@ -36,8 +36,12 @@ pagination();
      $(".tmp_container").show().load(url+lang_url+"/user/pms/new",function(){
              
                $(".send_new_pms").click(function(){
-                  // $.post(url+lang_url+"/user/pms/new",$("form[name=new_pms]").serialize())
-                 alert($("form[name=new_pms]").serialize());
+                   $('#editor1').val(text_new.getData());
+                  $.post(url+lang_url+"/user/pms/new",$("form[name=new_pms]").serialize(),function(data)
+              {
+                  $(".status_new_pms").html(data);
+              });
+                 // cancel_new_msg();
              });
      });
      

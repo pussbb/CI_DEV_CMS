@@ -35,7 +35,25 @@ class User_mod extends CI_Model {
     {
         if(!empty($_POST))
         {
-            echo 'saving data muust hre';
+            $title=$this->input->post('title');
+            $text=$this->input->post('text');
+            if ($this->session->userdata('username') != NULL
+                    && !empty($title) && !empty($text) ) {
+                    $data = array(
+                       'userid' => $this->input->post('user')  ,
+                       'title' =>$title,
+                       'msg' => $text,
+                        'new'=>1,
+                        'outbox'=>1,
+                        'inbox'=>1,
+                        'fromid'=>$this->session->userdata('userid'),
+                        'namefrom'=>$this->session->userdata('username')
+                    );
+                    $this->db->insert('messages', $data);
+                     echo lang('msg_send')."<script type=\"text/javascript\">cancel_new_msg();</script>";
+            }
+             else {
+                echo lang('fill_form_error');            }
         }
         else
         {

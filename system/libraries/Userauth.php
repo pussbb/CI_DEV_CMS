@@ -195,7 +195,7 @@ class Userauth {
     }
 
     function logout() {
-	$this->session->sess_destroy();
+	$this->ci->session->sess_destroy();
 	redirect(base_url() . lang_id() . '/');
     }
 

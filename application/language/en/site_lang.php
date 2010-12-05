@@ -67,3 +67,5 @@ $lang['title']='Title';
 $lang['text']='Text';
 $lang['users']='Users';
 $lang['to']=' To:';
+$lang['fill_form_error']='Please fill all fields';
+$lang['msg_send']='Message was send';
