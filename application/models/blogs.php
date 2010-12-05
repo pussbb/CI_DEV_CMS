@@ -42,16 +42,22 @@ class Blogs extends CI_Model {
 <input onclick=\" remove_edit_blog();\" type=\"button\" value=\"" . $this->lang->line('cancel') . "\" /></div>";
             $this->template->write('futures', $html);
         } else {
-            //$this->template->write('futures', 'you dont have permission');
+            $this->template->write('futures', "<span class=\"red\">".$this->lang->line('addcomment')."  -  ".lang('authr_user_only')."</span>");
         }
     }
 
     function comments($id) {
-        $query = $this->db->get_where($this->db->dbprefix('blog_comments'), array('artid' => $id));
+        $this->db->select('blog_comments.*,users.avatar');
+                $this->db->from('blog_comments');
+                $this->db->where('artid', $id);
+                $this->db->join('users', 'users.id =blog_comments.author');
+                $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $result = '';
             foreach ($query->result() as $row) {
-                $result.="<span>" . $this->lang->line('author') . " : " . $row->author_name . "</span><p>" . $row->text . "</p><hr>";
+                $result.="<img class=\"avatar\" style=\"float:left;padding-right:5px;\" src=\"".base_url().$row->avatar."\" alt=\"avatar\" /><span>" .
+                $this->lang->line('author') . " : <a href=\"". lang_url(null,'user/profile/'.$row->author_name)."\"> $row->author_name</a>
+                        </span><p>" . $row->text . "</p><hr>";
             }
             echo '<span class="red">'.$this->lang->line('comments').' : </span><br />'.$result;
         } else {

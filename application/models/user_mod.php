@@ -18,7 +18,7 @@ class User_mod extends CI_Model {
     function menu($userid) {
         $this->template->add_js("system/js/ckeditor/ckeditor.js", 'import');
         $this->template->add_js("system/js/ckeditor/adapters/jquery.js", 'import');
-        $query = $this->db->get_where($this->db->dbprefix('messages'), array('userid' => $userid,'inbox'=>1));
+        $query = $this->db->get_where($this->db->dbprefix('messages'), array('userid' => $userid, 'inbox' => 1));
         $data['inbox'] = $query->num_rows();
         $this->template->write_view('usermenu', 'user_menu', $data);
     }
@@ -30,7 +30,8 @@ class User_mod extends CI_Model {
                     break;
                 case 'inbox': $this->pms_inbox();
                     break;
-                case 'outbox':$this->pms_outbox();break;
+                case 'outbox':$this->pms_outbox();
+                    break;
                 case 'toold': {
                         $data = array(
                             'inbox' => 0,
@@ -39,21 +40,19 @@ class User_mod extends CI_Model {
                         $this->db->update('messages', $data);
                         break;
                     }
-                case 'deloutbox':
-                {
-                    $data = array(
+                case 'deloutbox': {
+                        $data = array(
                             'outbox' => 0,
                         );
                         $this->db->where('fromid', $this->session->userdata('userid'));
-                        
+
                         $this->db->update('messages', $data);
-                    break;
-                }
-                case 'del':
-                {
-                    $this->db->delete('messages', array('id' => $this->input->post('id')));
-                    break;
-                }
+                        break;
+                    }
+                case 'del': {
+                        $this->db->delete('messages', array('id' => $this->input->post('id')));
+                        break;
+                    }
                 default: break;
             }
         }
@@ -98,6 +97,7 @@ class User_mod extends CI_Model {
         $data['inbox'] = $query->result();
         $this->load->view("pms/inbox", $data);
     }
+
     function pms_outbox() {
 
         $this->db->select('messages.*,users.name');
@@ -105,10 +105,107 @@ class User_mod extends CI_Model {
         $this->db->where('fromid', $this->session->userdata('userid'));
         $this->db->where('outbox', 1);
         $this->db->join('users', 'users.id =messages.userid');
-        
+
         $query = $this->db->get();
         $data['inbox'] = $query->result();
         $this->load->view("pms/outbox", $data);
+    }
+    function _user_setting()
+    {
+        $data='';
+        foreach ($_POST as $key => $value) {
+            if(!empty($value))
+            {
+                $data[$key]=$value;
+            }
+        }
+        if(!isset ($_POST['visible']))
+        {
+            $data['visible']=0;
+        }
+        return $data;
+    }
+
+    function settings() {
+        if (!empty($_POST)) {
+            $this->db->where('id', $this->session->userdata('userid'));
+            $this->db->update('user_data',  $this->_user_setting());
+        }
+        $this->db->where('id', $this->session->userdata('userid'));
+        $query = $this->db->get('user_data');
+        if ($query->num_rows == 0) {
+            $data = array(
+                'id' => $this->session->userdata('userid')
+            );
+            $this->db->insert('user_data', $data);
+        }
+        $this->db->select('user_data.*,users.avatar');
+        $this->db->from('user_data');
+        $this->db->where('user_data.id', $this->session->userdata('userid'));
+        $this->db->join('users', 'users.id =user_data.id');
+
+        $query = $this->db->get();
+        return $this->load->view("userauth/settings", $query->row(), true);
+    }
+
+    function avatarup() {
+
+        if (isset($_FILES["file"]) && is_uploaded_file($_FILES["file"]["tmp_name"]) &&
+                $_FILES["file"]["error"] == 0) {
+            $path = FCPATH . "images/avatars/";
+            $this->load->helper('file');
+            print_r($_FILES);
+            $info = pathinfo($_FILES["file"]["name"]);
+            $file = md5($info['filename']) . '.' . $info['extension'];
+            if (move_uploaded_file($_FILES["file"]["tmp_name"], $path . $file)) {
+                chmod($path . $file, 0777);
+                //image resize
+                $config['source_image'] = $path . $file;
+                $config['create_thumb'] = false;
+                $config['maintain_ratio'] = TRUE;
+                $config['width'] = 36;
+                $config['height'] = 36;
+                $this->load->library('image_lib', $config);
+                $this->image_lib->resize();
+                //
+                $data = array(
+                    'avatar' => "images/avatars/" . $file
+                );
+                $this->db->where('id', $this->session->userdata('userid'));
+                $this->db->update('users', $data);
+                redirect($_SERVER['HTTP_REFERER']);
+            }
+            // Create a pretend file id, this might have come from a database.
+        } else {
+            show_error("nothing to change for you avatar");
+        }
+        exit(0);
+    }
+
+    function profile($name)
+    {
+        if ($this->session->userdata('username') != NULL) {
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->where('name', $name);
+        $query = $this->db->get();
+            if($query->num_rows>0)
+            {
+                $row=$query->row();
+                $this->db->select('user_data.*,users.avatar');
+                $this->db->from('user_data');
+                $this->db->where('user_data.id', $row->id);
+                $this->db->join('users', 'users.id =user_data.id');
+
+                $query = $this->db->get();
+                return $this->load->view("userauth/profile", $query->row(), true);
+            }
+            else {
+                return lang('user_notfound');
+            }
+        } else {
+            return lang('authr_user_only');
+        }
     }
 
 }

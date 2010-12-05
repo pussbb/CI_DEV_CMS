@@ -7,6 +7,6 @@
         <li class="pms_inbox"><?=$this->lang->line('inbox');?> : <?=$inbox?></li>
         <li class="pms_outbox"><?=$this->lang->line('outbox');?></li>
     </ul>
-<a href="<?=  lang_url(null,"user/settings");?>">user settings</a>  ||
-<a href="<?=  lang_url(null,"user/logout");?>">logout</a>
+<a href="<?=  lang_url(null,"user/settings");?>"><?=lang('settings')?></a>  ||
+<a href="<?=  lang_url(null,"user/logout");?>"><?=lang('logout')?></a>
 </p>

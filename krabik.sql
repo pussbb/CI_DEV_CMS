@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Дек 05 2010 г., 09:43
+-- Время создания: Дек 05 2010 г., 18:53
 -- Версия сервера: 5.1.41
 -- Версия PHP: 5.3.1
 
@@ -237,15 +237,16 @@ CREATE TABLE IF NOT EXISTS `ci_messages` (
   `namefrom` varchar(50) DEFAULT NULL,
   `fromid` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Дамп данных таблицы `ci_messages`
 --
 
 INSERT INTO `ci_messages` (`id`, `userid`, `title`, `msg`, `new`, `inbox`, `outbox`, `namefrom`, `fromid`) VALUES
-(3, 1, 'efwefwefsdf', '<p>\n edfwevfffsdfewffffffsadfsdfwefwefsdfsd</p>\n', 1, 1, b'1', 'pussbb', 2),
-(4, 2, 'hgfhgfhg', '<p>\n fhfhfghfgh</p>\n', 1, 1, b'1', 'admin', 1);
+(3, 1, 'efwefwefsdf', '<p>\n edfwevfffsdfewffffffsadfsdfwefwefsdfsd</p>\n', 1, 0, b'1', 'pussbb', 2),
+(4, 2, 'hgfhgfhg', '<p>\n fhfhfghfgh</p>\n', 1, 1, b'0', 'admin', 1),
+(6, 2, 'gfgfd', '    ', 1, 1, b'0', 'admin', 1);
 
 -- --------------------------------------------------------
 
@@ -313,8 +314,8 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
 --
 
 INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-('752ba501a7657d70ffb527219d47340a', '127.0.1.1', 'Mozilla/5.0 (X11; U; Linux i686; ru; rv:1.9.2.12) ', 1291491089, 'a:4:{s:8:"username";s:6:"pusspj";s:10:"permission";s:150:"a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}";s:6:"userid";s:1:"3";s:3:"gid";s:1:"0";}'),
-('604da6e49cb1e9c7b8c1b30eb997dba0', '127.0.1.1', 'Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKi', 1291484590, 'a:4:{s:8:"username";s:5:"admin";s:10:"permission";s:151:"a:4:{s:5:"group";s:1:"1";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}";s:6:"userid";s:1:"1";s:3:"gid";s:1:"1";}');
+('8383a61c5166a71e582e186159e7ef51', '127.0.1.1', 'Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKi', 1291570904, 'a:4:{s:8:"username";s:5:"admin";s:10:"permission";s:151:"a:4:{s:5:"group";s:1:"1";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}";s:6:"userid";s:1:"1";s:3:"gid";s:1:"1";}'),
+('9f55ce95bc82e9dfc2e89ccca1c0527d', '127.0.1.1', 'Mozilla/5.0 (X11; U; Linux i686; ru; rv:1.9.2.12) ', 1291570973, '');
 
 -- --------------------------------------------------------
 
@@ -334,6 +335,7 @@ CREATE TABLE IF NOT EXISTS `ci_users` (
   `last_login` datetime DEFAULT NULL,
   `permission` tinytext COLLATE utf8_unicode_ci,
   `groupid` int(11) NOT NULL DEFAULT '0',
+  `avatar` varchar(245) COLLATE utf8_unicode_ci DEFAULT 'images/avatars/user.png',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=49 ;
 
@@ -341,35 +343,35 @@ CREATE TABLE IF NOT EXISTS `ci_users` (
 -- Дамп данных таблицы `ci_users`
 --
 
-INSERT INTO `ci_users` (`id`, `name`, `pass`, `email`, `banned`, `banedreason`, `created`, `lastip`, `last_login`, `permission`, `groupid`) VALUES
-(1, 'admin', '4d9fb1ded112b479cffed29a7bb8315c68475936', '_pussbb@mail.ru', '0', NULL, '2009-06-22 00:00:00', '127.0.1.1', '2010-12-04 00:00:00', 'a:4:{s:5:"group";s:1:"1";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 1),
-(2, 'pussbb', '4d9fb1ded112b479cffed29a7bb8315c68475936', 'pussbb@gmail.com', '0', NULL, '2009-06-22 00:00:00', '127.0.1.1', '2010-12-04 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0),
-(3, 'pusspj', '4d9fb1ded112b479cffed29a7bb8315c68475936', 'pusspj@mail.ru', '0', NULL, '2009-06-23 00:00:00', '127.0.1.1', '2010-12-04 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0),
-(4, 'malush', 'ce9268fff690fa23c71c5d72ed4261fe11ed71ac', 'sviriduksv@gmail.com', '0', '      " " ', '2009-10-28 00:00:00', '91.202.145.177', '2009-11-30 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0),
-(5, 'Zhimomiryanin', '8ced2197db4b502188bc95fdbbb6b207064ba1f5', 'shabo2009@yandex.ru', '0', NULL, '2009-11-30 00:00:00', '188.163.107.199', '2009-11-30 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}753', 0),
-(6, 'Whastyastetly', '2a328aa142aacff524e4788cc1c784b105772e69', 'dupeldvd1@mail.ru', '0', NULL, '2009-12-01 00:00:00', '95.28.206.199', NULL, 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0),
-(7, 'Vasyak', '2163b44236832e2711614f4435aa6871021f3d6e', 'doskiukraina@gmail.com', '0', NULL, '2009-12-07 00:00:00', '188.163.110.152', NULL, 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0),
-(8, 'AlisaSk', '94e6aab5477aa9da08de2b12ba686e438d732391', 'ivanter7@mail.ru', '0', NULL, '2009-12-18 00:00:00', '188.163.108.221', '2009-12-18 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0),
-(9, 'Warsawo', '1c751e144a61e8b667cde01c4988d967bc168598', 'burzhujnet@gmail.com', '0', NULL, '2009-12-19 00:00:00', '188.163.110.150', '2009-12-19 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}753', 0),
-(10, 'nastya', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'admin@krabik.co.ua', '0', '   " ', '2010-01-09 00:00:00', '89.21.89.18', '2010-01-17 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0),
-(11, 'Wipmetmaiskip', '96d2484e09a0b77fe4c638227e174d698f6a2d9c', 'victorpetrenkoloboda@mail.ru', '0', NULL, '2010-01-12 00:00:00', '91.214.45.233', '2010-02-10 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0),
-(12, 'EmbareeRade', '83b2870f51036c3da6778722b67d9fcdbe05c07e', 'Optotonypriot@newinbox.info', '0', NULL, '2010-01-12 00:00:00', '91.214.45.233', '2010-02-11 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0),
-(13, 'Spiddedia', 'e2a8f1a1e54a24d686359951f11a2215095dd3d9', 'EffedeEpimisk@newinbox.info', '0', NULL, '2010-01-12 00:00:00', '91.214.45.233', '2010-01-12 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0),
-(14, 'libliommedamp', 'd574edff87336f93ec8427192bdb1d7f1308c78d', 'temposecorg@mail.ru', '0', NULL, '2010-01-13 00:00:00', '91.214.45.233', '0000-00-00 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0),
-(15, 'CigneeEstisiz', 'e13106e68b2524cb458f850dacd2becc3393cc59', 'pswarez@mail.ru', '0', NULL, '2010-01-13 00:00:00', '91.214.45.233', '2010-01-13 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0),
-(16, 'fileworker', '44105134c3b72aa8168fcdda4763d7cd611e6f58', 'rponutyu@rambler.ru', '0', NULL, '2010-02-06 00:00:00', '81.24.211.33', '2010-02-10 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0),
-(17, 'Assullyevef', 'ecaf19fb7255653a2e736f89be139900e6f7e5d7', 'asdgfasdfgasdf123@mail.ru', '0', NULL, '2010-02-10 00:00:00', '91.214.45.233', '2010-02-10 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0),
-(18, 'vetal260585', 'a25dc7a55528ecc3a6b3dba76f6135e3740449a9', 'dementienk@gmail.com', '0', NULL, '2010-03-17 00:00:00', '195.189.106.1', '2010-02-10 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0),
-(19, 'BioreDrom', '8603ccdff6ceda5c8811ac1199215f39273f519a', 'kipov0t@gmail.com', '0', NULL, '2010-04-20 00:00:00', '89.138.196.119', '2010-04-20 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0),
-(20, 'Hearkihooro', 'f3a397a6daa2d480ebec3fb172fff1024274e4fc', 'claudiacutrellukyby@gmail.com', '0', NULL, '2010-05-12 00:00:00', '188.72.201.188', '2010-05-12 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0),
-(21, 'Flimbarrala', 'ff65f454e73aaf5f5564ec29483879941e825832', 'tiddom@mail.az', '0', NULL, '2010-05-21 00:00:00', '95.134.188.251', '2010-05-21 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0),
-(22, 'sssss', '3d4f2bf07dc1be38b20cd6e46949a1071f9d0e3d', 'serg.ilov@gmail.com', '0', NULL, '2010-07-02 00:00:00', '93.127.112.120', '2010-07-02 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0),
-(23, 'MAX8725', '2b8c443feb30d97805a8febf4112cf0a514549ba', 'rtfghnby@mail.ru', '0', NULL, '2010-07-17 00:00:00', '95.215.36.120', '2010-07-17 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0),
-(24, 'Agichchield', '433367a3d1814a8827a38b3fb7432bf3ceedb1b7', 'stefan_sviryaev@mail.ru', '0', NULL, '2010-07-20 00:00:00', '78.138.173.81', '2010-07-20 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0),
-(25, 'demo_user', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'demo@demo.dm', '0', '   " ', '2010-07-21 00:00:00', '188.163.117.235', '2010-07-21 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0),
-(26, 'accicaHaccamy', 'ea556bebaf2c1fd022aba020cf7c0b0a21ea9766', 'diablodance@mail.ru', '0', NULL, '2010-07-24 00:00:00', '77.121.0.28', '2010-07-24 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0),
-(27, 'suigueteofe', '2b16021a6e423b0c48f11abddc4c7667a77dfdba', 'equiplekeli@mail.ru', '0', NULL, '2010-08-15 00:00:00', '77.121.0.28', '2010-08-15 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0),
-(31, 'erwerwerwe', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'pusspj@mail.ru', '0', NULL, '0000-00-00 00:00:00', '127.0.0.1', NULL, 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0);
+INSERT INTO `ci_users` (`id`, `name`, `pass`, `email`, `banned`, `banedreason`, `created`, `lastip`, `last_login`, `permission`, `groupid`, `avatar`) VALUES
+(1, 'admin', '4d9fb1ded112b479cffed29a7bb8315c68475936', '_pussbb@mail.ru', '0', NULL, '2009-06-22 00:00:00', '127.0.1.1', '2010-12-05 00:00:00', 'a:4:{s:5:"group";s:1:"1";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 1, 'images/avatars/b594a94267a4cde9bb9e13a9d2e0df2a.jpg'),
+(2, 'pussbb', '4d9fb1ded112b479cffed29a7bb8315c68475936', 'pussbb@gmail.com', '0', NULL, '2009-06-22 00:00:00', '127.0.1.1', '2010-12-05 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0, 'images/avatars/user.png'),
+(3, 'pusspj', '4d9fb1ded112b479cffed29a7bb8315c68475936', 'pusspj@mail.ru', '0', NULL, '2009-06-23 00:00:00', '127.0.1.1', '2010-12-04 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0, 'images/avatars/user.png'),
+(4, 'malush', 'ce9268fff690fa23c71c5d72ed4261fe11ed71ac', 'sviriduksv@gmail.com', '0', '      " " ', '2009-10-28 00:00:00', '91.202.145.177', '2009-11-30 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0, 'images/avatars/user.png'),
+(5, 'Zhimomiryanin', '8ced2197db4b502188bc95fdbbb6b207064ba1f5', 'shabo2009@yandex.ru', '0', NULL, '2009-11-30 00:00:00', '188.163.107.199', '2009-11-30 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}753', 0, 'images/avatars/user.png'),
+(6, 'Whastyastetly', '2a328aa142aacff524e4788cc1c784b105772e69', 'dupeldvd1@mail.ru', '0', NULL, '2009-12-01 00:00:00', '95.28.206.199', NULL, 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0, 'images/avatars/user.png'),
+(7, 'Vasyak', '2163b44236832e2711614f4435aa6871021f3d6e', 'doskiukraina@gmail.com', '0', NULL, '2009-12-07 00:00:00', '188.163.110.152', NULL, 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0, 'images/avatars/user.png'),
+(8, 'AlisaSk', '94e6aab5477aa9da08de2b12ba686e438d732391', 'ivanter7@mail.ru', '0', NULL, '2009-12-18 00:00:00', '188.163.108.221', '2009-12-18 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0, 'images/avatars/user.png'),
+(9, 'Warsawo', '1c751e144a61e8b667cde01c4988d967bc168598', 'burzhujnet@gmail.com', '0', NULL, '2009-12-19 00:00:00', '188.163.110.150', '2009-12-19 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}753', 0, 'images/avatars/user.png'),
+(10, 'nastya', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'admin@krabik.co.ua', '0', '   " ', '2010-01-09 00:00:00', '89.21.89.18', '2010-01-17 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0, 'images/avatars/user.png'),
+(11, 'Wipmetmaiskip', '96d2484e09a0b77fe4c638227e174d698f6a2d9c', 'victorpetrenkoloboda@mail.ru', '0', NULL, '2010-01-12 00:00:00', '91.214.45.233', '2010-02-10 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0, 'images/avatars/user.png'),
+(12, 'EmbareeRade', '83b2870f51036c3da6778722b67d9fcdbe05c07e', 'Optotonypriot@newinbox.info', '0', NULL, '2010-01-12 00:00:00', '91.214.45.233', '2010-02-11 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0, 'images/avatars/user.png'),
+(13, 'Spiddedia', 'e2a8f1a1e54a24d686359951f11a2215095dd3d9', 'EffedeEpimisk@newinbox.info', '0', NULL, '2010-01-12 00:00:00', '91.214.45.233', '2010-01-12 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0, 'images/avatars/user.png'),
+(14, 'libliommedamp', 'd574edff87336f93ec8427192bdb1d7f1308c78d', 'temposecorg@mail.ru', '0', NULL, '2010-01-13 00:00:00', '91.214.45.233', '0000-00-00 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0, 'images/avatars/user.png'),
+(15, 'CigneeEstisiz', 'e13106e68b2524cb458f850dacd2becc3393cc59', 'pswarez@mail.ru', '0', NULL, '2010-01-13 00:00:00', '91.214.45.233', '2010-01-13 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0, 'images/avatars/user.png'),
+(16, 'fileworker', '44105134c3b72aa8168fcdda4763d7cd611e6f58', 'rponutyu@rambler.ru', '0', NULL, '2010-02-06 00:00:00', '81.24.211.33', '2010-02-10 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0, 'images/avatars/user.png'),
+(17, 'Assullyevef', 'ecaf19fb7255653a2e736f89be139900e6f7e5d7', 'asdgfasdfgasdf123@mail.ru', '0', NULL, '2010-02-10 00:00:00', '91.214.45.233', '2010-02-10 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0, 'images/avatars/user.png'),
+(18, 'vetal260585', 'a25dc7a55528ecc3a6b3dba76f6135e3740449a9', 'dementienk@gmail.com', '0', NULL, '2010-03-17 00:00:00', '195.189.106.1', '2010-02-10 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0, 'images/avatars/user.png'),
+(19, 'BioreDrom', '8603ccdff6ceda5c8811ac1199215f39273f519a', 'kipov0t@gmail.com', '0', NULL, '2010-04-20 00:00:00', '89.138.196.119', '2010-04-20 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0, 'images/avatars/user.png'),
+(20, 'Hearkihooro', 'f3a397a6daa2d480ebec3fb172fff1024274e4fc', 'claudiacutrellukyby@gmail.com', '0', NULL, '2010-05-12 00:00:00', '188.72.201.188', '2010-05-12 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0, 'images/avatars/user.png'),
+(21, 'Flimbarrala', 'ff65f454e73aaf5f5564ec29483879941e825832', 'tiddom@mail.az', '0', NULL, '2010-05-21 00:00:00', '95.134.188.251', '2010-05-21 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0, 'images/avatars/user.png'),
+(22, 'sssss', '3d4f2bf07dc1be38b20cd6e46949a1071f9d0e3d', 'serg.ilov@gmail.com', '0', NULL, '2010-07-02 00:00:00', '93.127.112.120', '2010-07-02 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0, 'images/avatars/user.png'),
+(23, 'MAX8725', '2b8c443feb30d97805a8febf4112cf0a514549ba', 'rtfghnby@mail.ru', '0', NULL, '2010-07-17 00:00:00', '95.215.36.120', '2010-07-17 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0, 'images/avatars/user.png'),
+(24, 'Agichchield', '433367a3d1814a8827a38b3fb7432bf3ceedb1b7', 'stefan_sviryaev@mail.ru', '0', NULL, '2010-07-20 00:00:00', '78.138.173.81', '2010-07-20 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0, 'images/avatars/user.png'),
+(25, 'demo_user', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'demo@demo.dm', '0', '   " ', '2010-07-21 00:00:00', '188.163.117.235', '2010-07-21 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0, 'images/avatars/user.png'),
+(26, 'accicaHaccamy', 'ea556bebaf2c1fd022aba020cf7c0b0a21ea9766', 'diablodance@mail.ru', '0', NULL, '2010-07-24 00:00:00', '77.121.0.28', '2010-07-24 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0, 'images/avatars/user.png'),
+(27, 'suigueteofe', '2b16021a6e423b0c48f11abddc4c7667a77dfdba', 'equiplekeli@mail.ru', '0', NULL, '2010-08-15 00:00:00', '77.121.0.28', '2010-08-15 00:00:00', 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0, 'images/avatars/user.png'),
+(31, 'erwerwerwe', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'pusspj@mail.ru', '0', NULL, '0000-00-00 00:00:00', '127.0.0.1', NULL, 'a:4:{s:5:"group";s:0:"";s:5:"admin";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:4:"user";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}s:5:"guest";a:3:{i:0;i:1;i:1;i:1;i:2;i:1;}}', 0, 'images/avatars/user.png');
 
 -- --------------------------------------------------------
 
@@ -379,19 +381,22 @@ INSERT INTO `ci_users` (`id`, `name`, `pass`, `email`, `banned`, `banedreason`, 
 
 CREATE TABLE IF NOT EXISTS `ci_user_data` (
   `id` int(11) DEFAULT NULL,
-  `familiya` varchar(55) COLLATE utf8_bin DEFAULT NULL,
-  `name` varchar(45) COLLATE utf8_bin DEFAULT NULL,
-  `otchestvo` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `sername` varchar(55) COLLATE utf8_bin DEFAULT NULL,
+  `real_name` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `second_name` varchar(45) COLLATE utf8_bin DEFAULT NULL,
   `company` tinytext COLLATE utf8_bin,
   `phone` varchar(13) COLLATE utf8_bin DEFAULT NULL,
   `icq` int(11) DEFAULT NULL,
   `post` tinytext COLLATE utf8_bin,
   `fax` int(11) DEFAULT NULL,
   `adress` text COLLATE utf8_bin,
-  `birthday` date DEFAULT NULL
+  `birthday` date DEFAULT NULL,
+  `visible` int(1) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Дамп данных таблицы `ci_user_data`
 --
 
+INSERT INTO `ci_user_data` (`id`, `sername`, `real_name`, `second_name`, `company`, `phone`, `icq`, `post`, `fax`, `adress`, `birthday`, `visible`) VALUES
+(1, 'terertert', 'terter', 'tert', 'erterterter', '53453454', 0, 'tert', 0, 'reterttert', '2020-12-20', 1);

@@ -15,7 +15,7 @@ if ($this->uri->segment(3) != 'pdf') {
 <div class="title" align="center"><?=$title?></div>
 <hr>
 <div ><?php echo $this->lang->line('cat').": ".anchor(lang_id().'/blog/viewcat/'.$catid, $blogcat_name,
-        "title=\"$blogcat_name\"")."  ".$this->lang->line('author').":  $name";?>
+        "title=\"$blogcat_name\"")."  ".$this->lang->line('author').": <a href=\"".  lang_url(null,'user/profile/'.$name)."\"> $name</a>";?>
           <?=date("F j, Y, g:i a",  strtotime($datepost)); ?></div>
 <hr>
 <br />

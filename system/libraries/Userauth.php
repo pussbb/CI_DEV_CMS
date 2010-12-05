@@ -150,7 +150,7 @@ class Userauth {
 	    {
 		include_once($this->ci->config->item('smfpath'));
                 smf_registerMember($data['name'],$data['email'],$tmp[$this->register_var[2]],$extra_fields = array(), $theme_options = array());
-               // redirect("?c=welcome&m=regdone");
+              
 	    }
 	    redirect(base_url() . lang_id() . '/');
 	}
