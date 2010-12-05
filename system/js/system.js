@@ -29,9 +29,7 @@ pagination();
  $(".downloadbox").colorbox({width:"50%", height:"60%", iframe:true});
  $(".box").colorbox({width:"70%", height:"80%", iframe:true});
  $(".scrollable").scrollable({});
- 
  $(".pms_list .pms_new").click(function(){
-     //alert('jghkjhkj');
      $(".content").hide();
      $(".tmp_container").show().load(url+lang_url+"/user/pms/new",function(){
              
@@ -41,10 +39,17 @@ pagination();
               {
                   $(".status_new_pms").html(data);
               });
-                 // cancel_new_msg();
              });
      });
      
+ });
+ $(".pms_list .pms_inbox").click(function(){
+     $(".content").hide();
+     $(".tmp_container").show().load(url+lang_url+"/user/pms/inbox");
+ });
+  $(".pms_list .pms_outbox").click(function(){
+     $(".content").hide();
+     $(".tmp_container").show().load(url+lang_url+"/user/pms/outbox");
  });
 });
 var url=window.location.protocol+"//"+window.location.hostname+"/";

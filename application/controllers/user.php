@@ -35,5 +35,9 @@ class User extends Controller {
     {
         $this->user_mod->pms($this->uri->segment(4, 0));
     }
+    function logout()
+    {
+        $this->userauth->logout();
+    }
 
 }

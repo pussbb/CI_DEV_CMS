@@ -98,3 +98,50 @@ float:left;
     -moz-box-shadow:0 0 6px #ddd;
     -webkit-box-shadow:0 0 6px #ddd;
 }
+#rounded-corner
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	width: 480px;
+	text-align: left;
+	border-collapse: collapse;
+}
+#rounded-corner thead th.rounded-company
+{
+	background: #b9c9fe ;
+        -webkit-border-radius: 8px 0px 0px 0px;
+-moz-border-radius:  8px 0px 0px 0px;
+border-radius: 8px 0px 0px 0px;
+}
+#rounded-corner thead th.rounded-q4
+{
+	background: #b9c9fe ;
+        -webkit-border-radius: 0px 8px 0px 0px;
+        -moz-border-radius:  0px 8px 0px 0px;
+border-radius: 0px 8px 0px 0px;
+}
+#rounded-corner th
+{
+	padding: 8px;
+	font-weight: normal;
+	font-size: 13px;
+	color: #039;
+	background: #b9c9fe;
+}
+#rounded-corner td
+{
+	padding: 8px;
+	background: #e8edff;
+	border-top: 1px solid #fff;
+	color: #669;
+}
+#rounded-corner tfoot 
+{
+	background: #e8edff ;
+
+}
+
+#rounded-corner tbody tr:hover td
+{
+	background: #d0dafd;
+}
