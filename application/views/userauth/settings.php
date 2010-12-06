@@ -28,7 +28,7 @@ Avatar<br/>
             <form class="postava" style="display:none;" action="<?= base_url();?>user/avatarup" method="POST" enctype="multipart/form-data">
                 <input type="file" name="file" id="file" value="" /><input type="submit" value="Send" />
 </form>
-<form style="margin-left:25%;" action="" method="POST">
+<form class="settings" style="margin-left:25%;" action="" method="POST">
 <fieldset style="border:none;">
     <legend><?=lang('sername');?></legend>
     <input type="text" name="sername" value="<?= $sername;?>" />

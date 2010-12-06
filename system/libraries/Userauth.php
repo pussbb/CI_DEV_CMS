@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
@@ -80,7 +80,8 @@ class Userauth {
         if (!$this->ci->email->send()) {
             return '<h2>'.$this->ci->lang->line('email_error_send').' <br /><br /></h2>'; // Генерация ошибки
         } else {
-           return '<h2>'.$this->ci->lang->line('email_error_send') . $list .'<h2><br /><br />';
+
+            return '<h2>'.$this->ci->lang->line('email_error_send') . $list .'<h2><br /><br />';
         }
     }
     function login() {
@@ -96,7 +97,7 @@ class Userauth {
 		{
 		   if ($row->pass == dohash($this->ci->input->post('pass')))
 		   {
-		    
+		    $username=$row->name;
 		    $newdata = array('username' => $row->name, 'permission' => $row->permission,
                         'userid' => $row->id, 'gid' => $row->groupid);
                     $this->ci->session->set_userdata($newdata);
@@ -107,8 +108,8 @@ class Userauth {
                     $query = $this->ci->db->query($sql);
 		     if($this->ci->config->item('smf')==TRUE)
 			{
-			    include_once($this->ci->config->item('smfpath'));
-			    smf_setLoginCookie(720000, addslashes($row->name), addslashes($this->ci->input->post('pass')), false);
+			    require_once(FCPATH.$this->ci->config->item('smfpath'));
+			    smf_setLoginCookie(720000, addslashes($username), addslashes($this->ci->input->post('pass')), false);
                             smf_authenticateUser();
 			}
 		    
@@ -147,7 +148,7 @@ class Userauth {
 	    $this->ci->db->query($sql, $data);
 	    if($this->ci->config->item('smf')==TRUE)
 	    {
-		include_once($this->ci->config->item('smfpath'));
+				require_once(FCPATH.$this->ci->config->item('smfpath'));
                 smf_registerMember($data['name'],$data['email'],$tmp[$this->register_var[2]],$extra_fields = array(), $theme_options = array());
               
 	    }

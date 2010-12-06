@@ -173,7 +173,7 @@ $(function(){
 
 <div id="main">
 
-<form class="cmxform" id="signapForm" method="post" action="<?php echo lang_url().time();?>">
+<form class="cmxform" id="signapForm" method="post" action="<?php echo lang_url(null,'register/').time();?>">
 
 <fieldset><legend></legend>
 

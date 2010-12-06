@@ -158,7 +158,15 @@ border-radius: 0px 8px 0px 0px;
 	-moz-box-shadow:0 0 10px #eee inset;
 	-webkit-box-shadow:0 0 10px #eee inset;
 }
-
+.settings input{
+	border:1px solid #ccc;
+	font-size:18px;
+	padding:4px;
+	text-align:left;
+	width:194px;
+	-moz-box-shadow:0 0 10px #eee inset;
+	-webkit-box-shadow:0 0 10px #eee inset;
+}
 /* calendar root element */
 #calroot {
 	/* place on top of other elements. set a higher value if nessessary */
