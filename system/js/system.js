@@ -66,6 +66,7 @@ function blog_get_text_editor(url)
 }
  function  remove_edit_blog(){
         $('#blog_add_editor').css('display','');
+        $('.blog_comments_editor').ckeditor(function(){this.destroy();}).text('');
         $('#comments_buttons').hide();
  }
  function pms_close()
@@ -79,6 +80,7 @@ function blog_add_editor()
     $('#comments_buttons').show();
     $('.blog_comments_editor').ckeditor(
     {
+        extraPlugins : 'syntaxhighlight',
         toolbar:
         [
             ['Source','-','Save','NewPage','Preview','-','Templates'],
@@ -90,7 +92,7 @@ function blog_add_editor()
             ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
             ['Link','Unlink','Anchor'],
             ['Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'],
-            ['TextColor','BGColor'],'/',
+            ['TextColor','BGColor','Code'],'/',
             ['Styles','Format','Font','FontSize'],
         ]
     });

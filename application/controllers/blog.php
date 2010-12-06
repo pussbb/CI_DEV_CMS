@@ -36,8 +36,7 @@ class Blog extends Controller {
     }
     function comments()
     {
-       $this->blogs->comments($this->input->post('id',true));
-
+     echo  $this->blogs->comments($this->input->post('id',true));
     }
 
     function addcomment()
