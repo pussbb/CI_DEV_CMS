@@ -23,12 +23,12 @@ class Blog extends Controller {
         $query = $this->db->get_where($this->db->dbprefix('catblog'), array('id' => $this->uri->segment(4, 0)), 1);
         if ($query->num_rows() > 0) {
             $row = $query->result();
-            if($this->permissions->simple(2,unserialize($row[0]->permissions))==true)
-            {
-            $this->template->write('title', $row[0]->blogcat_name, true);
-            $this->template->write('content', $this->blogs->pagination(null, $row[0]->id));
             $this->template->write('meta',$row[0]->blogcat_name , TRUE);
             $this->template->write('metadescr', $row[0]->blogcat_name . ' ,' . $row[0]->blogcat_desr, TRUE);
+            $this->template->write('title', $row[0]->blogcat_name, true);
+            if($this->permissions->simple(2,unserialize($row[0]->permissions))==true)
+            {
+               $this->template->write('content', $this->blogs->pagination(null, $row[0]->id));
             }
             else
             {
@@ -65,7 +65,10 @@ class Blog extends Controller {
     function paginate() {
         echo $this->blogs->pagination($this->uri->segment(5, 0), $this->uri->segment(4, 0));
     }
-
+    function qhdapaginate() {
+        $this->load->model('qhda_mod'); 
+        echo $this->qhda_mod->pagination($this->uri->segment(5, 0), $this->uri->segment(4, 0));
+    }
     function article() {
         if ($this->uri->segment(4) != NULL) {
             $s = str_replace("_html", "", $this->uri->segment(4));
@@ -79,6 +82,11 @@ class Blog extends Controller {
             $s = str_replace("_pdf", "", $this->uri->segment(4));
             $this->blogs->pdf($this->blogs->article_data($s));
         }
+    }
+    function qhda()
+    {
+       $this->load->model('qhda_mod');
+       $this->qhda_mod->book_articles();
     }
 
 }

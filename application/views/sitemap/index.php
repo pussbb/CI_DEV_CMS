@@ -2,7 +2,7 @@
 		<ul id="utilityNav">
                     <li><a href="/<?=lang_id()?>/about"><?=lang('contact');?></a></li>
 			<li><a href="/<?=lang_id()?>/register"><?=lang('reg');?></a></li>
-			<li><a href="/<?=lang_id()?>/sitemap"><?=lang('sitemap');?></a></li>
+			<li><a href="/forum"><?=lang('forum');?></a></li>
 		</ul>
 
 		<ul id="primaryNav" >
@@ -28,6 +28,7 @@
                               foreach ($query->result() as $row) {
                               echo '<li><a href="/'.  lang_id().'/blog/viewcat/'.$row->id.'">'.$row->blogcat_name.'</a></li>';
                             }
+                            echo  $qhda;
                             echo '</ul>';
                             //blog
                         }

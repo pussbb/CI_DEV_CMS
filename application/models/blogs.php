@@ -67,7 +67,7 @@ class Blogs extends CI_Model {
     }
 
     function cat_menu() {
-        $text = '<div class="title">' . $this->lang->line('cats') . '</div><ul>';
+        $text = '<div class="title">' . $this->lang->line('cats') . '</div><ul style="list-style:none;">';
         $query = $this->db->get($this->db->dbprefix('catblog'));
         if ($query->num_rows > 0) {
             foreach ($query->result() as $row) {
@@ -79,9 +79,12 @@ class Blogs extends CI_Model {
                 } else {
                     $title = '<br />' . $this->lang->line('accesdenie');
                 }
-                $text.='<li style="list-style:none;"><a title="' . $row->blogcat_desr . $title . '" ' . $href . '>' . $row->blogcat_name . "</a></li>";
+                $text.='<li ><a title="' . $row->blogcat_desr . $title . '" ' . $href . '>' . $row->blogcat_name . "</a></li>";
             }
         }
+        $CI =& get_instance();
+        $CI->load->model('qhda_mod','qhda');
+        $text.=$CI->qhda->get_books();
         return "<div class=\"text_box\">$text</ul></div>";
     }
 
