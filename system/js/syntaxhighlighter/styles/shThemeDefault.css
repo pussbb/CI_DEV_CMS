@@ -36,6 +36,8 @@
 .syntaxhighlighter
 {
 	background-color: #fff !important;
+        display: table;
+        max-width:480px;
 }
 
 /* Highlighed line number */

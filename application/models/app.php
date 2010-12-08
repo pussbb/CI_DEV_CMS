@@ -62,7 +62,7 @@ class App extends CI_Model {
 		if($this->permissions->simple(self::READ,unserialize($row->permission)))
 		{
 		    ///$this->template->add_js("system/js/jstarrating/jquery.MetaData.js", 'import');
-		    $this->template->add_js("system/js/jstarrating/jquery.rating.pack.js", 'import');
+		    $this->template->add_js("system/js/jstarrating/self::jquery.rating.pack.js", 'import');
 		    $this->template->add_css("system/js/jstarrating/jquery.rating.css", 'link');
 		    return	$this->load->view('single_app',$row,true);
 		    $shows=true;
@@ -97,7 +97,7 @@ class App extends CI_Model {
 
     }
     function view_allcat()
-    {
+    {self::
 	$result='';
 	$query=$this->db->get($this->db->dbprefix('downcat'));
 	if($query->num_rows>0)

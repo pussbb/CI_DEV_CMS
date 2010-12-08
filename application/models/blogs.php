@@ -135,6 +135,7 @@ class Blogs extends CI_Model {
         $this->permissions->proceed($module = 'blogs', unserialize($data->permissions), $func, $data->id);
         $this->template->write('futures', '<p class="blog_comments">'.$this->comments($data->id).'</p>');
         $this->template->write_view('content', 'article', $data);
+        $this->syntaxhilight($data->textpost);
         $this->template->render();
     }
 

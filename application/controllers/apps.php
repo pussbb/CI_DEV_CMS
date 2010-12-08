@@ -53,8 +53,14 @@ class Apps extends Controller
 	{
 	    $row=$query->result();
 	    $this->template->write('title',$row[0]->catname,true);
-	
-	$this->template->write('content', $this->app->view_cat($row[0]));
+	if($this->permissions->simple(2,unserialize($row[0]->permission))==true)
+	{
+		    $this->template->write('content', $this->app->view_cat($row[0]));
+	}
+	else
+        {
+            $this->template->write_view('content','access_denied');
+        }
 
 	$this->template->render();
 	}

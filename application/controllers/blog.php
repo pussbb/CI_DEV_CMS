@@ -23,12 +23,17 @@ class Blog extends Controller {
         $query = $this->db->get_where($this->db->dbprefix('catblog'), array('id' => $this->uri->segment(4, 0)), 1);
         if ($query->num_rows() > 0) {
             $row = $query->result();
+            if($this->permissions->simple(2,unserialize($row[0]->permissions))==true)
+            {
             $this->template->write('title', $row[0]->blogcat_name, true);
-            
             $this->template->write('content', $this->blogs->pagination(null, $row[0]->id));
             $this->template->write('meta',$row[0]->blogcat_name , TRUE);
             $this->template->write('metadescr', $row[0]->blogcat_name . ' ,' . $row[0]->blogcat_desr, TRUE);
-            
+            }
+            else
+            {
+               $this->template->write_view('content','access_denied');
+            }
             $this->template->render();
         } else {
             show_404();
