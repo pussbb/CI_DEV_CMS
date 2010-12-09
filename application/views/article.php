@@ -20,5 +20,5 @@ if ($this->uri->segment(3) != 'pdf') {
 <hr>
 <br />
 <div style="margin:5px;">
-    <?=$textpost?>
+    <?= syntaxhilight($textpost)?>
 </div>

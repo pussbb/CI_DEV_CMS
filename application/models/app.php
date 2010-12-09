@@ -97,7 +97,7 @@ class App extends CI_Model {
 
     }
     function view_allcat()
-    {self::
+    {
 	$result='';
 	$query=$this->db->get($this->db->dbprefix('downcat'));
 	if($query->num_rows>0)

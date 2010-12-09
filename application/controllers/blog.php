@@ -6,6 +6,7 @@ class Blog extends Controller {
         parent::Controller();
         $this->load->model('blogs', 'blogs');
         $this->template->write('sidemenu', $this->blogs->cat_menu());
+        $this->load->helper('article');
         
     }
 
@@ -85,8 +86,19 @@ class Blog extends Controller {
     }
     function qhda()
     {
+        
        $this->load->model('qhda_mod');
        $this->qhda_mod->book_articles();
+    }
+    function qhdaticle()
+    {
+         if ($this->uri->segment(4) != NULL) {
+            $s = str_replace("_pdf", "", $this->uri->segment(4));
+            $this->load->model('qhda_mod');
+            $this->qhda_mod->book_article($s);
+        }
+
+       
     }
 
 }

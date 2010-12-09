@@ -181,7 +181,7 @@ class Blogs extends CI_Model {
     function syntaxhilight($data) {
         $langAlias = "";
        
-	 $regexLangAlias = '/brush[^:]*:([\s|\S?:](.*?;))/s';
+	 $regexLangAlias = '/brush[^:]*:([\s|\S?:](.*?;))/s';//
         // print_r(preg_match($regexLangAlias,$data));
         if (preg_match_all($regexLangAlias, $data, $langAliasMatches) > 0) {
             if($this->code==false){
@@ -194,6 +194,7 @@ class Blogs extends CI_Model {
             
             $langAlias = $langAliasMatches[1];
             str_replace("&gt; ", "", $langAlias);
+            str_replace(";", "", $langAlias);
             foreach ($langAlias as $value) {
               
                 switch ($value) {

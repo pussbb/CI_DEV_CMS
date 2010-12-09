@@ -19,7 +19,8 @@ class Qhda_mod extends CI_Model {
         $config['char_set'] = 'utf8';
         $config['dbcollat'] = 'utf8_general_ci';
         $config['swap_pre'] = '';
-        $this->qhda=$this->load->database($config,true); 
+        $this->qhda=$this->load->database($config,true);
+        $this->load->helper('article');
     }
     function get_books($full_url = true)
     {
@@ -131,6 +132,36 @@ class Qhda_mod extends CI_Model {
             $this->template->write('content', $this->_pagination(null, $ids));
             $this->template->render();
         } else {
+            show_404();
+        }
+    }
+    function book_article($id)
+    {
+        $this->qhda->select("*");
+        $this->qhda->from('artikle');
+        
+        $this->qhda->where('id',$id);
+        $query=$this->qhda->get();
+        if($query->num_rows()>0)
+        {
+            $data=$query->row_array();
+            
+            $this->qhda->select("regbooks.*,bookcat.catname,bookcat.bookid");
+            $this->qhda->from('bookcat');
+            $this->qhda->where('bookcat.id', $data['catid']);
+            $this->qhda->join('regbooks', 'regbooks.id = bookcat.bookid');
+            $query = $this->qhda->get();
+            $data['book_title']=$query->row_array();
+            $meta=$data['book_title']['catname'].','.$data['book_title']['descr'].','.$data['book_title']['name'];
+            $this->template->write('meta',$meta , TRUE);
+            $this->template->write('metadescr', $meta, TRUE);
+            $this->template->write('title', $data['name'], true);
+            $this->template->write_view('content','qhda/article',$data );
+            $this->template->render();
+            
+        }
+        else
+        {
             show_404();
         }
     }
