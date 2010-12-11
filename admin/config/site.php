@@ -1,9 +1,9 @@
 <?php if (!defined('BASEPATH'))
     exit('No direct script access allowed');
-$config['pathtemplate'] = "themes/h/";
-$config['debug'] = FALSE;
+$config['pathtemplate'] = "../themes/abrasive/";
+$config['debug'] = TRUE;
 $config['site_name']='Krabik.co.ua';
-$config['folder']=FALSE;
-$config['folder_name']='admin';
 $config['smf']=FALSE;
+$config['folder']=TRUE;
+$config['folder_name']='admin';
 $config['smfpath']='./forum/smfapi.php';

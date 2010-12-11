@@ -23,15 +23,18 @@ if (!function_exists('lang_url')) {
        // $lang='';
         $uri='';
         $lang = lang_id();
+        $CI = &get_instance();
+        $index=1;
+        if($CI->config->item('folder')==true){$index=2;}
         if ($base == '' && $str!='') {
             
             $a = explode('/', $_SERVER["REQUEST_URI"]);
             //print_r($a);
-            if (count($a) > 0 && !empty($a[1])) {
+            if (count($a) > 0 && !empty($a[$index])) {
            
-            if($a[1]==$lang)
+            if($a[$index]==$lang)
             {
-             unset($a[1]);
+             unset($a[$index]);
             }
             $uri=implode('/', $a);
             }
@@ -46,6 +49,9 @@ if (!function_exists('lang_url')) {
         //echo $_SERVER["REQUEST_URI"];
         //if($_SERVER["REQUEST_URI"]=='/')
         //{$lang .= '/';}
+        if($CI->config->item('folder')==true){
+            return base_url().$CI->config->item('folder_name')."/". $lang .$uri ;// implode('/', $a);
+        }
         return base_url() . $lang .$uri ;// implode('/', $a);
     }
 
@@ -59,8 +65,10 @@ if (!function_exists('lang_id')) {
         $CI = &get_instance();
         $lang = $CI->config->item("language");
         $a = explode('/', $_SERVER["REQUEST_URI"]);
+        $lang_uri=$a[1];
+             if($CI->config->item('folder')==true){$lang_uri=$a[2];}
         if (sizeof($a) > 0) {
-            switch ($a[1]) {
+            switch ($lang_uri) {
                 case 'ru': {
                         $lang = "ru";
                         break;

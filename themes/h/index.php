@@ -12,7 +12,7 @@
 <?= $_styles ?>
 <?= $_scripts ?>
 <script type="text/javascript">
-    lang_url='<?=  lang_id()?>';
+  lang_url='<?=  lang_id()?>';
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-9529419-1']);
   _gaq.push(['_trackPageview']);
