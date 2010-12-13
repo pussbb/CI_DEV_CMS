@@ -24,7 +24,14 @@ class Permissions {
 	//$this->ci->load->helper('security');
 	$this->_check_user_type();
     }
-
+   function admin_access()
+   {
+    if($this->user_type!='admin')
+    {
+        show_error(lang('accesdenie'),403);
+    }
+    else return true;
+   }
     function _check_user_type()
     {
 	 if ($this->ci->session->userdata('username')==NULL)

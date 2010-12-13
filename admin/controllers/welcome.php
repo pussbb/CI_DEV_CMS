@@ -11,11 +11,23 @@ class Welcome extends Controller
 
     function index()
     {
-      $this->template->write('title', $this->lang->line('settings'), true);
-
-        $this->template->write('content', $this->user_mod->settings());
+       // print_r($this);
+      //$this->template->write('title', $this->lang->line('settings'), true);
+//$this->log_path = ($config['log_path'] != '') ? $config['log_path'] : BASEPATH.'logs/';
+        $this->template->write('content', $this->config->item('log_path').'log-'.date($this->config->item('log_date_format')).EXT);
 
         $this->template->render();
+    }
+    function addnews()
+    {
+        if(isset($_POST['title'])==false)
+        {
+            $this->load->view('addnews');
+        }
+        else
+        {
+            
+        }
     }
     
 }

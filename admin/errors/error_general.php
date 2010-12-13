@@ -88,9 +88,8 @@ margin: 			0 0 4px 0;
                     <span class="top"><span></span></span>  
                     <div class="error" align="left">
                     <h1><?php 
-           $a = explode('/', $_SERVER["REQUEST_URI"]);
-        if (sizeof($a) > 0) {
-            switch ($a[1]) {
+         
+            switch (lang_id ()) {
                 case 'ru':
                     { $back ='Вернуться назад'; break;
                     }
@@ -101,7 +100,7 @@ margin: 			0 0 4px 0;
                     $back ='Return to previous page';break;
 
             }
-        }  
+        
                     echo $heading;  ?></h1>
 		<?php echo $message; ?>
         <br />

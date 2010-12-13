@@ -115,7 +115,7 @@ a img {
 }
 
 #logo h2, #logo h2 a {
-	font-size: 13px;
+	font-size: 32px;
 	color: #9F9F9F;
 }
 
@@ -159,7 +159,7 @@ a img {
 #page {
 	
 	margin: 0px auto;
-	display: table;
+	display: block;
 }
 
 
@@ -168,12 +168,12 @@ a img {
 #content {
   background: url(images/content_top.png) repeat-x left top;
 	float: left;
-	width: 73%;
+	min-width: 73%;
+        width: 73%;
 	padding: 50px 0px 0px 35px;
 	-webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   background-color: whitesmoke;
-  
   border: 2px solid whitesmoke;
   border-radius: 8px;
   box-shadow:0 0 10px 0 #555555;
@@ -182,7 +182,7 @@ a img {
   -moz-border-radius: 7px 7px 7px 7px;
   -webkit-border-radius: 7px 7px 7px 7px;
   margin:2px 10px 5px 20px;
-  display:table;
+
 }
 
 .post {

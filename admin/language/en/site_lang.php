@@ -89,3 +89,15 @@ $lang['visible_prof']='Any registered users may view my profile';
 $lang['profile']='User Profile ';
 $lang['authr_user_only']='Only for registered users';
 $lang['profile_denied']='User has hidden his profile';
+
+///admin area
+$lang['quick_start']='Quick Start';
+$lang['addnews']='Add new News';
+$lang['newarticle']='Add new Article';
+$lang['new_file']='Add new File';
+$lang['manage']='Management';
+$lang['downcat']='Download categories';
+$lang['blogcat']='Blog categories';
+//$lang['users']='Users';
+$lang['articles']="Articles";
+$lang['files']="Files";
