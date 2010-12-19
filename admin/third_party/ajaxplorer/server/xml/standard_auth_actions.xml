@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<driver name="ajxpclient">
+	<actions>
+		<action name="login">
+			<gui text="163" title="168" src="encrypted.png"
+				accessKey="" hasAccessKey="false">
+				<context selection="false" dir="" recycle="false"
+					actionBar="true" contextMenu="false" infoPanel="false"
+					actionBarGroup="user">
+				</context>
+			</gui>
+			<rightsContext noUser="false" userLogged="hidden" guestLogged="show" read="false" write="false" adminOnly=""></rightsContext>			
+			<processing>
+				<clientCallback prepareModal="true"><![CDATA[
+					var loginRedirect = AJXP_LOGIN_REDIRECT;
+					if(loginRedirect){
+						document.location.href=loginRedirect;
+					}else{
+						modal.showDialogForm('Log In', ($('login_form')?'login_form':'login_form_dynamic'), 
+						function(){
+							var oForm = modal.getForm();
+							var connexion = new Connexion();
+							connexion.addParameter("get_action", "get_seed");
+							connexion.onComplete = function(transport){
+								$('login_seed').value = transport.responseText;
+							};
+							connexion.sendSync();
+						}, 
+						function(){
+							var oForm = modal.getForm();
+							var connexion = new Connexion();
+							connexion.addParameter('userid', oForm.userid.value);
+							connexion.addParameter('get_action', 'login');
+							connexion.addParameter('login_seed', oForm.login_seed.value);
+							if(oForm.login_seed.value != '-1'){
+								connexion.addParameter('password', hex_md5(hex_md5(oForm.password.value)+oForm.login_seed.value));
+							}else{
+								connexion.addParameter('password', oForm.password.value);
+							}
+							connexion.onComplete = function(transport){ajaxplorer.actionBar.parseXmlMessage(transport.responseXML);};
+							connexion.setMethod('put');
+							connexion.sendAsync();
+							oForm.userid.value = '';
+							oForm.password.value = '';
+							return false;				
+						});
+					}
+					]]></clientCallback>
+					<clientForm id="login_form_dynamic"><![CDATA[						
+						<form id="login_form_dynamic" action="login" box_width="210">
+						<input type="hidden" name="get_action" value="login">
+						<input type="hidden" name="login_seed" id="login_seed" value="">
+						<div class="dialogLegend" style="margin-bottom: 7px;" ajxp_message_id="180">AJXP_MESSAGE[180]</div>
+						<div>
+							<table cellpadding="3" border="0" cellspacing="0" style="font-size:11px;">
+							<tr><td align="right"><ajxp:message ajxp_message_id="181">AJXP_MESSAGE[181]</ajxp:message> :</td><td><input type="text" name="userid" style="width: 100px; padding:0px;" class="dialogFocus"></td></tr>
+							<tr><td align="right"><ajxp:message ajxp_message_id="182">AJXP_MESSAGE[182]</ajxp:message> :</td><td><input type="password" name="password"  style="width: 100px; padding:0px;"></td></tr>
+							<tr><td align="left" colspan="2"><input type="checkbox" class="radio" name="remember_me" style="border: none; width:20px !important;"/><ajxp:message ajxp_message_id="261">AJXP_MESSAGE[261]</ajxp:message></td></tr>
+							</table>
+						</div>
+						</form>					
+					]]></clientForm>
+				<serverCallback methodName="switchAction"></serverCallback>
+			</processing>
+		</action>		
+		<action name="pass_change">
+			<gui text="194" title="194" src="yast_security.png" accessKey="" hasAccessKey="false">
+				<context selection="false" dir="" recycle="true" ajxpWidgets="UserWidget::logging_string"></context>
+			</gui>
+			<processing>				
+				<clientCallback prepareModal="true" dialogOpenForm="pass_change_form" dialogOkButtonOnly="false" dialogSkipButtons="false">
+					<dialogOnOpen><![CDATA[
+						$('user_change_ownpass_old').value = $('user_change_ownpass1').value = $('user_change_ownpass2').value = '';
+						// Update pass_seed
+						var connexion = new Connexion();
+						connexion.addParameter("get_action", "get_seed");
+						connexion.onComplete = function(transport){
+							$('pass_seed').value = transport.responseText;
+						};
+						connexion.sendSync();			
+					]]></dialogOnOpen>
+					<dialogOnComplete hideDialog="false"><![CDATA[
+						var userOldPass = null;
+						var userPass = null;
+						var passSeed = null;
+						if($('user_change_ownpass1') && $('user_change_ownpass1').value && $('user_change_ownpass2').value)
+						{
+							if($('user_change_ownpass1').value != $('user_change_ownpass2').value){
+								alert(MessageHash[238]);
+								return false;
+							}
+							if($('user_change_ownpass_old').value == ''){
+								alert(MessageHash[239]);
+								return false;					
+							}
+							passSeed = $('pass_seed').value;
+							if(passSeed == '-1'){
+								userPass = $('user_change_ownpass1').value;
+								userOldPass = $('user_change_ownpass_old').value;
+							}else{
+								userPass = hex_md5($('user_change_ownpass1').value);
+								userOldPass = hex_md5( hex_md5($('user_change_ownpass_old').value)+$('pass_seed').value);
+							}				
+							var onComplete = function(transport){								
+								if(userPass != null){
+									if(transport.responseText == 'PASS_ERROR'){
+										alert(MessageHash[240]);
+									}else if(transport.responseText == 'SUCCESS'){
+										ajaxplorer.displayMessage('SUCCESS', MessageHash[197]);
+										hideLightBox(true);
+									}
+								}else{
+									ajaxplorer.displayMessage('SUCCESS', MessageHash[241]);
+									hideLightBox(true);
+								}
+							};
+							var conn = new Connexion();
+							conn.addParameter("get_action", "pass_change");
+							conn.addParameter("old_pass", userOldPass);
+							conn.addParameter("new_pass", userPass);
+							conn.addParameter("pass_seed", passSeed);
+							conn.onComplete = onComplete;
+							conn.sendAsync();
+						}
+					]]></dialogOnComplete>
+					<dialogOnCancel><![CDATA[]]></dialogOnCancel>
+				</clientCallback>
+				<clientForm id="pass_change_form"><![CDATA[
+					<div id="pass_change_form" action="pass_change_form" box_width="270">
+						<input type="hidden" name="pass_seed" id="pass_seed" value="">
+						<table cellpadding="2" cellspacing="0" border="0" style="font-size:11px;">
+							<tr>
+								<td align="right" style="width:100px; text-align:right;"><ajxp:message ajxp_message_id="237">AJXP_MESSAGE[237]</ajxp:message></td><td><input type="password" id="user_change_ownpass_old" value="" style="width:140px;"></td>
+							</tr>
+							<tr>
+								<td align="right" style="text-align:right;"><ajxp:message ajxp_message_id="198">AJXP_MESSAGE[198]</ajxp:message></td><td><input type="password" id="user_change_ownpass1" value="" style="width:140px;"></td>
+							</tr>
+							<tr>
+								<td align="right" style="text-align:right;"><ajxp:message ajxp_message_id="199">AJXP_MESSAGE[199]</ajxp:message></td><td><input type="password" id="user_change_ownpass2" value="" style="width:140px;"></td>
+							</tr>
+						</table>
+					</div>
+				]]></clientForm>				
+				<serverCallback methodName="switchAction"></serverCallback>
+			</processing>				
+		</action>		
+		<action name="logout" expireDefault="true">
+			<gui text="164" title="169" src="decrypted.png"
+				accessKey="" hasAccessKey="false">
+				<context selection="false" dir="" recycle="false"
+					contextMenu="false" actionBarGroup="user" ajxpWidgets="UserWidget::logging_string">
+				</context>
+			</gui>
+			<rightsContext noUser="false" userLogged="only" guestLogged="hidden" read="false" write="false" adminOnly=""></rightsContext>			
+			<processing>
+				<clientCallback prepareModal="false"><![CDATA[
+					clearRememberData();
+					var connexion = new Connexion();
+					connexion.addParameter('get_action', 'logout');
+					connexion.onComplete = function(transport){
+						ajaxplorer.actionBar.parseXmlMessage(transport.responseXML);
+						};
+					connexion.sendAsync();
+					]]></clientCallback>
+				<serverCallback methodName="switchAction"></serverCallback>
+			</processing>
+		</action>		
+	</actions>
+</driver>

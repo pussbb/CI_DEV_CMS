@@ -48,35 +48,7 @@ function blog_get_text_editor(url)
  {
   $('.post').load('welcome/'+uri);
  }
- function pms_close()
- {
-     $(".content").show();
-     $(".tmp_container").hide().html('');
- }
-function blog_add_editor()
-{
-    $('#blog_add_editor').css('display','none');
-    $('#comments_buttons').show();
-    $('.blog_comments_editor').ckeditor(
-    {
-        extraPlugins : 'syntaxhighlight',
-        toolbar:
-        [
-            ['Source','-','Save','NewPage','Preview','-','Templates'],
-            ['Cut','Copy','Paste','PasteText','PasteFromWord','-','Print', 'SpellChecker', 'Scayt'],
-            ['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
-            ['BidiLtr', 'BidiRtl'],
-            ['Bold','Italic','Underline','Strike','-','Subscript','Superscript'],'/',
-            ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote','CreateDiv'],
-            ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
-            ['Link','Unlink','Anchor'],
-            ['Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'],
-            ['TextColor','BGColor','Code'],'/',
-            ['Styles','Format','Font','FontSize'],
-        ]
-    });
-    
-}
+ 
 function pagination()
 {
    $('.ajax_pag a').click(function(event){

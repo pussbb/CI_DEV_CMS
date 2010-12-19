@@ -1,0 +1,35 @@
+12-19-10 13:24:26	127.0.1.1	INFO	shared	Create User	user_id=admin
+12-19-10 13:24:48	127.0.1.1	INFO	admin	Log In	
+12-19-10 13:24:48	127.0.1.1	INFO	admin	Disabling Public links, PUBLIC_DOWNLOAD_FOLDER is not writeable!	folder=false;is_dir=false;is_writeable=false
+12-19-10 13:24:49	127.0.1.1	INFO	admin	Disabling Public links, PUBLIC_DOWNLOAD_FOLDER is not writeable!	folder=false;is_dir=false;is_writeable=false
+12-19-10 13:24:50	127.0.1.1	INFO	admin	Disabling Public links, PUBLIC_DOWNLOAD_FOLDER is not writeable!	folder=false;is_dir=false;is_writeable=false
+12-19-10 13:24:52	127.0.1.1	INFO	admin	Disabling Public links, PUBLIC_DOWNLOAD_FOLDER is not writeable!	folder=false;is_dir=false;is_writeable=false
+12-19-10 13:24:59	127.0.1.1	INFO	admin	Disabling Public links, PUBLIC_DOWNLOAD_FOLDER is not writeable!	folder=false;is_dir=false;is_writeable=false
+12-19-10 13:24:59	127.0.1.1	INFO	admin	Create File	file=//dfdsf
+12-19-10 13:24:59	127.0.1.1	INFO	admin	Disabling Public links, PUBLIC_DOWNLOAD_FOLDER is not writeable!	folder=false;is_dir=false;is_writeable=false
+12-19-10 13:25:00	127.0.1.1	INFO	admin	Disabling Public links, PUBLIC_DOWNLOAD_FOLDER is not writeable!	folder=false;is_dir=false;is_writeable=false
+12-19-10 13:25:22	127.0.1.1	INFO	admin	Disabling Public links, PUBLIC_DOWNLOAD_FOLDER is not writeable!	folder=false;is_dir=false;is_writeable=false
+12-19-10 13:25:22	127.0.1.1	INFO	admin	Upload File	file=//239-1.jpg
+12-19-10 13:25:22	127.0.1.1	INFO	admin	Disabling Public links, PUBLIC_DOWNLOAD_FOLDER is not writeable!	folder=false;is_dir=false;is_writeable=false
+12-19-10 13:25:22	127.0.1.1	INFO	admin	Upload File	file=//cid_002501c50942$b3b80400$4aeafea9@o1u6u7.jpg
+12-19-10 13:25:22	127.0.1.1	INFO	admin	Disabling Public links, PUBLIC_DOWNLOAD_FOLDER is not writeable!	folder=false;is_dir=false;is_writeable=false
+12-19-10 13:25:23	127.0.1.1	INFO	admin	Disabling Public links, PUBLIC_DOWNLOAD_FOLDER is not writeable!	folder=false;is_dir=false;is_writeable=false
+12-19-10 13:25:36	127.0.1.1	INFO	admin	Disabling Public links, PUBLIC_DOWNLOAD_FOLDER is not writeable!	folder=false;is_dir=false;is_writeable=false
+12-19-10 13:25:37	127.0.1.1	INFO	admin	Disabling Public links, PUBLIC_DOWNLOAD_FOLDER is not writeable!	folder=false;is_dir=false;is_writeable=false
+12-19-10 13:25:39	127.0.1.1	INFO	admin	Disabling Public links, PUBLIC_DOWNLOAD_FOLDER is not writeable!	folder=false;is_dir=false;is_writeable=false
+12-19-10 13:25:41	127.0.1.1	INFO	admin	Disabling Public links, PUBLIC_DOWNLOAD_FOLDER is not writeable!	folder=false;is_dir=false;is_writeable=false
+12-19-10 13:25:41	127.0.1.1	INFO	admin	Disabling Public links, PUBLIC_DOWNLOAD_FOLDER is not writeable!	folder=false;is_dir=false;is_writeable=false
+12-19-10 13:25:42	127.0.1.1	INFO	admin	Disabling Public links, PUBLIC_DOWNLOAD_FOLDER is not writeable!	folder=false;is_dir=false;is_writeable=false
+12-19-10 13:25:42	127.0.1.1	INFO	admin	Disabling Public links, PUBLIC_DOWNLOAD_FOLDER is not writeable!	folder=false;is_dir=false;is_writeable=false
+12-19-10 13:25:43	127.0.1.1	INFO	admin	Disabling Public links, PUBLIC_DOWNLOAD_FOLDER is not writeable!	folder=false;is_dir=false;is_writeable=false
+12-19-10 13:25:44	127.0.1.1	INFO	admin	Disabling Public links, PUBLIC_DOWNLOAD_FOLDER is not writeable!	folder=false;is_dir=false;is_writeable=false
+12-19-10 13:30:11	127.0.1.1	INFO	admin	Switch Repository	rep. id=1
+12-19-10 13:34:47	127.0.1.1	INFO	admin	Switch Repository	rep. id=0
+12-19-10 13:41:53	127.0.1.1	INFO	admin	Disabling Public links, PUBLIC_DOWNLOAD_FOLDER is not writeable!	folder=false;is_dir=false;is_writeable=false
+12-19-10 13:41:53	127.0.1.1	INFO	admin	error	message=Cannot create root path for repository (Default Files). Please check repository configuration or that your folder is writeable! in /opt/lampp/htdocs/krabik/htdocs/CI_DEV_CMS/files/plugins/access.fs/class.fsAccessDriver.php (l.64)
+12-19-10 13:42:36	127.0.1.1	INFO	admin	Switch Repository	rep. id=1
+12-19-10 13:43:07	127.0.1.1	INFO	admin	Switch Repository	rep. id=0
+12-19-10 13:44:26	127.0.1.1	INFO	admin	Switch Repository	rep. id=1
+12-19-10 13:45:19	127.0.1.1	INFO	admin	Switch Repository	rep. id=0
+12-19-10 13:58:29	127.0.1.1	INFO	admin	Switch Repository	rep. id=ajxp_shared
+12-19-10 13:58:59	127.0.1.1	INFO	admin	Switch Repository	rep. id=0
