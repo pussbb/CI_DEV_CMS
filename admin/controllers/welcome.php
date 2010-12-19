@@ -40,6 +40,18 @@ class Welcome extends Controller
 
         }
     }
+
+    function newfile()
+    {
+        if(isset($_POST['title'])==false)
+        {
+            $this->load->view('newfile');
+        }
+        else
+        {
+
+        }
+    }
     
 }
 

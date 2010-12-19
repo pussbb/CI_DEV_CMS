@@ -33,3 +33,11 @@
 12-19-10 13:45:19	127.0.1.1	INFO	admin	Switch Repository	rep. id=0
 12-19-10 13:58:29	127.0.1.1	INFO	admin	Switch Repository	rep. id=ajxp_shared
 12-19-10 13:58:59	127.0.1.1	INFO	admin	Switch Repository	rep. id=0
+12-19-10 14:07:27	127.0.1.1	INFO	admin	Upload File	file=//cid_002501c50942$b3b80400$4aeafea9@o1u6u7.jpg
+12-19-10 14:07:27	127.0.1.1	INFO	admin	Upload File	file=//l_fe80a4a5.png
+12-19-10 14:08:04	127.0.1.1	INFO	admin	Upload File	file=/src/ajaxplorer-core-3.1.1.zip
+12-19-10 14:08:17	127.0.1.1	INFO	admin	Chmod	dir=/src;filesCount=1
+12-19-10 14:40:32	127.0.1.1	INFO	admin	Move	files=/cid_002501c50942$b3b80400$4aeafea9@o1u6u7.zip;destination=/recycle_bin
+12-19-10 14:40:44	127.0.1.1	INFO	admin	Delete	files=/recycle_bin/cid_002501c50942$b3b80400$4aeafea9@o1u6u7.zip
+12-19-10 15:04:48	127.0.1.1	INFO	admin	Log Out	
+12-19-10 16:12:57	127.0.1.1	INFO	admin	Log In	
