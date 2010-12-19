@@ -9,8 +9,6 @@
     <ul>
         <li><a href="#" > <?=  lang('downcat')?></a></li>
         <li><a href="#"> <?=  lang('blogcat')?></a></li>
-        <li><a href="#"> <?=  lang('articles')?></a></li>
-        <li><a href="#"> <?=  lang('files')?></a></li>
         <li><a target="_blank" href="<?=base_url()?>admin/third_party/ajaxplorer/index.php?ignore_tests=true"> File Manager</a></li>
 
     </ul>

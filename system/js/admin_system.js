@@ -27,8 +27,14 @@ function addnews()
 }
 function del_ckeditors()
 {
-    for (prop in CKEDITOR.instances) {
-        CKEDITOR.instances.prop.destrot();
+    for (prop in CKEDITOR.instances) {//alert(prop);
+        var instance = CKEDITOR.instances[prop];
+    if(instance)
+    {
+        CKEDITOR.remove(instance);
+    }
+
+        ///CKEDITOR.instances[prop].destrot();
     }
 }
 
@@ -46,11 +52,12 @@ function blog_get_text_editor(url)
  }
  function load(uri)
  {
+  del_ckeditors()
   $('.post').load('welcome/'+uri);
  }
  
 function pagination()
-{
+{  
    $('.ajax_pag a').click(function(event){
        var link = $(this).attr('href');
        event.preventDefault();

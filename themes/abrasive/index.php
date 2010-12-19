@@ -6,7 +6,7 @@
 <meta name="keywords" content="<?= $meta ?>" />
 <meta name="description" content="<?= $metadescr ?>" />
 <link href="<?php echo base_url() . $this->config->item('pathtemplate'); ?>style.css" rel="stylesheet" type="text/css" media="screen" />
-<link rel="stylesheet" type="text/css" href="<?php echo base_url(). 'themes/system/system.css';?>"/>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(). 'themes/system/admin_system.css';?>"/>
 <?= $_styles ?>
 <?= $_scripts ?>
 </head>
@@ -20,10 +20,10 @@
 		<!-- end #logo -->
 		<div id="menu">
 			<ul>
-				<li class="first"><a href="<?php echo lang_url('','apps'); ?>"><?= $this->lang->line('apps'); ?></a></li>
-				<li><a href="<?=lang_url(null,'blog');?>"><?= $this->lang->line('blog'); ?></a></li>
-				<li><a href="<?=lang_url(null,'news');?>"><?=lang('news')?></a></li>
-				<li><a href="<?=lang_url(null,'users');?>"><?=lang('users')?></a></li>
+				<li class="first"><a href="#" onclick="load('app');"><?= $this->lang->line('apps'); ?></a></li>
+				<li><a href="#" onclick="load('blog');"><?= $this->lang->line('blog'); ?></a></li>
+				<li><a href="#" onclick="load('news');"><?=lang('news')?></a></li>
+				<li><a href="#" onclick="load('users');"><?=lang('users')?></a></li>
 			</ul>
 		</div>
 		<!-- end #menu -->

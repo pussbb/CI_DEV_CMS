@@ -6,7 +6,7 @@ class Welcome extends Controller
     function __construct()
     {
         parent::Controller();
-
+        $this->load->model("action");
     }
 
     function index()
@@ -28,6 +28,26 @@ class Welcome extends Controller
         {
             
         }
+    }
+    function news()
+    {
+        $this->db->select("*");
+        $this->db->from("news");
+        $this->db->order_by("datepost", "desc"); ;
+        $query=$this->db->get();
+        $this->load->view('news',array("news"=>$query->result()));
+    }
+    function users()
+    {
+        echo $this->action->userpagination(null, 0);
+    }
+    function blog()
+    {
+        echo $this->action->blogpagination(null, 0);
+    }
+     function app()
+    {
+        echo $this->action->apppagination(null, 0);
     }
     function article()
     {
