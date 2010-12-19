@@ -29,6 +29,17 @@ class Welcome extends Controller
             
         }
     }
+    function article()
+    {
+        if(isset($_POST['title'])==false)
+        {
+            $this->load->view('newarticle');
+        }
+        else
+        {
+
+        }
+    }
     
 }
 

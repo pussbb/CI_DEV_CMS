@@ -1,7 +1,7 @@
 <li><h2><?=lang('quick_start')?></h2>
     <ul>
         <li><a href="#" onclick="addnews();"> <?=  lang('addnews')?></a></li>
-        <li><a href="#"> <?=  lang(('newarticle'))?></a></li>
+        <li><a href="#" onclick="load('article');"> <?=  lang(('newarticle'))?></a></li>
         <li><a href="#"> <?=  lang(('new_file'))?></a></li>
     </ul>
 </li>
