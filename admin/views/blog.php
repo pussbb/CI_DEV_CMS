@@ -39,6 +39,7 @@ foreach($blog as $item)
 {
  echo '<tr id="title'.$item->id.'"><td>'.$item->blogcat_name.'</td><td>'.$item->title.'</td>
      <td><img title="'.lang('delete').'" onclick="delete_me('.$item->id.');" src="'.  base_url().'images/Remove.png">
+         <img title="edit"  onclick="load(\'article/'.$item->id.'\');" src="'.  base_url().'images/editor.png">
          <img title="'.lang('view').'"  onclick="display_msg('.$item->id.');" src="'.  base_url().'images/Preview.png">
 </td></tr>' ;
  echo '<tr id="msg'.$item->id.'" new="" style="display:none;"><td colspan="3">'.lang('text').': '.$item->shorttext.'</td></tr>' ;

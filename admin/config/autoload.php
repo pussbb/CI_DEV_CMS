@@ -50,7 +50,7 @@ $autoload['libraries'] = array('database','template','userauth','session','permi
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] =array('url','language','translate');
+$autoload['helper'] =array('url','language','translate','article');
 
 
 /*

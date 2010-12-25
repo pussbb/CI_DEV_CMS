@@ -34,22 +34,10 @@ function del_ckeditors()
         CKEDITOR.remove(instance);
     }
 
-        ///CKEDITOR.instances[prop].destrot();
     }
 }
 
-function blog_get_text_editor(url)
-{
-        var oEditor = CKEDITOR.instances.editor1;
-        $(".blog_comments").load(url,{'add':oEditor.getData()});
-        $('.blog_comments_editor').ckeditor(function(){this.destroy();}).text('');
-        $('#comments_buttons').hide(); 
-}
- function  remove_edit_blog(){
-        $('#blog_add_editor').css('display','');
-        $('.blog_comments_editor').ckeditor(function(){this.destroy();}).text('');
-        $('#comments_buttons').hide();
- }
+
  function load(uri)
  {
   del_ckeditors()

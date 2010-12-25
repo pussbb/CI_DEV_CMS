@@ -1,78 +1,70 @@
 <?php
 
-class Welcome extends Controller
-{
+class Welcome extends Controller {
 
-    function __construct()
-    {
+    function __construct() {
         parent::Controller();
         $this->load->model("action");
     }
 
-    function index()
-    {
-       // print_r($this);
-      //$this->template->write('title', $this->lang->line('settings'), true);
-//$this->log_path = ($config['log_path'] != '') ? $config['log_path'] : BASEPATH.'logs/';
-        $this->template->write('content', $this->config->item('log_path').'log-'.date($this->config->item('log_date_format')).EXT);
+    function index() {
+
+        $this->template->write('content', $this->config->item('log_path') . 'log-' . date($this->config->item('log_date_format')) . EXT);
 
         $this->template->render();
     }
-    function addnews()
-    {
-        if(isset($_POST['title'])==false)
-        {
+
+    function addnews() {
+        if (isset($_POST['title']) == false) {
             $this->load->view('addnews');
-        }
-        else
-        {
-            
+        } else {
+            if (isset($_POST['title']) && isset($_POST['body'])) {
+                $data = array(
+                    'title' => $this->input->post('title'),
+                    'text' => $this->input->post('body'),
+                    'datepost' => date("Y-m-d h:m:s")
+                );
+                if ($this->db->insert('news', $data) == 1)
+                    echo 'Added';
+                else
+                    echo 'error';
+            }
         }
     }
-    function news()
-    {
+
+    function news() {
         $this->db->select("*");
         $this->db->from("news");
-        $this->db->order_by("datepost", "desc"); ;
-        $query=$this->db->get();
-        $this->load->view('news',array("news"=>$query->result()));
+        $this->db->order_by("datepost", "desc");
+        ;
+        $query = $this->db->get();
+        $this->load->view('news', array("news" => $query->result()));
     }
-    function users()
-    {
+
+    function users() {
         echo $this->action->userpagination(null, 0);
     }
-    function blog()
-    {
+
+    function blog() {
         echo $this->action->blogpagination(null, 0);
     }
-     function app()
-    {
+
+    function app() {
         echo $this->action->apppagination(null, 0);
     }
-    function article()
-    {
-        if(isset($_POST['title'])==false)
-        {
-            $this->load->view('newarticle');
-        }
-        else
-        {
 
-        }
+    function article() {
+        $this->action->article();
     }
 
-    function newfile()
-    {
-        if(isset($_POST['title'])==false)
-        {
+    function newfile() {
+        if (isset($_POST['title']) == false) {
             $this->load->view('newfile');
-        }
-        else
-        {
+        } else {
 
         }
     }
-    
+
 }
 
 /* End of file welcome.php */
