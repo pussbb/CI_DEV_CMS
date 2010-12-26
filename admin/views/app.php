@@ -26,7 +26,7 @@ else
         <thead>
             <tr>
                 <th scope="col" class="rounded-company">#</th>
-                <th scope="col" class="rounded-q3">E-mail</th>
+                <th scope="col" class="rounded-q3">E-maiDescriptionl</th>
                 <th scope="col" class="rounded-q4"><?= lang('option'); ?></th>
             </tr>
         </thead>

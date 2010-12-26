@@ -11,11 +11,7 @@ class Action extends CI_Model {
     }
     function article()
     {
-        $uri = 0;
-        if ($this->uri->total_rsegments() > 3)
-            $uri = $this->uri->segment(4, 0);
-        else
-            $uri=$this->uri->segment(3, 0);
+        $uri=$this->uri->rsegment(3);
         if (is_numeric($uri) && $uri != 0) {
 
             $query = $this->db->get_where('blog', array('id' => $uri));
@@ -71,6 +67,124 @@ class Action extends CI_Model {
                         echo 'error';
                 }
             }
+        }
+    }
+    function newfile()
+    {
+        $uri=$this->uri->rsegment(3);
+        if (is_numeric($uri) && $uri != 0) {
+            $query = $this->db->get_where('downfiles', array('id' => $uri));
+            $query2 = $this->db->get('downcat');
+
+            $this->load->view('newfile', array('cats' => $query2->result(), 'data' => $query->row_array()));
+            return;
+        }
+        if (isset($_POST['namefile']) == false) {
+            $query = $this->db->get('downcat');
+             $data = array(
+                    'name' => '',
+                    'descr' => '',
+                    'catid' => -1,
+                    'image' =>'',
+                    'filepath'=>''
+                );
+            $this->load->view('newfile',array('cats'=>$query->result(),'data'=>$data));
+        } else {
+             if (isset($_POST['namefile']) && isset($_POST['catid']) && isset($_POST['file'])) {
+                $perm = $this->userauth->default_permision;
+                $catid = $this->input->post('catid');
+                $query = $this->db->get_where('downcat', array('id' => $this->input->post('catid')));
+                if ($query->num_rows > 0) {
+                    $row = $query->row();
+                    $perm = $row->permission;
+                }
+                $file = FCPATH."../" . $this->input->post('file');
+                $dets = 'Size: ' . $this->_niceSize(filesize($file)) . '<br />' . 'Date :' . date("d.m.y");
+               // echo $dets;exit();
+                $data = array(
+                    'name' => $this->input->post('namefile'),
+                    'descr' => $this->input->post('descr'),
+                    'permission' => $perm,
+                    'catid' => $catid,
+                    'details'=>$dets,
+                    'image' => $this->input->post('image'),
+                    'filepath'=>$this->input->post('file')
+                );
+                if (isset($_POST['app_id'])) {
+                    $this->db->where('id', $this->input->post('app_id'));
+                    if ($this->db->update('downfiles', $data) == 1)
+                        echo 'Added';
+                    else
+                        echo 'error';
+                }
+                else {
+                    if ($this->db->insert('downfiles', $data) == 1)
+                        echo 'Added';
+                    else
+                        echo 'error';
+                }
+             }
+        }
+    }
+    function _niceSize($size)
+    {
+        $sidestep = 1024.0;
+        static $sizeUnits = array();
+        if (count($sizeUnits) == 0) {
+            $sizeUnits[] = "&nbsp;" . "B";
+            $sizeUnits[] = "KB";
+            $sizeUnits[] = "MB";
+            $sizeUnits[] = "GB";
+            $sizeUnits[] = "TB";
+        }
+
+        if ($size === "")
+            return "";
+
+        $unitIndex = 0;
+        while ($size > $sidestep) {
+            $size = $size / $sidestep;
+            $unitIndex++;
+        }
+
+        if ($unitIndex == 0) {
+            return number_format($size, 0) . "&nbsp;" . $sizeUnits[$unitIndex];
+        } else {
+            return number_format($size, 1, ".", ",") . "&nbsp;" . $sizeUnits[$unitIndex];
+        }
+    }
+    function user_edit()
+    {
+        if(!isset($_POST['user_id']))
+        {
+            $uri=$this->uri->rsegment(3);
+            $query = $this->db->get_where('users', array('id' => $uri));
+            $this->load->view('edit_user',array('user'=>$query->row()));
+        }
+        else
+        {
+           
+            $permission['group']=$this->input->post('group');
+            $permission['admin']=$this->input->post('admin');
+            $permission['user'] =$this->input->post('user');
+            $permission['guest']=$this->input->post('guest');
+            if(isset($_POST['banned']))
+            {
+                $data['banned']=1;
+                $data['banedreason']=$this->input->post('banedreason');
+            }
+            else
+            {
+                $data['banned']=0;
+                $data['banedreason']='';
+            }
+            $data['permission']=serialize($permission);
+            $this->db->where('id', $this->input->post('user_id'));
+                    if ($this->db->update('users', $data) == 1)
+                              echo 'Added';
+                    else
+                        echo 'error';
+
         }
     }
     // $limit - кол-во получаемых записей

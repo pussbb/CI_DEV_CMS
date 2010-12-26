@@ -1,4 +1,3 @@
-
 <div class="status" style="display:none;"></div>
 <form id="form_71837" class="appnitro"  method="post" action="">
 <div class="form_description">

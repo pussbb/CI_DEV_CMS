@@ -38,8 +38,10 @@ pagination();
 foreach($users as $item)
 {
  echo '<tr id="title'.$item->id.'"><td>'.$item->name.'</td><td>'.$item->email.'</td>
-     <td><img title="'.lang('delete').'" onclick="delete_me('.$item->id.');" src="'.  base_url().'images/Remove.png">
-         <img title="'.lang('view').'"  onclick="display_msg('.$item->id.');" src="'.  base_url().'images/Preview.png">
+     <td>
+     <img title="'.lang('delete').'" onclick="delete_me('.$item->id.');" src="'.  base_url().'images/Remove.png">
+      <img title="edit"  onclick="load(\'edituser/'.$item->id.'\');" src="'.  base_url().'images/editor.png">
+     <img title="'.lang('view').'"  onclick="display_msg('.$item->id.');" src="'.  base_url().'images/Preview.png">
 </td></tr>' ;
  echo '<tr id="msg'.$item->id.'" new="" style="display:none;"><td colspan="3">'.lang('text').': '.$item->last_login.'</td></tr>' ;
 }

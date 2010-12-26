@@ -6,7 +6,7 @@
 	<script type="text/javascript" >
 
 	    function move() {
-	    window.location = '<?=base_url()?>/apps/download/<?=$id;?>';
+	    window.location = '<?=base_url()?>apps/download/<?=$id;?>';
 	    }
 	    setTimeout('move()',3000);
 	</script>
