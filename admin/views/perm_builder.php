@@ -28,7 +28,25 @@
                       }
                        else
                       {
-                          echo '<input name="'.$key.'" type="hidden" value="'.$value.'" />';
+                           if($key=='group')
+                           {
+
+           echo "<select name=\"group\">";
+
+            $selected = "";
+            if($value==0) $selected = "selected";
+            echo "<option value=\"0\" $selected>Default(no group)</option>";
+            foreach ($this->user_mod->user_cats as $cat) {
+                if ($value== $cat->id)
+                    $selected = "selected";
+                else
+                    $selected="";
+                echo "<option value=\"$cat->id\" $selected>$cat->name</option>";
+            }
+
+       echo "</select><br/>";
+                           }
+                           else  echo '<input name="'.$key.'" type="hidden" value="'.$value.'" />';
                       }
                   }
                   ?>

@@ -5,7 +5,8 @@ class User_mod extends CI_Model {
     function User_mod() {
         parent::CI_Model();
         $this->user_menu();
-        $this->user_cats=$this->db->get('group');
+        $query=$this->db->get('group');
+        $this->user_cats=$query->result() ;
     }
 
     function user_menu() {

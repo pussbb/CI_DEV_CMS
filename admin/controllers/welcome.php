@@ -9,11 +9,14 @@ class Welcome extends Controller {
 
     function index() {
 
-        $this->template->write('content', $this->config->item('log_path') . 'log-' . date($this->config->item('log_date_format')) . EXT);
-
+        //$this->template->write('content', $this->config->item('log_path') . 'log-' . date($this->config->item('log_date_format')) . EXT);
+        $this->template->write('content',$this->action->downfiles_statistic());
         $this->template->render();
     }
-
+    function errorlog()
+    {
+         $this->action->errorlog();
+    }
     function addnews() {
         if (isset($_POST['title']) == false) {
             $this->load->view('addnews');
@@ -54,13 +57,34 @@ class Welcome extends Controller {
     function app() {
         echo $this->action->apppagination(null, 0);
     }
-
+    function blogcomments()
+    {
+        echo $this->action->blogcomments(null, 0);
+    }
     function article() {
         $this->action->article();
     }
 
     function newfile() {
         $this->action->newfile();
+    }
+    function downcat()
+    {
+        $query = $this->db->get('downcat');
+        $this->load->view('downcat', array('cats' => $query->result()));
+    }
+     function blogcat()
+    {
+         $query = $this->db->get('catblog');
+         $this->load->view('blogcat', array('cats' => $query->result()));
+    }
+    function newdowncat()
+    {
+        $this->action->newdowncat();
+    }
+     function newblogcat()
+    {
+        $this->action->newblogcat();
     }
 
 }
