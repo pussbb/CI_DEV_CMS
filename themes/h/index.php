@@ -28,6 +28,7 @@
 <body>
 
 <div id="main_container">
+    <a href="<?php echo base_url().'welcome/picassa';?>"><img alt="rss news feed" src="<?php echo base_url()?>images/Inside-picasa-48.png" title="Picassa Web Album" style="float: right; border:none; " /></a>
 <a href="<?php echo base_url().'welcome/rss';?>"><img alt="rss news feed" src="<?php echo base_url()?>images/rss/Inside-rss-48.png" style="float: right; border:none; " /></a>
 <a href="<?php echo lang_url('ru');?>"><img alt="russian lang" src="<?php echo base_url()?>images/flags/Rossiya-Russia-48.png" style="float: right; border:none; "/></a>
 <a href="<?php echo lang_url('en');?>"><img alt="english lang" src="<?php echo base_url()?>images/flags/UK-48.png" style="float: right; border:none; " /></a>

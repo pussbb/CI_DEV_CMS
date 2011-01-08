@@ -20,7 +20,15 @@ class Welcome extends Controller
        $this->template->write('futures', $this->ns->welcome_page());
        $this->template->render();
     }
-
+    function picassa()
+    {
+       $this->template->write('content', '<div id="pics"></div>');
+        $this->template->add_js("system/js/embedPicassaGallary/slimbox2.js", 'import');
+        $this->template->add_js("system/js/embedPicassaGallary/jquery.EmbedPicasaGallery.js", 'import');
+        $this->template->add_js("jQuery(document).ready(function() {jQuery(\"#pics\").EmbedPicasaGallery('pussbb',{loading_animation: 'images/loading.gif'})})", 'embed');
+	$this->template->add_css("system/js/embedPicassaGallary/css/slimbox2.css", 'link','screen');
+       $this->template->render();
+    }
     function rss()
     {
         $this->load->library('wxml');

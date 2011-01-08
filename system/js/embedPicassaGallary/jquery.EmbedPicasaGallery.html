@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>Demo Page for EmbedPicasaGallery by Tobi Oetiker</title>
+<script type="text/javascript" src="jquery-1.3.2.min.js"></script>
+<link rel="stylesheet" href="css/slimbox2.css" type="text/css" media="screen" />
+<script type="text/javascript" src="slimbox2.js"></script>
+<script type="text/javascript" src="jquery.EmbedPicasaGallery.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function() {
+    jQuery("#pics").EmbedPicasaGallery('oetiker',{
+        loading_animation: 'css/loading.gif'
+    })
+
+ $("#pics2").EmbedPicasaGallery('oetiker',{
+  albumid: "5484803453430469713",
+  size: 32, // thumb size (32,48,64,72,144,160))
+  loading_animation: "http://oss.oetiker.ch/jquery/css/loading.gif"
+ });
+
+})
+</script>
+<body>
+<h1>Test page for EmbedPicasGallery</h1>
+
+<div id="pics"></div>
+
+<div id="pics2"></div>
+
+<p>Created by <a href="http://tobi.oetiker.ch">Tobi Oetiker</a>. Go to the <a href="http://plugins.jquery.com/project/EmbedPicasaGallery">homepage</a> for more information.</p>
+</body>
+</html>
