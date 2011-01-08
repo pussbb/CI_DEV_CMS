@@ -43,7 +43,7 @@ foreach($users as $item)
       <img title="edit"  onclick="load(\'edituser/'.$item->id.'\');" src="'.  base_url().'images/editor.png">
      <img title="'.lang('view').'"  onclick="display_msg('.$item->id.');" src="'.  base_url().'images/Preview.png">
 </td></tr>' ;
- echo '<tr id="msg'.$item->id.'" new="" style="display:none;"><td colspan="3">'.lang('text').': '.$item->last_login.'</td></tr>' ;
+ echo '<tr id="msg'.$item->id.'" new="" style="display:none;"><td colspan="3">'.$this->load->view('edit_user',array('user'=>$item),true).'</td></tr>' ;
 }
 ?>
     </tbody>

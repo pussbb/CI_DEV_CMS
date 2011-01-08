@@ -49,6 +49,10 @@
 		<div>
 			<textarea id="text_blog" name="text" class="element textarea medium"><?=$data['textpost']?></textarea>
 		</div>
+                 <?php
+                if(isset($data['permissions']))
+		echo '<li>'.$this->load->view('perm_builder',array('id'=>$data['id'],'permission'=>$data['permissions'])).'</li>';
+                    ?>
 		</li>
 
 					<li class="buttons">
@@ -61,7 +65,9 @@
 
 				<input id="saveForm" class="button_text" type="button" value="Submit" onclick="save_article()"/>
 		</li>
-			</ul>
+               
+                        </ul>
+
 		</form>
 <script type="text/javascript" >
    $('#text_blog').ckeditor(

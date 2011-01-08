@@ -36,8 +36,6 @@ function del_ckeditors()
 
     }
 }
-
-
  function load(uri)
  {
   del_ckeditors()

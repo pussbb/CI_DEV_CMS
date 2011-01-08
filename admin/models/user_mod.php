@@ -1,10 +1,11 @@
 <?php
 
 class User_mod extends CI_Model {
-
+    var $user_cats=array();
     function User_mod() {
         parent::CI_Model();
         $this->user_menu();
+        $this->user_cats=$this->db->get('group');
     }
 
     function user_menu() {

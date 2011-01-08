@@ -36,10 +36,17 @@ class Action extends CI_Model {
             if (isset($_POST['title']) && isset($_POST['catid']) && isset($_POST['text'])) {
                 $perm = $this->userauth->default_permision;
                 $catid = $this->input->post('catid');
-                $query = $this->db->get_where('catblog', array('id' => $this->input->post('catid')));
-                if ($query->num_rows > 0) {
-                    $row = $query->row();
-                    $perm = $row->permissions;
+                if(!isset($_POST['admin']) && !isset($_POST['user']))
+                {
+                    $query = $this->db->get_where('catblog', array('id' => $this->input->post('catid')));
+                    if ($query->num_rows > 0) {
+                        $row = $query->row();
+                        $perm = $row->permissions;
+                    }
+                }
+                else
+                {
+                    $perm=$this->_post_perm();
                 }
                 $data = array(
                     'title' => $this->input->post('title'),
@@ -93,11 +100,19 @@ class Action extends CI_Model {
              if (isset($_POST['namefile']) && isset($_POST['catid']) && isset($_POST['file'])) {
                 $perm = $this->userauth->default_permision;
                 $catid = $this->input->post('catid');
-                $query = $this->db->get_where('downcat', array('id' => $this->input->post('catid')));
-                if ($query->num_rows > 0) {
-                    $row = $query->row();
-                    $perm = $row->permission;
+                if(!isset($_POST['admin']) && !isset($_POST['user']))
+                {
+                   $query = $this->db->get_where('downcat', array('id' => $this->input->post('catid')));
+                    if ($query->num_rows > 0) {
+                        $row = $query->row();
+                        $perm = $row->permission;
+                    }
                 }
+                else
+                {
+                    $perm=$this->_post_perm();
+                }
+                
                 $file = FCPATH."../" . $this->input->post('file');
                 $dets = 'Size: ' . $this->_niceSize(filesize($file)) . '<br />' . 'Date :' . date("d.m.y");
                // echo $dets;exit();
@@ -186,6 +201,14 @@ class Action extends CI_Model {
                         echo 'error';
 
         }
+    }
+    function _post_perm()
+    {
+        $permission['group']=$this->input->post('group');
+        $permission['admin']=$this->input->post('admin');
+        $permission['user'] =$this->input->post('user');
+        $permission['guest']=$this->input->post('guest');
+        return serialize($permission);
     }
     // $limit - кол-во получаемых записей
     // $offset - смещение, с какой записи начинать выборку

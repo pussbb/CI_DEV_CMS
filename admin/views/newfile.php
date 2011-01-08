@@ -35,6 +35,10 @@
         <textarea id="descr" name="descr">
 <?=$data['descr']?>
         </textarea>
+         <?php
+                if(isset($data['permission']))
+		echo '<li>'.$this->load->view('perm_builder',array('id'=>$data['id'],'permission'=>$data['permission'])).'</li>';
+                    ?>
         <input type="button" value="Submit" onclick="save_file()"/>
 <?php
 if(isset($data['id']))
