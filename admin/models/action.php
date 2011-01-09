@@ -168,6 +168,59 @@ class Action extends CI_Model {
         }
     }
 
+    function newusergroup() {
+        $uri = $this->uri->rsegment(3);
+        if (is_numeric($uri) && $uri != 0) {
+
+            $query = $this->db->get_where('group', array('id' => $uri));
+            $data=$query->row_array();
+            if(empty($data['permissions']))
+            {
+                $perm=$this->userauth->default_permision;
+                unset($perm['group']);
+                $data['permissions']=serialize($perm);
+            }
+            
+            $this->load->view('newusergroup', array('data' => $data));
+            return;
+        }
+        if (isset($_POST['title']) == false) {
+
+            $data = array(
+                'id' => 0,
+                'name' => '',
+                'permissions' => serialize($this->userauth->default_permision),
+            );
+            $this->load->view('newusergroup', array('data' => $data));
+        } else {
+
+            if (isset($_POST['title'])) {
+                $perm = $this->userauth->default_permision;
+                
+                if (isset($_POST['admin']) && isset($_POST['user'])) {
+                    $perm = $this->_post_perm();
+                }
+                $data = array(
+                    'name' => $this->input->post('title'),
+                    'permissions' => $perm,
+                );
+                if (isset($_POST['usergroup_id'])) {
+                    $this->db->where('id', $this->input->post('usergroup_id'));
+                    if ($this->db->update('group', $data) == 1)
+                        echo 'Added';
+                    else
+                        echo 'error';
+                }
+                else {
+                    if ($this->db->insert('group', $data) == 1)
+                        echo 'Added';
+                    else
+                        echo 'error';
+                }
+            }
+        }
+    }
+
     function newfile() {
         $uri = $this->uri->rsegment(3);
         if (is_numeric($uri) && $uri != 0) {
@@ -285,7 +338,8 @@ class Action extends CI_Model {
     }
 
     function _post_perm() {
-        $permission['group'] = $this->input->post('group');
+        if(isset($_POST['group'])) $permission['group'] = $this->input->post('group');
+        
         $permission['admin'] = $this->input->post('admin');
         $permission['user'] = $this->input->post('user');
         $permission['guest'] = $this->input->post('guest');

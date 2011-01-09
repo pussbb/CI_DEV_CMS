@@ -65,9 +65,6 @@
                  </div>
            </div>
         </div>
- 
-        
-        
         <div class="center_right">
                         <div class="text_box">
 			<?php print $usermenu; ?>

@@ -86,6 +86,15 @@ class Welcome extends Controller {
     {
         $this->action->newblogcat();
     }
+    function newusergroup()
+    {
+        $this->action->newusergroup();
+    }
+    function usergroups()
+    {
+        $query = $this->db->get('group');
+         $this->load->view('usergroup', array('cats' => $query->result()));
+    }
 
 }
 

@@ -13,6 +13,7 @@ class User_mod extends CI_Model {
         } else {
             $this->template->write_view('usermenu', 'loginbox');
         }
+        
     }
 
     function menu($userid) {
