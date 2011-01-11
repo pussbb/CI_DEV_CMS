@@ -1,0 +1,43 @@
+AddDefaultCharset UTF-8
+Options -Indexes
+Options +FollowSymLinks
+php_value post_max_size "100M"
+php_value upload_max_filesize "100M"
+php_value display_errors on
+#php_value engine on
+ErrorDocument 404 /application/errors/error_404.php
+RewriteEngine On
+<IfModule mod_php4.c>
+  php_value engine on
+</IfModule>
+<IfModule mod_php5.c>
+  php_value engine on
+</IfModule>
+
+<FilesMatch "\.(flv|gif|jpg|jpeg|png|ico|swf|js|css)$">
+Header set Cache-Control "max-age=2592000, must-revalidate"
+</FilesMatch>
+
+########## Begin - Rewrite rules to block out some common exploits
+## If you experience problems on your site block out the operations listed below
+## This attempts to block the most common type of exploit `attempts` to Joomla!
+#
+# Block out any script trying to set a mosConfig value through the URL
+RewriteCond %{QUERY_STRING} mosConfig_[a-zA-Z_]{1,21}(=|\%3D) [OR]
+# Block out any script trying to base64_encode crap to send via URL
+RewriteCond %{QUERY_STRING} base64_encode.*\(.*\) [OR]
+# Block out any script that includes a <script> tag in URL
+RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
+# Block out any script trying to set a PHP GLOBALS variable via URL
+RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
+# Block out any script trying to modify a _REQUEST variable via URL
+RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2})
+# Send all blocked request to homepage with 403 Forbidden error!
+RewriteRule ^(.*)$ index.php [F,L]
+#
+
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond $1 !^(index\.php|images|robots\.txt)
+RewriteRule ^(.*)$ /index.php?/$1 [L]
